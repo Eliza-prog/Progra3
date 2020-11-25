@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -57,6 +57,13 @@
                     <h3 >Telefono</h3>
                     <span>(506) 0000-0000</span>
                 </div>
+            </section>
+            <section>
+                <ul class="icons">
+                    <li><a href="https://twitter.com/TravelingEarth2" class="icon brands "><img src="img/twiter.png"> <span class="label">Twitter</span></a></li>
+                    <li><a href="https://www.facebook.com/Traveling-Earth-110924384140006" class="icon brands "><img src="img/Face.png"><span class="label">Facebook</span></a></li>                               
+                    <li><a href="https://www.instagram.com/traveling.earth2020/" class="icon brands "><img src="img/Insta.png"><span class="label">Instagram</span></a></li>                         
+                </ul>
             </section>
         </form>
     </body>
