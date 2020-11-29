@@ -27,14 +27,14 @@ $obj_persona->setNombre("Esteban");
 $obj_persona->setApellido1("Murillo");
 $obj_persona->setApellido2("Chaves");
 $obj_persona->setSexo(1);
-$obj_persona->setObservaciones("Prueba 2");
 $obj_persona->setFecNacimiento("20001014");
-$obj_persona->setLastUser("YO");
+$obj_persona->setlastUser("YO");
+
   
 
 $bo_persona = new PersonasBo();
 
-$operacion = 4; //variable para pruebas
+$operacion = 2; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

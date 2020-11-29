@@ -33,24 +33,24 @@ class VueloDao {
     public function add(Vuelo $Vuelo) {
 
         try {
-            $sql = sprintf("insert into Vuelo (idVuelo, Tipo, Ruta_idRuta, Costo, observaciones, LASTUSER, LASTMODIFICATION) 
-                                          values (%s,%s,%s,%s,%s,%s,%s,%s,CURDATE())",
+            $sql = sprintf("insert into Vuelo (idVuelo, Ruta_idRuta,Avion_idAvion,Persona_PK_cedula, Costo) 
+                                          values (%s,%s,%s,%s,%s,CURDATE())",
                     $this->labAdodb->Param("idVuelo"),
-                    $this->labAdodb->Param("Tipo"),
                     $this->labAdodb->Param("Ruta_idRuta"),
-                    $this->labAdodb->Param("Costo"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"));
+                    $this->labAdodb->Param("Avion_idAvion"),
+                    $this->labAdodb->Param("Persona_PK_cedula"),
+                    $this->labAdodb->Param("Costo"));
+             
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
             $valores["idVuelo"]       = $Vuelo->getidVuelo();
-            $valores["Tipo"]          = $Vuelo->getTipo();
-            $valores["Ruta_idRuta"]       = $Vuelo->getRuta_idRuta();
+            $valores["Ruta_idRuta"]   = $Vuelo->getRuta_idRuta();
+            $valores["Vuelo_idVuelo"] = $Vuelo->getVuelo_idVuelo();
+            $valores["Persona_PK_cedula"]          = $Vuelo->getPersona_PK_cedula();
             $valores["Costo"]       = $Vuelo->getCosto();
-            $valores["observaciones"]   = $Vuelo->getobservaciones();
-            $valores["LASTUSER"]        = $Vuelo->getLastUser();
+           
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -90,28 +90,26 @@ class VueloDao {
     public function update(Vuelo $Vuelo) {
 
         try {
-            $sql = sprintf("update Vuelo set Tipo = %s, 
-                                                Ruta_idRuta = %s, 
+            $sql = sprintf("update Vuelo set idVuelo = %s, 
+                                                Ruta_idRuta = %s,
+                                                Avion_idAvion = %s,
+                                                Persona_PK_cedula = %s,
                                                 Costo = %s, 
-                                                observaciones = %s, 
-                                                LASTUSER = %s, 
-                                                LASTMODIFICATION = CURDATE() 
                             where idVuelo = %s",
-                    $this->labAdodb->Param("Tipo"),
                     $this->labAdodb->Param("Ruta_idRuta"),
+                    $this->labAdodb->Param("Avion_idAvion"),
+                    $this->labAdodb->Param("Persona_PK_cedula"),
                     $this->labAdodb->Param("Costo"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"),
                     $this->labAdodb->Param("idVuelo"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Tipo"]          = $Vuelo->getTipo();
+
             $valores["Ruta_idRuta"]       = $Vuelo->getRuta_idRuta();
+            $valores["Avion_idAvion"]          = $Vuelo->getAvion_idAvion();
+            $valores["Persona_PK_cedula"]          = $Vuelo->getPersona_PK_cedula();
             $valores["Costo"]       = $Vuelo->getCosto();
-            $valores["observaciones"]   = $Vuelo->getobservaciones();
-            $valores["LASTUSER"]        = $Vuelo->getLastUser();
             $valores["idVuelo"]       = $Vuelo->getidVuelo();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -161,10 +159,11 @@ class VueloDao {
             if ($resultSql->RecordCount() > 0) {
                 $returnVuelo = Vuelo::createNullVuelo();
                 $returnVuelo->setidVuelo($resultSql->Fields("idVuelo"));
-                $returnVuelo->setTipo($resultSql->Fields("Tipo"));
                 $returnVuelo->setRuta_idRuta($resultSql->Fields("Ruta_idRuta"));
+                $returnVuelo->setVuelo_idVuelo($resultSql->Fields("idvuelo"));
+                $returnVuelo->setPersona_PK_cedula($resultSql->Fields("cedula persona"));
                 $returnVuelo->setCosto($resultSql->Fields("Costo"));
-                $returnVuelo->setobservaciones($resultSql->Fields("observaciones"));
+                
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase VueloDao), error:'.$e->getMessage());

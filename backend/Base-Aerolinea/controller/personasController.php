@@ -35,7 +35,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 $myPersonas->setapellido2(filter_input(INPUT_POST, 'apellido2'));
                 $myPersonas->setfecNacimiento(filter_input(INPUT_POST, 'fecNacimiento'));
                 $myPersonas->setsexo(filter_input(INPUT_POST, 'sexo'));
-                $myPersonas->setLastUser('YO');
+                $myPersonas->setlastUser('YO');
                 if ($action == "add_Personas") {
                     $myPersonasBo->add($myPersonas);
                     echo('M~Registro Incluido Correctamente');

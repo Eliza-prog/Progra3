@@ -33,17 +33,14 @@ class AvionDao {
     public function add(Avion $Avion) {
 
         try {
-            $sql = sprintf("insert into Avion (idAvion, nombre, TipoAvion, PasajerosMax, CargaMax, cantidad,Personas_PK_cedula, observaciones, LASTUSER, LASTMODIFICATION) 
-                                          values (%s,%s,%s,%s,%s,%s,%s,%s,CURDATE())",
+            $sql = sprintf("insert into Avion (idAvion, nombre, TipoAvion, PasajerosMax, CargaMax, cantidad) 
+                                          values (%s,%s,%s,%s,%s,%s,CURDATE())",
                     $this->labAdodb->Param("idAvion"),
                     $this->labAdodb->Param("nombre"),
                     $this->labAdodb->Param("TipoAvion"),
                     $this->labAdodb->Param("PasajerosMax"),
                     $this->labAdodb->Param("CargaMax"),
-                    $this->labAdodb->Param("cantidad"),
-                    $this->labAdodb->Param("Personas_PK_cedula"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"));
+                    $this->labAdodb->Param("cantidad"));       
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -54,9 +51,8 @@ class AvionDao {
             $valores["PasajerosMax"]       = $Avion->getPasajerosMax();
             $valores["CargaMax"]   = $Avion->getCargaMax();
             $valores["cantidad"]            = $Avion->getcantidad();
-            $valores["Personas_PK_cedula"]            = $Avion->getPersonas_PK_cedula();
-            $valores["observaciones"]   = $Avion->getobservaciones();
-            $valores["LASTUSER"]        = $Avion->getLastUser();
+
+            
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -101,10 +97,7 @@ class AvionDao {
                                                 PasajerosMax = %s, 
                                                 CargaMax = %s, 
                                                 cantidad = %s,
-                                                Personas_PK_cedula = %s,
-                                                observaciones = %s, 
-                                                LASTUSER = %s, 
-                                                LASTMODIFICATION = CURDATE() 
+                                                
                             where idAvion = %s",
                     $this->labAdodb->Param("nombre"),
                     $this->labAdodb->Param("TipoAvion"),
@@ -112,8 +105,7 @@ class AvionDao {
                     $this->labAdodb->Param("CargaMax"),
                     $this->labAdodb->Param("cantidad"),
                     $this->labAdodb->Param("Personas_PK_cedula"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"),
+                    
                     $this->labAdodb->Param("idAvion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -124,9 +116,8 @@ class AvionDao {
             $valores["PasajerosMax"]       = $Avion->getPasajerosMax();
             $valores["CargaMax"]   = $Avion->getCargaMax();
             $valores["cantidad"]            = $Avion->getcantidad();
-            $valores["Personas_PK_cedula"]            = $Avion->getPersonas_PK_cedula();
-            $valores["observaciones"]   = $Avion->getobservaciones();
-            $valores["LASTUSER"]        = $Avion->getLastUser();
+            
+            
             $valores["idAvion"]       = $Avion->getidAvion();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -181,8 +172,8 @@ class AvionDao {
                 $returnAvion->setPasajerosMax($resultSql->Fields("PasajerosMax"));
                 $returnAvion->setCargaMax($resultSql->Fields("CargaMax"));
                 $returnAvion->setcantidad($resultSql->Fields("cantidad"));
-                $returnAvion->setPersonas_PK_cedula($resultSql->Fields("Personas_PK_cedula"));
-                $returnAvion->setobservaciones($resultSql->Fields("observaciones"));
+            
+          
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase AvionDao), error:'.$e->getMessage());

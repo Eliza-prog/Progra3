@@ -17,7 +17,7 @@ class Personas extends BaseDomain implements \JsonSerializable{
     private $apellido2;
     private $fecNacimiento;
     private $sexo;
-    private $observaciones;
+    private $lastUser;
 
     //constructors
     public function __construct() {
@@ -37,7 +37,7 @@ class Personas extends BaseDomain implements \JsonSerializable{
         $instance->apellido2        = $apellido2;
         $instance->fecNacimiento    = $fecNacimiento;
         $instance->sexo             = $sexo;
-        $instance->setLastUser($ultUsuario);
+        $instance->setlastUser($ultUsuario);
         return $instance;
     }
 
@@ -104,11 +104,11 @@ class Personas extends BaseDomain implements \JsonSerializable{
 
     /****************************************************************************/
 
-    public function getUltUsuario() {
+    public function getlastUser() {
         return $this->ultUsuario;
     }
 
-    public function setUltUsuario($ultUsuario) {
+    public function setlastUser($ultUsuario) {
         $this->ultUsuario = $ultUsuario;
     }
 

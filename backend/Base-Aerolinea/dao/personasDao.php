@@ -21,7 +21,7 @@ class PersonasDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","bases1", "progra3");
+        $this->labAdodb->Connect("localhost", "root","root", "mydb");
         
         $this->labAdodb->debug=true;
     }
@@ -33,7 +33,7 @@ class PersonasDao {
     public function add(Personas $personas) {
 
         try {
-            $sql = sprintf("insert into Personas (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, LASTUSER) 
+            $sql = sprintf("insert into Personas (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lASTUSER) 
                                           values (%s,%s,%s,%s,%s,%s,%s)",
                     $this->labAdodb->Param("PK_cedula"),
                     $this->labAdodb->Param("nombre"),
@@ -41,7 +41,7 @@ class PersonasDao {
                     $this->labAdodb->Param("apellido2"),
                     $this->labAdodb->Param("fecNacimiento"),
                     $this->labAdodb->Param("sexo"),
-                    $this->labAdodb->Param("LASTUSER"));
+                    $this->labAdodb->Param("lASTUSER"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -52,7 +52,7 @@ class PersonasDao {
             $valores["apellido2"]       = $personas->getApellido2();
             $valores["fecNacimiento"]   = $personas->getFecNacimiento();
             $valores["sexo"]            = $personas->getSexo();
-            $valores["LASTUSER"]        = $personas->getLastUser();
+            $valores["LASTUSER"]        = $personas->getlastUser();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -97,14 +97,14 @@ class PersonasDao {
                                                 apellido2 = %s, 
                                                 fecNacimiento = %s, 
                                                 sexo = %s, 
-                                                LASTUSER = %s, 
+                                                lASTUSER = %s, 
                             where PK_cedula = %s",
                     $this->labAdodb->Param("nombre"),
                     $this->labAdodb->Param("apellido1"),
                     $this->labAdodb->Param("apellido2"),
                     $this->labAdodb->Param("fecNacimiento"),
                     $this->labAdodb->Param("sexo"),
-                    $this->labAdodb->Param("LASTUSER"),
+                    $this->labAdodb->Param("lASTUSER"),
                     $this->labAdodb->Param("PK_cedula"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -115,7 +115,7 @@ class PersonasDao {
             $valores["apellido2"]       = $personas->getApellido2();
             $valores["fecNacimiento"]   = $personas->getFecNacimiento();
             $valores["sexo"]            = $personas->getSexo();
-            $valores["LASTUSER"]        = $personas->getLastUser();
+            $valores["LASTUSER"]        = $personas->getlastUser();
             $valores["PK_cedula"]       = $personas->getPK_cedula();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -170,6 +170,7 @@ class PersonasDao {
                 $returnPersonas->setApellido2($resultSql->Fields("apellido2"));
                 $returnPersonas->setFecNacimiento($resultSql->Fields("fecNacimiento"));
                 $returnPersonas->setSexo($resultSql->Fields("sexo"));
+                $returnPersonas->setlastUser($resultSql->Fields("lasUser"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase PersonasDao), error:'.$e->getMessage());

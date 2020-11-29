@@ -17,7 +17,7 @@ class Avion extends BaseDomain implements \JsonSerializable{
     private $PasajerosMax;
     private $CargaMax;
     private $cantidad;
-    private $Personas_PK_cedula;
+ 
     
 
     //constructors
@@ -30,7 +30,7 @@ class Avion extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createAvion($idAvion, $nombre, $TipoAvion, $PasajerosMax, $CargaMax, $cantidad,$Personas_PK_cedula, $ultUsuario, $ultModificacion) {
+    public static function createAvion($idAvion, $nombre, $TipoAvion, $PasajerosMax, $CargaMax, $cantidad) {
         $instance = new self();
         $instance->idAvion        = $idAvion;
         $instance->nombre           = $nombre;
@@ -38,9 +38,8 @@ class Avion extends BaseDomain implements \JsonSerializable{
         $instance->PasajerosMax        = $PasajerosMax;
         $instance->CargaMax    = $CargaMax;
         $instance->cantidad             = $cantidad;
-        $instance->Personas_PK_cedula             = $Personas_PK_cedula;
-        $instance->setLastUser($ultUsuario);
-        $instance->setLastModification($ultModificacion);
+        
+ 
         return $instance;
     }
 
@@ -105,26 +104,7 @@ class Avion extends BaseDomain implements \JsonSerializable{
         $this->cantidad = $cantidad;
     }
 
-    /****************************************************************************/
-
-    public function getPersonas_PK_cedula() {
-        return $this->Personas_PK_cedula;
-    }
-
-    public function setPersonas_PK_cedula($Personas_PK_cedula) {
-        $this->Personas_PK_cedula = $Personas_PK_cedula;
-    }
-
-    /****************************************************************************/
-
-    public function getUltUsuario() {
-        return $this->ultUsuario;
-    }
-
-    public function setUltUsuario($ultUsuario) {
-        $this->ultUsuario = $ultUsuario;
-    }
-
+  
     /****************************************************************************/
     //Convertir el obj a JSON
     /****************************************************************************/

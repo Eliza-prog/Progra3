@@ -28,18 +28,13 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Registro" or $action === "update_Registro") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idRegistro') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'apellido2') != null) && (filter_input(INPUT_POST, 'NombreUsuario') != null) && (filter_input(INPUT_POST, 'contraseña') != null) && (filter_input(INPUT_POST, 'Email') != null)(filter_input(INPUT_POST, 'fecNacimiento') != null)(filter_input(INPUT_POST, 'FechaRegistro') != null)(filter_input(INPUT_POST, 'Personas_PK_cedula') != null)) {
+            if ((filter_input(INPUT_POST, 'idRegistro') != null) && (filter_input(INPUT_POST, 'NombreUsuario') != null) && (filter_input(INPUT_POST, 'Contraseña') != null) && (filter_input(INPUT_POST, 'Email') != null) (filter_input(INPUT_POST, 'Email') != null)(filter_input(INPUT_POST, 'FechaRegistro') != null)(filter_input(INPUT_POST, 'Personas_PK_cedula') != null)) {
                 $myRegistro->setidRegistro(filter_input(INPUT_POST, 'idRegistro'));
-                $myRegistro->setnombre(filter_input(INPUT_POST, 'nombre'));
-                $myRegistro->setapellido1(filter_input(INPUT_POST, 'apellido1'));
-                $myRegistro->setapellido2(filter_input(INPUT_POST, 'apellido2'));
                 $myRegistro->setNombreUsuario(filter_input(INPUT_POST, 'NombreUsuario'));
-                $myRegistro->setcontraseña(filter_input(INPUT_POST, 'contraseña'));
+                $myRegistro->setContraseña(filter_input(INPUT_POST, 'Contraseña'));
                 $myRegistro->setEmail(filter_input(INPUT_POST, 'Email'));
-                $myRegistro->setfecNacimiento(filter_input(INPUT_POST, 'fecNacimiento'));
-                $myRegistro->setFechaRegistro(filter_input(INPUT_POST, 'FechaRegistro'));
+                $myRegistro->setNombreUsuario(filter_input(INPUT_POST, 'FechaRegistro'));
                 $myRegistro->setPersonas_PK_cedula(filter_input(INPUT_POST, 'Personas_PK_cedula'));
-                $myRegistro->setLastUser('112540148');
                 if ($action == "add_Registro") {
                     $myRegistroBo->add($myRegistro);
                     echo('M~Registro Incluido Correctamente');

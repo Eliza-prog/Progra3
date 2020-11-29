@@ -28,14 +28,14 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Avion" or $action === "update_Avion") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idAvion') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'TipoAvion') != null) && (filter_input(INPUT_POST, 'PasajerosMax') != null) && (filter_input(INPUT_POST, 'CargaMax') != null) && (filter_input(INPUT_POST, 'cantidad') != null) && (filter_input(INPUT_POST, 'Personas_PK_cedula') != null)) {
+            if ((filter_input(INPUT_POST, 'idAvion') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'TipoAvion') != null) && (filter_input(INPUT_POST, 'PasajerosMax') != null)) {
                 $myAvion->setidAvion(filter_input(INPUT_POST, 'idAvion'));
                 $myAvion->setnombre(filter_input(INPUT_POST, 'nombre'));
                 $myAvion->setTipoAvion(filter_input(INPUT_POST, 'TipoAvion'));
                 $myAvion->setPasajerosMax(filter_input(INPUT_POST, 'PasajerosMax'));
                 $myAvion->setCargaMax(filter_input(INPUT_POST, 'CargaMax'));
                 $myAvion->setcantidad(filter_input(INPUT_POST, 'cantidad'));
-                $myAvion->setPersonas_PK_cedula(filter_input(INPUT_POST, 'Personas_PK_cedula'));
+                
                 if ($action == "add_Avion") {
                     $myAvionBo->add($myAvion);
                     echo('M~Registro Incluido Correctamente');

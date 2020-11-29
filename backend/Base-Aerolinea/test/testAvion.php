@@ -16,12 +16,11 @@ $obj_Avion->setTipoAvion("kbhj");
 $obj_Avion->setPasajerosMax(200);
 $obj_Avion->setCargaMax(14);
 $obj_Avion->setcantidad(150);
-$obj_Avion->setPersonas_PK_cedula("19850830");
-$obj_Avion->setLastUser("chgari");
+
 
 $bo_Avion = new AvionBo();
 
-$operacion = 4; //variable para pruebas
+$operacion = 3; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

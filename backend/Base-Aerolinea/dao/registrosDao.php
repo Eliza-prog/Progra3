@@ -33,36 +33,25 @@ class registrosDao {
     public function add(registros $registros) {
 
         try {
-            $sql = sprintf("insert into registros (idRegistro, nombre, apellido1, apellido2, NombreUsuario, Contraseña,Email,fecNacimiento,FechaRegistro,Personas_PK_cedula ,observaciones, LASTUSER, LASTMODIFICATION) 
+            $sql = sprintf("insert into registros (idRegistro,NombreUsuario, Contraseña,Email,FechaRegistro,Personas_PK_cedula) 
                                           values (%s,%s,%s,%s,%s,%s,%s,%s,CURDATE())",
                     $this->labAdodb->Param("idRegistro"),
-                    $this->labAdodb->Param("nombre"),
-                    $this->labAdodb->Param("apellido1"),
-                    $this->labAdodb->Param("apellido2"),
                     $this->labAdodb->Param("NombreUsuario"),
                     $this->labAdodb->Param("Contraseña"),
                     $this->labAdodb->Param("Email"),
-                    $this->labAdodb->Param("fecNacimiento"),
                     $this->labAdodb->Param("FechaRegistro"),
-                    $this->labAdodb->Param("Personas_PK_cedula"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"));
+                    $this->labAdodb->Param("Personas_PK_cedula"));
+     
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
             $valores["idRegistro"]       = $registros->getidRegistro();
-            $valores["nombre"]          = $registros->getnombre();
-            $valores["apellido1"]       = $registros->getapellido1();
-            $valores["apellido2"]       = $registros->getapellido2();
             $valores["NombreUsuario"]   = $registros->getNombreUsuario();
             $valores["Contraseña"]            = $registros->getContraseña();
             $valores["Email"]            = $registros->getEmail();
-            $valores["fecNacimiento"]            = $registros->getfecNacimiento();
             $valores["FechaRegistro"]            = $registros->getFechaRegistro();
             $valores["Personas_PK_cedula"]            = $registros->getPersonas_PK_cedula();
-            $valores["observaciones"]   = $registros->getobservaciones();
-            $valores["LASTUSER"]        = $registros->getLastUser();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -102,34 +91,29 @@ class registrosDao {
     public function update(registros $registros) {
 
         try {
-            $sql = sprintf("update registros set nombre = %s, 
-                                                apellido1 = %s, 
-                                                apellido2 = %s, 
+            $sql = sprintf("update registros set  
                                                 NombreUsuario = %s, 
                                                 Contraseña = %s, 
-                                                observaciones = %s, 
-                                                LASTUSER = %s, 
-                                                LASTMODIFICATION = CURDATE() 
+                                                Email = %s,
+                                                FechaRegistro = %s,
+                                                Personas_PK_cedula,
+                                               
                             where idRegistro = %s",
-                    $this->labAdodb->Param("nombre"),
-                    $this->labAdodb->Param("apellido1"),
-                    $this->labAdodb->Param("apellido2"),
                     $this->labAdodb->Param("NombreUsuario"),
                     $this->labAdodb->Param("Contraseña"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"),
+                    $this->labAdodb->Param("Email"),
+                    $this->labAdodb->Param("FechaRegistro"),
+                    $this->labAdodb->Param("Personas_PK_cedula"),
                     $this->labAdodb->Param("idRegistro"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["nombre"]          = $registros->getnombre();
-            $valores["apellido1"]       = $registros->getapellido1();
-            $valores["apellido2"]       = $registros->getapellido2();
             $valores["NombreUsuario"]   = $registros->getNombreUsuario();
             $valores["Contraseña"]            = $registros->getContraseña();
-            $valores["observaciones"]   = $registros->getobservaciones();
-            $valores["LASTUSER"]        = $registros->getLastUser();
+            $valores["Email"]   = $registros->getEmail();
+            $valores["FechaRegistro"]        = $registros->getFechaRegistro();
+            $valores["Personas_PK_cedula"]       = $registros->getPersonas_PK_cedula();
             $valores["idRegistro"]       = $registros->getidRegistro();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -179,12 +163,11 @@ class registrosDao {
             if ($resultSql->RecordCount() > 0) {
                 $returnregistros = registros::createNullregistros();
                 $returnregistros->setidRegistro($resultSql->Fields("idRegistro"));
-                $returnregistros->setnombre($resultSql->Fields("nombre"));
-                $returnregistros->setapellido1($resultSql->Fields("apellido1"));
-                $returnregistros->setapellido2($resultSql->Fields("apellido2"));
                 $returnregistros->setNombreUsuario($resultSql->Fields("NombreUsuario"));
                 $returnregistros->setContraseña($resultSql->Fields("Contraseña"));
-                $returnregistros->setobservaciones($resultSql->Fields("observaciones"));
+                $returnregistros->setobservaciones($resultSql->Fields("Email"));
+                $returnregistros->setNombreUsuario($resultSql->Fields("FechaRegistro"));
+                $returnregistros->setNombreUsuario($resultSql->Fields("Personas_PK_cedula"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase registrosDao), error:'.$e->getMessage());
