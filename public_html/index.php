@@ -1,7 +1,7 @@
 
 <html>
     <head>
-        <title>TRAVELING EARTH</title>
+        <title>TRAVELING EARTH -  Esto es una prueba</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="CSS/main.css" />
