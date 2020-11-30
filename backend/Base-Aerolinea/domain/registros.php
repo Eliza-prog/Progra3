@@ -13,14 +13,11 @@ class Registro extends BaseDomain implements \JsonSerializable{
 
     //attributes
     private $idRegistro;
-    private $Nombre;
-    private $Apellido1;
-    private $Apellido2;
     private $NombreUsuario;
     private $Contraseña;
-    private $Email;
-    private $fecNacimiento;
+    private $Email;   
     private $FechaRegistro;
+    private $Personas_PK_cedula;
 
     //constructors
     public function __construct() {
@@ -32,36 +29,21 @@ class Registro extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createRegistros($idRegistro, $Nombre, $Apellido1, $Apellido2, $NombreUsuario, $Contraseña, $Email,$fecNacimiento, $ultModificacion, $FechaRegistro) {
+    public static function createRegistro($idRegistro, $NombreUsuario, $Contraseña, $Email,$fecNacimiento, $FechaRegistro,$Personas_PK_cedula) {
         $instance = new self();
         $instance->idRegistro       = $idRegistro;
-        $instance->Nombre           = $Nombre;
-        $instance->Apellido1        = $Apellido1;
-        $instance->Apellido2        = $Apellido2;
         $instance->NombreUsuario    = $NombreUsuario;
         $instance->Contraseña       = $Contraseña;
         $instance->Email            = $Email;
-        $instance->fecNacimiento        = $fecNacimiento;
-        $instance->setFechaRegistro($ultModificacion);
+        $instance->FechaRegistro    =$FechaRegistro;
+        $instance->Personas_PK_cedula    =$Personas_PK_cedula;
         return $instance;
     }
     
     function getIdRegistro() {
         return $this->idRegistro;
     }
-
-    function getNombre() {
-        return $this->Nombre;
-    }
-
-    function getApellido1() {
-        return $this->Apellido1;
-    }
-
-    function getApellido2() {
-        return $this->Apellido2;
-    }
-
+    
     function getNombreUsuario() {
         return $this->NombreUsuario;
     }
@@ -74,30 +56,17 @@ class Registro extends BaseDomain implements \JsonSerializable{
         return $this->Email;
     }
 
-    function getfecNacimiento() {
-        return $this->fecNacimiento;
-    }
-
     function getFechaRegistro() {
         return $this->FechaRegistro;
+    }
+    function getPersonas_PK_cedula() {
+        return $this->Personas_PK_cedula;
     }
 
     function setIdRegistro($idRegistro): void {
         $this->idRegistro = $idRegistro;
     }
-
-    function setNombre($Nombre): void {
-        $this->Nombre = $Nombre;
-    }
-
-    function setApellido1($Apellido1): void {
-        $this->Apellido1 = $Apellido1;
-    }
-
-    function setApellido2($Apellido2): void {
-        $this->Apellido2 = $Apellido2;
-    }
-
+    
     function setNombreUsuario($NombreUsuario): void {
         $this->NombreUsuario = $NombreUsuario;
     }
@@ -110,17 +79,14 @@ class Registro extends BaseDomain implements \JsonSerializable{
         $this->Email = $Email;
     }
 
-    function setfecNacimiento($fecNacimiento): void {
-        $this->fecNacimiento = $fecNacimiento;
-    }
-
     function setFechaRegistro($FechaRegistro): void {
         $this->FechaRegistro = $FechaRegistro;
     }
     
-    
-    
-    
+    function setPersonas_PK_cedula($Personas_PK_cedula): void {
+        $this->Personas_PK_cedula = $Personas_PK_cedula;
+    }
+ 
     public function jsonSerialize() {
         return get_object_vars($this);
     }

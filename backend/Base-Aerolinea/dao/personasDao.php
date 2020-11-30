@@ -97,7 +97,7 @@ class PersonasDao {
                                                 apellido2 = %s, 
                                                 fecNacimiento = %s, 
                                                 sexo = %s, 
-                                                lASTUSER = %s, 
+                                                lASTUSER = %s 
                             where PK_cedula = %s",
                     $this->labAdodb->Param("nombre"),
                     $this->labAdodb->Param("apellido1"),

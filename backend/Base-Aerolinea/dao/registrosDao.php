@@ -1,7 +1,7 @@
 <?php
 
 require_once("../../utlis/adodb5/adodb.inc.php");
-require_once("../domain/registros.php");
+require_once("../domain/Registro.php");
 
 /**
  * 
@@ -13,7 +13,7 @@ require_once("../domain/registros.php");
 
 //this attribute enable to see the SQL's executed in the data base
 
-class registrosDao {
+class RegistroDao {
     private $labAdodb;
 
     public function __construct() {
@@ -30,10 +30,10 @@ class registrosDao {
     //agrega a una persona a la base de datos
     //***********************************************************
 
-    public function add(registros $registros) {
+    public function add(Registro $Registro) {
 
         try {
-            $sql = sprintf("insert into registros (idRegistro,NombreUsuario, Contraseña,Email,FechaRegistro,Personas_PK_cedula) 
+            $sql = sprintf("insert into Registro (idRegistro,NombreUsuario, Contraseña,Email,FechaRegistro,Personas_PK_cedula) 
                                           values (%s,%s,%s,%s,%s,%s,%s,%s,CURDATE())",
                     $this->labAdodb->Param("idRegistro"),
                     $this->labAdodb->Param("NombreUsuario"),
@@ -46,16 +46,16 @@ class registrosDao {
 
             $valores = array();
 
-            $valores["idRegistro"]       = $registros->getidRegistro();
-            $valores["NombreUsuario"]   = $registros->getNombreUsuario();
-            $valores["Contraseña"]            = $registros->getContraseña();
-            $valores["Email"]            = $registros->getEmail();
-            $valores["FechaRegistro"]            = $registros->getFechaRegistro();
-            $valores["Personas_PK_cedula"]            = $registros->getPersonas_PK_cedula();
+            $valores["idRegistro"]       = $Registro->getidRegistro();
+            $valores["NombreUsuario"]   = $Registro->getNombreUsuario();
+            $valores["Contraseña"]            = $Registro->getContraseña();
+            $valores["Email"]            = $Registro->getEmail();
+            $valores["FechaRegistro"]            = $Registro->getFechaRegistro();
+            $valores["Personas_PK_cedula"]            = $Registro->getPersonas_PK_cedula();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo insertar el registro (Error generado en el metodo add de la clase registrosDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo insertar el registro (Error generado en el metodo add de la clase RegistroDao), error:'.$e->getMessage());
         }
     }
 
@@ -63,16 +63,16 @@ class registrosDao {
     //verifica si una persona existe en la base de datos por ID
     //***********************************************************
 
-    public function exist(registros $registros) {
+    public function exist(Registro $Registro) {
 
         $exist = false;
         try {
-            $sql = sprintf("select * from registros where  idRegistro = %s ",
+            $sql = sprintf("select * from Registro where  idRegistro = %s ",
                             $this->labAdodb->Param("idRegistro"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-            $valores["idRegistro"] = $registros->getidRegistro();
+            $valores["idRegistro"] = $Registro->getidRegistro();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             if ($resultSql->RecordCount() > 0) {
@@ -80,7 +80,7 @@ class registrosDao {
             }
             return $exist;
         } catch (Exception $e) {
-            throw new Exception('No se pudo obtener el registro (Error generado en el metodo exist de la clase registrosDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo obtener el registro (Error generado en el metodo exist de la clase RegistroDao), error:'.$e->getMessage());
         }
     }
 
@@ -88,10 +88,10 @@ class registrosDao {
     //modifica una persona en la base de datos
     //***********************************************************
 
-    public function update(registros $registros) {
+    public function update(Registro $Registro) {
 
         try {
-            $sql = sprintf("update registros set  
+            $sql = sprintf("update Registro set  
                                                 NombreUsuario = %s, 
                                                 Contraseña = %s, 
                                                 Email = %s,
@@ -109,15 +109,15 @@ class registrosDao {
 
             $valores = array();
 
-            $valores["NombreUsuario"]   = $registros->getNombreUsuario();
-            $valores["Contraseña"]            = $registros->getContraseña();
-            $valores["Email"]   = $registros->getEmail();
-            $valores["FechaRegistro"]        = $registros->getFechaRegistro();
-            $valores["Personas_PK_cedula"]       = $registros->getPersonas_PK_cedula();
-            $valores["idRegistro"]       = $registros->getidRegistro();
+            $valores["NombreUsuario"]   = $Registro->getNombreUsuario();
+            $valores["Contraseña"]            = $Registro->getContraseña();
+            $valores["Email"]   = $Registro->getEmail();
+            $valores["FechaRegistro"]        = $Registro->getFechaRegistro();
+            $valores["Personas_PK_cedula"]       = $Registro->getPersonas_PK_cedula();
+            $valores["idRegistro"]       = $Registro->getidRegistro();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase registrosDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase RegistroDao), error:'.$e->getMessage());
         }
     }
 
@@ -125,20 +125,20 @@ class registrosDao {
     //elimina una persona en la base de datos
     //***********************************************************
 
-    public function delete(registros $registros) {
+    public function delete(Registro $Registro) {
 
         try {
-            $sql = sprintf("delete from registros where  idRegistro = %s",
+            $sql = sprintf("delete from Registro where  idRegistro = %s",
                             $this->labAdodb->Param("idRegistro"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["idRegistro"] = $registros->getidRegistro();
+            $valores["idRegistro"] = $Registro->getidRegistro();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo eliminar el registro (Error generado en el metodo delete de la clase registrosDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo eliminar el registro (Error generado en el metodo delete de la clase RegistroDao), error:'.$e->getMessage());
         }
     }
 
@@ -146,47 +146,47 @@ class registrosDao {
     //busca a una persona en la base de datos
     //***********************************************************
 
-    public function searchById(registros $registros) {
+    public function searchById(Registro $Registro) {
 
-        $returnregistros = null;
+        $returnRegistro = null;
         try {
-            $sql = sprintf("select * from registros where  idRegistro = %s",
+            $sql = sprintf("select * from Registro where  idRegistro = %s",
                             $this->labAdodb->Param("idRegistro"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["idRegistro"] = $registros->getidRegistro();
+            $valores["idRegistro"] = $Registro->getidRegistro();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
             if ($resultSql->RecordCount() > 0) {
-                $returnregistros = registros::createNullregistros();
-                $returnregistros->setidRegistro($resultSql->Fields("idRegistro"));
-                $returnregistros->setNombreUsuario($resultSql->Fields("NombreUsuario"));
-                $returnregistros->setContraseña($resultSql->Fields("Contraseña"));
-                $returnregistros->setobservaciones($resultSql->Fields("Email"));
-                $returnregistros->setNombreUsuario($resultSql->Fields("FechaRegistro"));
-                $returnregistros->setNombreUsuario($resultSql->Fields("Personas_PK_cedula"));
+                $returnRegistro = Registro::createNullRegistro();
+                $returnRegistro->setidRegistro($resultSql->Fields("idRegistro"));
+                $returnRegistro->setNombreUsuario($resultSql->Fields("NombreUsuario"));
+                $returnRegistro->setContraseña($resultSql->Fields("Contraseña"));
+                $returnRegistro->setobservaciones($resultSql->Fields("Email"));
+                $returnRegistro->setNombreUsuario($resultSql->Fields("FechaRegistro"));
+                $returnRegistro->setNombreUsuario($resultSql->Fields("Personas_PK_cedula"));
             }
         } catch (Exception $e) {
-            throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase registrosDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase RegistroDao), error:'.$e->getMessage());
         }
-        return $returnregistros;
+        return $returnRegistro;
     }
 
     //***********************************************************
-    //obtiene la información de las registros en la base de datos
+    //obtiene la información de las Registro en la base de datos
     //***********************************************************
     
     public function getAll() {
 
         try {
-            $sql = sprintf("select * from registros");
+            $sql = sprintf("select * from Registro");
             $resultSql = $this->labAdodb->Execute($sql);
             return $resultSql;
         } catch (Exception $e) {
-            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase registrosDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo obtener los Registro (Error generado en el metodo getAll de la clase RegistroDao), error:'.$e->getMessage());
         }
     }
 

@@ -33,11 +33,11 @@ class Avion extends BaseDomain implements \JsonSerializable{
     public static function createAvion($idAvion, $nombre, $TipoAvion, $PasajerosMax, $CargaMax, $cantidad) {
         $instance = new self();
         $instance->idAvion        = $idAvion;
-        $instance->nombre           = $nombre;
-        $instance->TipoAvion        = $TipoAvion;
-        $instance->PasajerosMax        = $PasajerosMax;
-        $instance->CargaMax    = $CargaMax;
-        $instance->cantidad             = $cantidad;
+        $instance->nombre         = $nombre;
+        $instance->TipoAvion      = $TipoAvion;
+        $instance->PasajerosMax   = $PasajerosMax;
+        $instance->CargaMax       = $CargaMax;
+        $instance->cantidad       = $cantidad;
         
  
         return $instance;

@@ -34,7 +34,7 @@ class AvionDao {
 
         try {
             $sql = sprintf("insert into Avion (idAvion, nombre, TipoAvion, PasajerosMax, CargaMax, cantidad) 
-                                          values (%s,%s,%s,%s,%s,%s,CURDATE())",
+                                          values (%s,%s,%s,%s,%s,%s)",
                     $this->labAdodb->Param("idAvion"),
                     $this->labAdodb->Param("nombre"),
                     $this->labAdodb->Param("TipoAvion"),

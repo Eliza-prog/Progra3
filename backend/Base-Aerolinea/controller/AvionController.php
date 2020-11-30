@@ -28,7 +28,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Avion" or $action === "update_Avion") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idAvion') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'TipoAvion') != null) && (filter_input(INPUT_POST, 'PasajerosMax') != null)) {
+            if ((filter_input(INPUT_POST, 'idAvion') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'TipoAvion') != null) && (filter_input(INPUT_POST, 'PasajerosMax') != null)&& (filter_input(INPUT_POST, 'CargaMax') != null)&& (filter_input(INPUT_POST, 'cantidad') != null)) {
                 $myAvion->setidAvion(filter_input(INPUT_POST, 'idAvion'));
                 $myAvion->setnombre(filter_input(INPUT_POST, 'nombre'));
                 $myAvion->setTipoAvion(filter_input(INPUT_POST, 'TipoAvion'));
