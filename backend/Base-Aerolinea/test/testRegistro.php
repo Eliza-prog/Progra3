@@ -16,7 +16,7 @@ $obj_Registro->setNombreUsuario("estebanjm1");
 $obj_Registro->setContraseña("paco12345");
 $obj_Registro->setEmail("estebanjm1@hotmail.com");
 $obj_Registro->setFechaRegistro(20/10/15);
-$obj_Registro->setPersona_PK_cedula(1234567);
+$obj_Registro->setPersona_PK_cedula(402480931);
   
 
 $bo_Registro = new RegistroBo();

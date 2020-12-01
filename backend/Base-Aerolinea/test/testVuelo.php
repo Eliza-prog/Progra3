@@ -12,7 +12,7 @@ require_once ("../domain/Vuelo.php");
 
 $obj_Vuelo = new Vuelo();
 $obj_Vuelo->setIdVuelo(45672);
-$obj_Vuelo->setRuta_idRuta(123456);
+$obj_Vuelo->setRuta_idRuta(123909);
 $obj_Vuelo->setAvion_idAvion(1234);
 $obj_Vuelo->setCosto(70000);
 

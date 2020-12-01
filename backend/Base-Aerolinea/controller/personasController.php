@@ -28,7 +28,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Persona" or $action === "update_Persona") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'PK_cedula') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'apellido2') != null) && (filter_input(INPUT_POST, 'fecNacimiento') != null) && (filter_input(INPUT_POST, 'sexo') != null)) {
+            if ((filter_input(INPUT_POST, 'PK_cedula') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'apellido2') != null) && (filter_input(INPUT_POST, 'fecNacimiento') != null) && (filter_input(INPUT_POST, 'sexo') != null)&& (filter_input(INPUT_POST, 'last user') != null)) {
                 $myPersona->setPK_cedula(filter_input(INPUT_POST, 'PK_cedula'));
                 $myPersona->setnombre(filter_input(INPUT_POST, 'nombre'));
                 $myPersona->setapellido1(filter_input(INPUT_POST, 'apellido1'));

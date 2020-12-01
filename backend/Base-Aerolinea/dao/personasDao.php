@@ -1,7 +1,7 @@
 <?php
 
 require_once("../../utlis/adodb5/adodb.inc.php");
-require_once("../domain/personas.php");
+require_once("../domain/Persona.php");
 
 /**
  * 
@@ -30,7 +30,7 @@ class PersonaDao {
     //agrega a una persona a la base de datos
     //***********************************************************
 
-    public function add(Persona $personas) {
+    public function add(Persona $Persona) {
 
         try {
             $sql = sprintf("insert into Persona (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lASTUSER) 
@@ -46,13 +46,13 @@ class PersonaDao {
 
             $valores = array();
 
-            $valores["PK_cedula"]       = $personas->getPK_cedula();
-            $valores["nombre"]          = $personas->getNombre();
-            $valores["apellido1"]       = $personas->getApellido1();
-            $valores["apellido2"]       = $personas->getApellido2();
-            $valores["fecNacimiento"]   = $personas->getFecNacimiento();
-            $valores["sexo"]            = $personas->getSexo();
-            $valores["LASTUSER"]        = $personas->getlastUser();
+            $valores["PK_cedula"]       = $Persona->getPK_cedula();
+            $valores["nombre"]          = $Persona->getNombre();
+            $valores["apellido1"]       = $Persona->getApellido1();
+            $valores["apellido2"]       = $Persona->getApellido2();
+            $valores["fecNacimiento"]   = $Persona->getFecNacimiento();
+            $valores["sexo"]            = $Persona->getSexo();
+            $valores["LASTUSER"]        = $Persona->getlastUser();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -64,7 +64,7 @@ class PersonaDao {
     //verifica si una persona existe en la base de datos por ID
     //***********************************************************
 
-    public function exist(Persona $personas) {
+    public function exist(Persona $Persona) {
 
         $exist = false;
         try {
@@ -73,7 +73,7 @@ class PersonaDao {
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-            $valores["PK_cedula"] = $personas->getPK_cedula();
+            $valores["PK_cedula"] = $Persona->getPK_cedula();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             if ($resultSql->RecordCount() > 0) {
@@ -89,7 +89,7 @@ class PersonaDao {
     //modifica una persona en la base de datos
     //***********************************************************
 
-    public function update(Persona $personas) {
+    public function update(Persona $Persona) {
 
         try {
             $sql = sprintf("update Persona set nombre = %s, 
@@ -110,13 +110,13 @@ class PersonaDao {
 
             $valores = array();
 
-            $valores["nombre"]          = $personas->getNombre();
-            $valores["apellido1"]       = $personas->getApellido1();
-            $valores["apellido2"]       = $personas->getApellido2();
-            $valores["fecNacimiento"]   = $personas->getFecNacimiento();
-            $valores["sexo"]            = $personas->getSexo();
-            $valores["LASTUSER"]        = $personas->getlastUser();
-            $valores["PK_cedula"]       = $personas->getPK_cedula();
+            $valores["nombre"]          = $Persona->getNombre();
+            $valores["apellido1"]       = $Persona->getApellido1();
+            $valores["apellido2"]       = $Persona->getApellido2();
+            $valores["fecNacimiento"]   = $Persona->getFecNacimiento();
+            $valores["sexo"]            = $Persona->getSexo();
+            $valores["LASTUSER"]        = $Persona->getlastUser();
+            $valores["PK_cedula"]       = $Persona->getPK_cedula();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
             throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase PersonaDao), error:'.$e->getMessage());
@@ -127,7 +127,7 @@ class PersonaDao {
     //elimina una persona en la base de datos
     //***********************************************************
 
-    public function delete(Persona $personas) {
+    public function delete(Persona $Persona) {
 
         try {
             $sql = sprintf("delete from Persona where  PK_cedula = %s",
@@ -136,7 +136,7 @@ class PersonaDao {
 
             $valores = array();
 
-            $valores["PK_cedula"] = $personas->getPK_cedula();
+            $valores["PK_cedula"] = $Persona->getPK_cedula();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -148,7 +148,7 @@ class PersonaDao {
     //busca a una persona en la base de datos
     //***********************************************************
 
-    public function searchById(Persona $personas) {
+    public function searchById(Persona $Persona) {
 
         $returnPersona = null;
         try {
@@ -158,7 +158,7 @@ class PersonaDao {
 
             $valores = array();
 
-            $valores["PK_cedula"] = $personas->getPK_cedula();
+            $valores["PK_cedula"] = $Persona->getPK_cedula();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
@@ -179,7 +179,7 @@ class PersonaDao {
     }
 
     //***********************************************************
-    //obtiene la información de las personas en la base de datos
+    //obtiene la información de las Persona en la base de datos
     //***********************************************************
     
     public function getAll() {
