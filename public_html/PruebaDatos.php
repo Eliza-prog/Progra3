@@ -1,20 +1,13 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+
 <html>
     <head>
         <title>TRAVELING EARTH</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="CSS/main.css" />
-        <noscript><link rel="stylesheet" href="CSS/noscript.css" /></noscript>
+
         <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="img/LogoPeque.png">
-        <link rel="stylesheet"  href="CSS/Estilos.css"/>
+   
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -24,7 +17,7 @@
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="js/PersonaFunctions.js"></script>
-        
+
         <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
 
@@ -32,8 +25,8 @@
         <script type="text/javascript" src="js/PersonaFunctions.js"></script>
     </head>
 
-    <body class="is-preload wrapper style2 aln-center row" >
-        <form class="form inner">
+    <body >
+        <form >
             <h2>Registro</h2> 
             <br>
             <section class="col-md-12">
@@ -64,12 +57,6 @@
                 <br>
                 <br>
                 <br>
-                <div>
-                    <h3>Email</h3>
-                    <a>traveling.earth2020@gmail.com</a>
-                    <h3 >Telefono</h3>
-                    <span>(506) 0000-0000</span>
-                </div>
             </section>
         </form>
     </body>
