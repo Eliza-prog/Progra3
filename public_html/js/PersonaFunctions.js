@@ -39,7 +39,7 @@ function addOrUpdatePersona(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/Base-Aerolinea/controller/personasController.php',
+            url: '../backend/Base-Aerolinea/controller/PersonaController.php',
             data: {
                 action:         $("#typeAction").val(),
                 PK_cedula:      $("#txtPK_cedula").val(),
@@ -135,7 +135,7 @@ function cancelAction() {
 function showALLPersona(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/personasController.php',
+        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "showAll_Persona"
         },
@@ -190,7 +190,7 @@ function showPersonaByID(PK_cedula) {
 function deletePersonaByID(PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/personasController.php',
+        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "delete_Persona",
             PK_cedula: PK_cedula

@@ -34,7 +34,7 @@ class RegistroDao {
 
         try {
             $sql = sprintf("insert into Registro (idRegistro,NombreUsuario, Contraseña,Email,FechaRegistro,Personas_PK_cedula) 
-                                          values (%s,%s,%s,%s,%s,%s,%s,%s,CURDATE())",
+                                          values (%s,%s,%s,%s,%s,%s,CURDATE())",
                     $this->labAdodb->Param("idRegistro"),
                     $this->labAdodb->Param("NombreUsuario"),
                     $this->labAdodb->Param("Contraseña"),
@@ -96,7 +96,7 @@ class RegistroDao {
                                                 Contraseña = %s, 
                                                 Email = %s,
                                                 FechaRegistro = %s,
-                                                Personas_PK_cedula,
+                                                Personas_PK_cedula
                                                
                             where idRegistro = %s",
                     $this->labAdodb->Param("NombreUsuario"),
@@ -166,8 +166,8 @@ class RegistroDao {
                 $returnRegistro->setNombreUsuario($resultSql->Fields("NombreUsuario"));
                 $returnRegistro->setContraseña($resultSql->Fields("Contraseña"));
                 $returnRegistro->setobservaciones($resultSql->Fields("Email"));
-                $returnRegistro->setNombreUsuario($resultSql->Fields("FechaRegistro"));
-                $returnRegistro->setNombreUsuario($resultSql->Fields("Personas_PK_cedula"));
+                $returnRegistro->setFechaRegistro($resultSql->Fields("FechaRegistro"));
+                $returnRegistro->setPersonas_PK_cedula($resultSql->Fields("Personas_PK_cedula"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase RegistroDao), error:'.$e->getMessage());

@@ -33,7 +33,7 @@ class PersonaDao {
     public function add(Persona $Persona) {
 
         try {
-            $sql = sprintf("insert into Persona (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lASTUSER) 
+            $sql = sprintf("insert into Persona (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lastUser) 
                                           values (%s,%s,%s,%s,%s,%s,%s)",
                     $this->labAdodb->Param("PK_cedula"),
                     $this->labAdodb->Param("nombre"),
@@ -110,9 +110,9 @@ class PersonaDao {
 
             $valores = array();
 
-            $valores["nombre"]          = $Persona->getNombre();
-            $valores["apellido1"]       = $Persona->getApellido1();
-            $valores["apellido2"]       = $Persona->getApellido2();
+            $valores["nombre"]          = $Persona->getnombre();
+            $valores["apellido1"]       = $Persona->getapellido1();
+            $valores["apellido2"]       = $Persona->getapellido2();
             $valores["fecNacimiento"]   = $Persona->getFecNacimiento();
             $valores["sexo"]            = $Persona->getSexo();
             $valores["LASTUSER"]        = $Persona->getlastUser();
@@ -165,9 +165,9 @@ class PersonaDao {
             if ($resultSql->RecordCount() > 0) {
                 $returnPersona = Persona::createNullPersona();
                 $returnPersona->setPK_cedula($resultSql->Fields("PK_cedula"));
-                $returnPersona->setNombre($resultSql->Fields("nombre"));
-                $returnPersona->setApellido1($resultSql->Fields("apellido1"));
-                $returnPersona->setApellido2($resultSql->Fields("apellido2"));
+                $returnPersona->setnombre($resultSql->Fields("nombre"));
+                $returnPersona->setapellido1($resultSql->Fields("apellido1"));
+                $returnPersona->setapellido2($resultSql->Fields("apellido2"));
                 $returnPersona->setFecNacimiento($resultSql->Fields("fecNacimiento"));
                 $returnPersona->setSexo($resultSql->Fields("sexo"));
                 $returnPersona->setlastUser($resultSql->Fields("lasUser"));

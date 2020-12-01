@@ -19,7 +19,7 @@ class Reservacion extends BaseDomain implements \JsonSerializable{
     private $Persona_PK_cedula;
     private $Vuelo_idVuelo;
     private $Asiento;
-    private $Destino_idDestino1;
+
 
     
 

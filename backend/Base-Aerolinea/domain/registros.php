@@ -29,7 +29,7 @@ class Registro extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createRegistro($idRegistro, $NombreUsuario, $Contraseña, $Email,$fecNacimiento, $FechaRegistro,$Personas_PK_cedula) {
+    public static function createRegistro($idRegistro, $NombreUsuario, $Contraseña, $Email, $FechaRegistro,$Personas_PK_cedula) {
         $instance = new self();
         $instance->idRegistro       = $idRegistro;
         $instance->NombreUsuario    = $NombreUsuario;

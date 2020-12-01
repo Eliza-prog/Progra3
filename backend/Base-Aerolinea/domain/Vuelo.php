@@ -15,7 +15,6 @@ class Vuelo extends BaseDomain implements \JsonSerializable{
     private $idVuelo;
     private $Ruta_idRuta;
     private $Avion_idAvion;
-    private $Personas_PK_cedula;
     private $Costo;
 
 
@@ -29,12 +28,11 @@ class Vuelo extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createVuelo($idVuelo, $Ruta_idRuta, $Avion_idAvion, $Persona_PK_cedula, $Costo) {
+    public static function createVuelo($idVuelo, $Ruta_idRuta, $Avion_idAvion, $Costo) {
         $instance = new self();
         $instance->idVuelo        = $idVuelo;
         $instance->Ruta_idRuta           = $Ruta_idRuta;
         $instance->Avion_idAvion        = $Avion_idAvion;
-        $instance->Persona_PK_cedula        = $Persona_PK_cedula;
         $instance->Costo        = $Costo;
         return $instance;
     }

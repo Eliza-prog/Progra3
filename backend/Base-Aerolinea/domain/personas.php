@@ -24,12 +24,12 @@ class Persona extends BaseDomain implements \JsonSerializable{
         parent::__construct();
     }
 
-    public static function createNullPersonas() {
+    public static function createNullPersona() {
         $instance = new self();
         return $instance;
     }
 
-    public static function createPersona($PK_cedula, $nombre, $apellido1, $apellido2, $fecNacimiento, $sexo, $ultUsuario, $lastUser) {
+    public static function createPersona($PK_cedula, $nombre, $apellido1, $apellido2, $fecNacimiento, $sexo, $lastUser) {
         $instance = new self();
         $instance->PK_cedula        = $PK_cedula;
         $instance->nombre           = $nombre;
@@ -37,7 +37,7 @@ class Persona extends BaseDomain implements \JsonSerializable{
         $instance->apellido2        = $apellido2;
         $instance->fecNacimiento    = $fecNacimiento;
         $instance->sexo             = $sexo;
-        $instance->setlastUser($ultUsuario);
+        $instance->setlastUser     =$lastUser;
         return $instance;
     }
 
@@ -105,11 +105,11 @@ class Persona extends BaseDomain implements \JsonSerializable{
     /****************************************************************************/
 
     public function getlastUser() {
-        return $this->ultUsuario;
+        return $this->lastUser;
     }
 
-    public function setlastUser($ultUsuario) {
-        $this->ultUsuario = $ultUsuario;
+    public function setlastUser($lastUser) {
+        $this->lastUser = $lastUser;
     }
 
     /****************************************************************************/
