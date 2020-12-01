@@ -1,47 +1,49 @@
 <?php
 
-require_once("../bo/PersonaBo.php");
-require_once("../domain/Persona.php");
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+require_once("../bo/ReservacionBo.php");
+require_once("../domain/Reservacion.php");
 
 
 /**
- * This class contain all services methods of the table Persona
+ * This class contain all services methods of the table Reservacion
  * @author ChGari
  * Date Last  modification: Fri Jul 24 11:28:43 CST 2020
  * Comment: It was created
  *
  */
 //************************************************************
-// Persona Controller 
+// Reservacion Controller 
 //************************************************************
 
 if (filter_input(INPUT_POST, 'action') != null) {
     $action = filter_input(INPUT_POST, 'action');
 
     try {
-        $myPersonaBo = new PersonaBo();
-        $myPersona = Persona::createNullPersona();
+        $myReservacionBo = new ReservacionBo();
+        $myReservacion = Reservacion::createNullReservacion();
 
         //***********************************************************
         //choose the action
         //***********************************************************
 
-        if ($action === "add_Persona" or $action === "update_Persona") {
+        if ($action === "add_Reservacion" or $action === "update_Reservacion") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'PK_cedula') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'apellido2') != null) && (filter_input(INPUT_POST, 'fecNacimiento') != null) && (filter_input(INPUT_POST, 'sexo') != null)) {
-                $myPersona->setPK_cedula(filter_input(INPUT_POST, 'PK_cedula'));
-                $myPersona->setnombre(filter_input(INPUT_POST, 'nombre'));
-                $myPersona->setapellido1(filter_input(INPUT_POST, 'apellido1'));
-                $myPersona->setapellido2(filter_input(INPUT_POST, 'apellido2'));
-                $myPersona->setfecNacimiento(filter_input(INPUT_POST, 'fecNacimiento'));
-                $myPersona->setsexo(filter_input(INPUT_POST, 'sexo'));
-                $myPersona->setlastUser('YO');
-                if ($action == "add_Persona") {
-                    $myPersonaBo->add($myPersona);
+            if ((filter_input(INPUT_POST, 'Persona_PK_cedula') != null) && (filter_input(INPUT_POST, 'Vuelo_idVuelo') != null) && (filter_input(INPUT_POST, 'Asiento') != null)) {
+                $myReservacion->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
+                $myReservacion->setVuelo_idVuelo(filter_input(INPUT_POST, 'Vuelo_idVuelo'));
+                $myReservacion->setAsiento(filter_input(INPUT_POST, 'Asiento'));
+                if ($action == "add_Reservacion") {
+                    $myReservacionBo->add($myReservacion);
                     echo('M~Registro Incluido Correctamente');
                 }
-                if ($action == "update_Persona") {
-                    $myPersonaBo->update($myPersona);
+                if ($action == "update_Reservacion") {
+                    $myReservacionBo->update($myReservacion);
                     echo('M~Registro Modificado Correctamente');
                 }
             }
@@ -50,8 +52,8 @@ if (filter_input(INPUT_POST, 'action') != null) {
         //***********************************************************
         //***********************************************************
 
-        if ($action === "showAll_Persona") {//accion de consultar todos los registros
-            $resultDB   = $myPersonaBo->getAll();
+        if ($action === "showAll_Reservacion") {//accion de consultar todos los registros
+            $resultDB   = $myReservacionBo->getAll();
             $json       = json_encode($resultDB->GetArray());
             $resultado = '{"data": ' . $json . '}';
             if($resultDB->RecordCount() === 0){
@@ -64,13 +66,13 @@ if (filter_input(INPUT_POST, 'action') != null) {
         //***********************************************************
 
         
-        if ($action === "show_Persona") {//accion de mostrar cliente por ID
+        if ($action === "show_Reservacion") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'PK_cedula') != null) {
-                $myPersona->setPK_cedula(filter_input(INPUT_POST, 'PK_cedula'));
-                $myPersona = $myPersonaBo->searchById($myPersona);
-                if ($myPersona != null) {
-                    echo json_encode(($myPersona));
+            if (filter_input(INPUT_POST, 'Persona_PK_cedula') != null) {
+                $myReservacion->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
+                $myReservacion = $myReservacionBo->searchById($myReservacion);
+                if ($myReservacion != null) {
+                    echo json_encode(($myReservacion));
                 } else {
                     echo('E~NO Existe un cliente con el ID especificado');
                 }
@@ -80,11 +82,11 @@ if (filter_input(INPUT_POST, 'action') != null) {
         //***********************************************************
         //***********************************************************
 
-        if ($action === "delete_Persona") {//accion de eliminar cliente por ID
+        if ($action === "delete_Reservacion") {//accion de eliminar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'PK_cedula') != null) {
-                $myPersona->setPK_cedula(filter_input(INPUT_POST, 'PK_cedula'));
-                $myPersonaBo->delete($myPersona);
+            if (filter_input(INPUT_POST, 'Persona_PK_cedula') != null) {
+                $myReservacion->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
+                $myReservacionBo->delete($myReservacion);
                 echo('M~Registro Fue Eliminado Correctamente');
             }
         }

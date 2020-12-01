@@ -10,7 +10,7 @@ require_once ("../bo/AvionBo.php");
 require_once ("../domain/Avion.php");
 
 $obj_Avion = new Avion();
-$obj_Avion->setIdAvion(12345);
+$obj_Avion->setIdAvion(123410);
 $obj_Avion->setNombre("hvhgv");
 $obj_Avion->setTipoAvion("kbhj");
 $obj_Avion->setPasajerosMax(200);
@@ -20,7 +20,7 @@ $obj_Avion->setcantidad(150);
 
 $bo_Avion = new AvionBo();
 
-$operacion = 1; //variable para pruebas
+$operacion = 5; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

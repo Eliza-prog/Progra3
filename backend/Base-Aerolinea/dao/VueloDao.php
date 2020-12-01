@@ -21,7 +21,7 @@ class VueloDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","root", "mydb");
+        $this->labAdodb->Connect("localhost", "root","root", "progra3");
         
         $this->labAdodb->debug=true;
     }
@@ -95,6 +95,7 @@ class VueloDao {
                                                 Avion_idAvion = %s,
                                                 Persona_PK_cedula = %s,
                                                 Costo = %s, 
+                                                LASTMODIFICATION = CURDATE()
                             where idVuelo = %s",
                     $this->labAdodb->Param("Ruta_idRuta"),
                     $this->labAdodb->Param("Avion_idAvion"),

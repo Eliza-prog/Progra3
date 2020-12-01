@@ -8,7 +8,7 @@ require_once("baseDomain.php");
  * Comment: It was created
  *
  */
-class Personas extends BaseDomain implements \JsonSerializable{
+class Persona extends BaseDomain implements \JsonSerializable{
 
     //attributes
     private $PK_cedula;
@@ -29,7 +29,7 @@ class Personas extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createPersonas($PK_cedula, $nombre, $apellido1, $apellido2, $fecNacimiento, $sexo, $ultUsuario, $lastUser) {
+    public static function createPersona($PK_cedula, $nombre, $apellido1, $apellido2, $fecNacimiento, $sexo, $ultUsuario, $lastUser) {
         $instance = new self();
         $instance->PK_cedula        = $PK_cedula;
         $instance->nombre           = $nombre;

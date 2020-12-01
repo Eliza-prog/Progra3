@@ -28,14 +28,13 @@ class Ruta extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createRuta($idRuta, $Horario_idHorario, $Origen_idOrigen1, $Destino_idDestino1, $ultUsuario, $ultModificacion) {
+    public static function createRuta($idRuta, $Horario_idHorario, $Origen_idOrigen1, $Destino_idDestino1) {
         $instance = new self();
         $instance->idRuta        = $idRuta;
         $instance->Horario_idHorario           = $Horario_idHorario;
         $instance->Origen_idOrigen1        = $Origen_idOrigen1;
         $instance->Destino_idDestino1        = $Destino_idDestino1;
-        $instance->setLastUser($ultUsuario);
-        $instance->setLastModification($ultModificacion);
+
         return $instance;
     }
 

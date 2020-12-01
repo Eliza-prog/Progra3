@@ -21,7 +21,7 @@ class RegistroDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","root", "mydb");
+        $this->labAdodb->Connect("localhost", "root","root", "progra3");
         
         $this->labAdodb->debug=true;
     }

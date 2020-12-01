@@ -6,8 +6,8 @@
  * and open the template in the editor.
  */
 
-require_once ("../bo/personasBo.php");
-require_once ("../domain/personas.php");
+require_once ("../bo/PersonaBo.php");
+require_once ("../domain/Persona.php");
 /*
 $obj_persona = new Personas();
 $obj_persona->setPK_cedula(112540148);
@@ -21,7 +21,7 @@ $obj_persona->setLastUser("chgari");
 */
 
 
-$obj_persona = new Personas();
+$obj_persona = new Persona();
 $obj_persona->setPK_cedula(402480931);
 $obj_persona->setNombre("Esteban");
 $obj_persona->setApellido1("Murillo");
@@ -32,9 +32,9 @@ $obj_persona->setlastUser("YO");
 
   
 
-$bo_persona = new PersonasBo();
+$bo_persona = new PersonaBo();
 
-$operacion = 2; //variable para pruebas
+$operacion = 3; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

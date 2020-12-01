@@ -21,7 +21,7 @@ class RutaDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","root", "mydb");
+        $this->labAdodb->Connect("localhost", "root","root", "progra3");
         
         $this->labAdodb->debug=true;
     }
@@ -33,14 +33,13 @@ class RutaDao {
     public function add(Ruta $Ruta) {
 
         try {
-            $sql = sprintf("insert into Ruta (idRuta, Horario_idHorario, Origen_idOrigen1, Destino_idDestino1, observaciones, LASTUSER, LASTMODIFICATION) 
-                                          values (%s,%s,%s,%s,%s,%s,%s,%s,CURDATE())",
+            $sql = sprintf("insert into Ruta (idRuta, Horario_idHorario, Origen_idOrigen1, Destino_idDestino1) 
+                                          values (%s,%s,%s,%s)",
                     $this->labAdodb->Param("idRuta"),
                     $this->labAdodb->Param("Horario_idHorario"),
                     $this->labAdodb->Param("Origen_idOrigen1"),
-                    $this->labAdodb->Param("Destino_idDestino1"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"));
+                    $this->labAdodb->Param("Destino_idDestino1"));
+
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -49,8 +48,6 @@ class RutaDao {
             $valores["Horario_idHorario"]          = $Ruta->getHorario_idHorario();
             $valores["Origen_idOrigen1"]       = $Ruta->getOrigen_idOrigen1();
             $valores["Destino_idDestino1"]       = $Ruta->getDestino_idDestino1();
-            $valores["observaciones"]   = $Ruta->getobservaciones();
-            $valores["LASTUSER"]        = $Ruta->getLastUser();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -100,8 +97,6 @@ class RutaDao {
                     $this->labAdodb->Param("Horario_idHorario"),
                     $this->labAdodb->Param("Origen_idOrigen1"),
                     $this->labAdodb->Param("Destino_idDestino1"),
-                    $this->labAdodb->Param("observaciones"),
-                    $this->labAdodb->Param("LASTUSER"),
                     $this->labAdodb->Param("idRuta"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -110,8 +105,6 @@ class RutaDao {
             $valores["Horario_idHorario"]          = $Ruta->getHorario_idHorario();
             $valores["Origen_idOrigen1"]       = $Ruta->getOrigen_idOrigen1();
             $valores["Destino_idDestino1"]       = $Ruta->getDestino_idDestino1();
-            $valores["observaciones"]   = $Ruta->getobservaciones();
-            $valores["LASTUSER"]        = $Ruta->getLastUser();
             $valores["idRuta"]       = $Ruta->getidRuta();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -164,7 +157,7 @@ class RutaDao {
                 $returnRuta->setHorario_idHorario($resultSql->Fields("Horario_idHorario"));
                 $returnRuta->setOrigen_idOrigen1($resultSql->Fields("Origen_idOrigen1"));
                 $returnRuta->setDestino_idDestino1($resultSql->Fields("Destino_idDestino1"));
-                $returnRuta->setobservaciones($resultSql->Fields("observaciones"));
+
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase RutaDao), error:'.$e->getMessage());

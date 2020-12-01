@@ -13,7 +13,7 @@ require_once("../domain/personas.php");
 
 //this attribute enable to see the SQL's executed in the data base
 
-class PersonasDao {
+class PersonaDao {
     private $labAdodb;
 
     public function __construct() {
@@ -21,7 +21,7 @@ class PersonasDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","root", "mydb");
+        $this->labAdodb->Connect("localhost", "root","root", "progra3");
         
         $this->labAdodb->debug=true;
     }
@@ -30,10 +30,10 @@ class PersonasDao {
     //agrega a una persona a la base de datos
     //***********************************************************
 
-    public function add(Personas $personas) {
+    public function add(Persona $personas) {
 
         try {
-            $sql = sprintf("insert into Personas (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lASTUSER) 
+            $sql = sprintf("insert into Persona (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lASTUSER) 
                                           values (%s,%s,%s,%s,%s,%s,%s)",
                     $this->labAdodb->Param("PK_cedula"),
                     $this->labAdodb->Param("nombre"),
@@ -56,7 +56,7 @@ class PersonasDao {
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo insertar el registro (Error generado en el metodo add de la clase PersonasDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo insertar el registro (Error generado en el metodo add de la clase PersonaDao), error:'.$e->getMessage());
         }
     }
 
@@ -64,11 +64,11 @@ class PersonasDao {
     //verifica si una persona existe en la base de datos por ID
     //***********************************************************
 
-    public function exist(Personas $personas) {
+    public function exist(Persona $personas) {
 
         $exist = false;
         try {
-            $sql = sprintf("select * from Personas where  PK_cedula = %s ",
+            $sql = sprintf("select * from Persona where  PK_cedula = %s ",
                             $this->labAdodb->Param("PK_cedula"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -81,7 +81,7 @@ class PersonasDao {
             }
             return $exist;
         } catch (Exception $e) {
-            throw new Exception('No se pudo obtener el registro (Error generado en el metodo exist de la clase PersonasDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo obtener el registro (Error generado en el metodo exist de la clase PersonaDao), error:'.$e->getMessage());
         }
     }
 
@@ -89,10 +89,10 @@ class PersonasDao {
     //modifica una persona en la base de datos
     //***********************************************************
 
-    public function update(Personas $personas) {
+    public function update(Persona $personas) {
 
         try {
-            $sql = sprintf("update Personas set nombre = %s, 
+            $sql = sprintf("update Persona set nombre = %s, 
                                                 apellido1 = %s, 
                                                 apellido2 = %s, 
                                                 fecNacimiento = %s, 
@@ -119,7 +119,7 @@ class PersonasDao {
             $valores["PK_cedula"]       = $personas->getPK_cedula();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase PersonasDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase PersonaDao), error:'.$e->getMessage());
         }
     }
 
@@ -127,10 +127,10 @@ class PersonasDao {
     //elimina una persona en la base de datos
     //***********************************************************
 
-    public function delete(Personas $personas) {
+    public function delete(Persona $personas) {
 
         try {
-            $sql = sprintf("delete from Personas where  PK_cedula = %s",
+            $sql = sprintf("delete from Persona where  PK_cedula = %s",
                             $this->labAdodb->Param("PK_cedula"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -140,7 +140,7 @@ class PersonasDao {
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo eliminar el registro (Error generado en el metodo delete de la clase PersonasDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo eliminar el registro (Error generado en el metodo delete de la clase PersonaDao), error:'.$e->getMessage());
         }
     }
 
@@ -148,11 +148,11 @@ class PersonasDao {
     //busca a una persona en la base de datos
     //***********************************************************
 
-    public function searchById(Personas $personas) {
+    public function searchById(Persona $personas) {
 
-        $returnPersonas = null;
+        $returnPersona = null;
         try {
-            $sql = sprintf("select * from Personas where  PK_cedula = %s",
+            $sql = sprintf("select * from Persona where  PK_cedula = %s",
                             $this->labAdodb->Param("PK_cedula"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -163,19 +163,19 @@ class PersonasDao {
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
             if ($resultSql->RecordCount() > 0) {
-                $returnPersonas = Personas::createNullPersonas();
-                $returnPersonas->setPK_cedula($resultSql->Fields("PK_cedula"));
-                $returnPersonas->setNombre($resultSql->Fields("nombre"));
-                $returnPersonas->setApellido1($resultSql->Fields("apellido1"));
-                $returnPersonas->setApellido2($resultSql->Fields("apellido2"));
-                $returnPersonas->setFecNacimiento($resultSql->Fields("fecNacimiento"));
-                $returnPersonas->setSexo($resultSql->Fields("sexo"));
-                $returnPersonas->setlastUser($resultSql->Fields("lasUser"));
+                $returnPersona = Persona::createNullPersona();
+                $returnPersona->setPK_cedula($resultSql->Fields("PK_cedula"));
+                $returnPersona->setNombre($resultSql->Fields("nombre"));
+                $returnPersona->setApellido1($resultSql->Fields("apellido1"));
+                $returnPersona->setApellido2($resultSql->Fields("apellido2"));
+                $returnPersona->setFecNacimiento($resultSql->Fields("fecNacimiento"));
+                $returnPersona->setSexo($resultSql->Fields("sexo"));
+                $returnPersona->setlastUser($resultSql->Fields("lasUser"));
             }
         } catch (Exception $e) {
-            throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase PersonasDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase PersonaDao), error:'.$e->getMessage());
         }
-        return $returnPersonas;
+        return $returnPersona;
     }
 
     //***********************************************************
@@ -185,11 +185,11 @@ class PersonasDao {
     public function getAll() {
 
         try {
-            $sql = sprintf("select * from Personas");
+            $sql = sprintf("select * from Persona");
             $resultSql = $this->labAdodb->Execute($sql);
             return $resultSql;
         } catch (Exception $e) {
-            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase PersonasDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase PersonaDao), error:'.$e->getMessage());
         }
     }
 

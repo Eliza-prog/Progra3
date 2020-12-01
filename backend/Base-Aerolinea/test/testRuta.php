@@ -11,9 +11,9 @@ require_once ("../domain/Ruta.php");
 
 $obj_Ruta = new Ruta();
 $obj_Ruta->setIdRuta(123909);
-$obj_Ruta->setHorario_idHorario("15-7-2020");
-$obj_Ruta->setOrigen_idOrigen1("Costa Rica");
-$obj_Ruta->setDestino_idDestino1("El salvador");
+$obj_Ruta->setHorario_idHorario(897383);
+$obj_Ruta->setOrigen_idOrigen1(689900);
+$obj_Ruta->setDestino_idDestino1(83982776);
 
 
   
