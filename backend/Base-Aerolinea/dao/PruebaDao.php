@@ -1,7 +1,7 @@
 <?php
 
 require_once("../../utlis/adodb5/adodb.inc.php");
-require_once("../domain/Persona.php");
+require_once("../domain/Prueba.php");
 
 /**
  * 
@@ -21,7 +21,7 @@ class PersonaDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","bases1", "progra3");
+        $this->labAdodb->Connect("localhost", "root","Bases1", "progra3");
         
         $this->labAdodb->debug=true;
     }
@@ -33,26 +33,16 @@ class PersonaDao {
     public function add(Persona $Persona) {
 
         try {
-            $sql = sprintf("insert into Persona (PK_cedula, nombre, apellido1, apellido2, fecNacimiento, sexo, lastUser) 
-                                          values (%s,%s,%s,%s,%s,%s,%s)",
+            $sql = sprintf("insert into Persona (PK_cedula, nombre) 
+                                          values (%s,%s)",
                     $this->labAdodb->Param("PK_cedula"),
-                    $this->labAdodb->Param("nombre"),
-                    $this->labAdodb->Param("apellido1"),
-                    $this->labAdodb->Param("apellido2"),
-                    $this->labAdodb->Param("fecNacimiento"),
-                    $this->labAdodb->Param("sexo"),
-                    $this->labAdodb->Param("lASTUSER"));
+                    $this->labAdodb->Param("nombre"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
             $valores["PK_cedula"]       = $Persona->getPK_cedula();
             $valores["nombre"]          = $Persona->getNombre();
-            $valores["apellido1"]       = $Persona->getApellido1();
-            $valores["apellido2"]       = $Persona->getApellido2();
-            $valores["fecNacimiento"]   = $Persona->getFecNacimiento();
-            $valores["sexo"]            = $Persona->getSexo();
-            $valores["LASTUSER"]        = $Persona->getlastUser();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -93,29 +83,14 @@ class PersonaDao {
 
         try {
             $sql = sprintf("update Persona set nombre = %s, 
-                                                apellido1 = %s, 
-                                                apellido2 = %s, 
-                                                fecNacimiento = %s, 
-                                                sexo = %s, 
-                                                lASTUSER = %s 
                             where PK_cedula = %s",
                     $this->labAdodb->Param("nombre"),
-                    $this->labAdodb->Param("apellido1"),
-                    $this->labAdodb->Param("apellido2"),
-                    $this->labAdodb->Param("fecNacimiento"),
-                    $this->labAdodb->Param("sexo"),
-                    $this->labAdodb->Param("lASTUSER"),
                     $this->labAdodb->Param("PK_cedula"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["nombre"]          = $Persona->getnombre();
-            $valores["apellido1"]       = $Persona->getapellido1();
-            $valores["apellido2"]       = $Persona->getapellido2();
-            $valores["fecNacimiento"]   = $Persona->getFecNacimiento();
-            $valores["sexo"]            = $Persona->getSexo();
-            $valores["LASTUSER"]        = $Persona->getlastUser();
+            $valores["nombre"]          = $Persona->getNombre();
             $valores["PK_cedula"]       = $Persona->getPK_cedula();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -165,12 +140,7 @@ class PersonaDao {
             if ($resultSql->RecordCount() > 0) {
                 $returnPersona = Persona::createNullPersona();
                 $returnPersona->setPK_cedula($resultSql->Fields("PK_cedula"));
-                $returnPersona->setnombre($resultSql->Fields("nombre"));
-                $returnPersona->setapellido1($resultSql->Fields("apellido1"));
-                $returnPersona->setapellido2($resultSql->Fields("apellido2"));
-                $returnPersona->setFecNacimiento($resultSql->Fields("fecNacimiento"));
-                $returnPersona->setSexo($resultSql->Fields("sexo"));
-                $returnPersona->setlastUser($resultSql->Fields("lasUser"));
+                $returnPersona->setNombre($resultSql->Fields("nombre"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase PersonaDao), error:'.$e->getMessage());
