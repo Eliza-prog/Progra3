@@ -45,7 +45,6 @@ function addOrUpdateVuelo(ocultarModalBool) {
                 idVuelo:        $("#txtidVuelo").val(),
                 Ruta_idRuta:    $("#txtRuta_idRuta").val(),
                 Avion_idAvion:  $("#txtAvion_idAvion").val(),
-                Persona_PK_cedula:  $("#txtPersona_PK_cedula").val(),
                 Costo:          $("#txtCosto").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
@@ -90,9 +89,6 @@ function validar() {
         validacion = false;
     }
 
-    if ($("#txtPersona_PK_cedula").val() === "") {
-        validacion = false;
-    }
     
     if ($("#txtCosto").val() === "") {
         validacion = false;
@@ -163,7 +159,6 @@ function showVueloByID(idVuelo) {
             $("#txtidVuelo").val(objVueloJSon.idVuelo);
             $("#txtRuta_idRuta").val(objVueloJSon.Ruta_idRuta);
             $("#txtAvion_idAvion").val(objVueloJSon.Avion_idAvion);
-            $("#txtPersona_PK_cedula").val(objVueloJSon.Persona_PK_cedula);
             $("#txtCosto").val(objVueloJSon.Costo);
             $("#typeAction").val("update_Vuelo");
             $("#myModalFormulario").modal();

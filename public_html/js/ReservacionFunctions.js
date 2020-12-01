@@ -6,8 +6,8 @@
 
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
-    $("#Registrar").click(function () {
-        addOrUpdateRegistro(false);
+    $("#enviar").click(function () {
+        addOrUpdatePersona_PK_cedula(false);
     });
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
@@ -16,8 +16,8 @@ $(function () { //para la creación de los controles
 
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
-        clearFormRegistro();
-        $("#typeAction").val("add_Registro");
+        clearFormPersona_PK_cedula();
+        $("#typeAction").val("add_Persona_PK_cedula");
         $("#myModalFormulario").modal();
     });
 });
@@ -27,7 +27,7 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLRegistro(true);
+    showALLPersona_PK_cedula(true);
     
 });
 
@@ -35,19 +35,16 @@ $(document).ready(function () {
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateRegistro(ocultarModalBool) {
+function addOrUpdatePersona_PK_cedula(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/RegistroController.php',
+            url: '../backend/controller/Persona_PK_cedulaController.php',
             data: {
                 action:         $("#typeAction").val(),
-                idRegistro:     $("#txtidRegistro").val(),
-                NombreUsuario:  $("#NombreUsuario").val(),
-                Contraseña:     $("#Contraseña").val(),
-                Email:          $("#Email").val(),
-                FechaRegistro:  $("#txtFechaRegistro").val(),
-                Persona_PK_cedula:    $("#Persona_PK_cedula").val()
+                idPersona_PK_cedula:         $("#txtidPersona_PK_cedula").val(),
+                Vuelo_idVuelo:   $("#txtVuelo_idVuelo").val(),
+                Asiento:    $("#txtAsiento").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -58,8 +55,8 @@ function addOrUpdateRegistro(ocultarModalBool) {
                 var typeOfMessage = messageComplete.substring(0, 2);
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
-                    clearFormRegistro();
-                    showALLRegistro();
+                    clearFormPersona_PK_cedula();
+                    showALLPersona_PK_cedula();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -79,30 +76,19 @@ function validar() {
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#txtidRegistro").val() === "") {
+    if ($("#txtidPersona_PK_cedula").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtNombreUsuario").val() === "") {
+    if ($("#txtVuelo_idVuelo").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtContraseña").val() === "") {
+    if ($("#txtAsiento").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtEmail").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txtFechaRegistro").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txtPersona_PK_cedula").val() === "") {
-        validacion = false;
-    }
-
+   
 
 
     return validacion;
@@ -111,8 +97,8 @@ function validar() {
 //*****************************************************************
 //*****************************************************************
 
-function clearFormRegistro() {
-    $('#formRegistro').trigger("reset");
+function clearFormPersona_PK_cedula() {
+    $('#formPersona_PK_cedula').trigger("reset");
 }
 
 //*****************************************************************
@@ -120,23 +106,23 @@ function clearFormRegistro() {
 
 function cancelAction() {
     //clean all fields of the form
-    clearFormRegistro();
-    $("#typeAction").val("add_Registro");
+    clearFormPersona_PK_cedula();
+    $("#typeAction").val("add_Persona_PK_cedula");
     $("#myModalFormulario").modal("hide");
 }
 
 //*****************************************************************
 //*****************************************************************
 
-function showALLRegistro(ocultarModalBool) {
+function showALLPersona_PK_cedula(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/RegistroController.php',
+        url: '../backend/controller/Persona_PK_cedulaController.php',
         data: {
-            action: "showAll_Registro"
+            action: "showAll_Persona_PK_cedula"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Registro en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Persona_PK_cedula en la base de datos");
             if (ocultarModalBool) {
                 ocultarModal("myModal");
             }
@@ -153,26 +139,23 @@ function showALLRegistro(ocultarModalBool) {
 //*****************************************************************
 //*****************************************************************
 
-function showRegistroByID(idRegistro) {
+function showPersona_PK_cedulaByID(idPersona_PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/RegistroController.php',
+        url: 'admin/Persona_PK_cedulaController.php',
         data: {
-            action: "show_Registro",
-            idRegistro: idRegistro
+            action: "show_Persona_PK_cedula",
+            idPersona_PK_cedula: idPersona_PK_cedula
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Registro en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Persona_PK_cedula en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var objRegistroJSon = JSON.parse(data);
-            $("#txtidRegistro").val(objRegistroJSon.idRegistro);
-            $("#txtNombreUsuario").val(objRegistroJSon.NombreUsuario);
-            $("#txtContraseña").val(objRegistroJSon.Contraseña);
-            $("#txtEmail").val(objRegistroJSon.Email);
-            $("#txtFechaRegistro").val(objRegistroJSon.FechaRegistro);
-            $("#txtPersona_PK_cedula").val(objRegistroJSon.Persona_PK_cedula);
-            $("#typeAction").val("update_Registro");
+            var objPersona_PK_cedulaJSon = JSON.parse(data);
+            $("#txtidPersona_PK_cedula").val(objPersona_PK_cedulaJSon.idPersona_PK_cedula);
+            $("#txtVuelo_idVuelo").val(objPersona_PK_cedulaJSon.Vuelo_idVuelo);
+            $("#txtAsiento").val(objPersona_PK_cedulaJSon.Asiento);
+            $("#typeAction").val("update_Persona_PK_cedula");
             $("#myModalFormulario").modal();
         },
         type: 'POST'
@@ -182,23 +165,23 @@ function showRegistroByID(idRegistro) {
 //*****************************************************************
 //*****************************************************************
 
-function deleteRegistroByID(idRegistro) {
+function deletePersona_PK_cedulaByID(idPersona_PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/RegistroController.php',
+        url: 'admin/Persona_PK_cedulaController.php',
         data: {
-            action: "delete_Registro",
-            idRegistro: idRegistro
+            action: "delete_Persona_PK_cedula",
+            idPersona_PK_cedula: idPersona_PK_cedula
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Registro en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Persona_PK_cedula en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLRegistro(false);
+                showALLPersona_PK_cedula(false);
             } else {//existe un error
                 mostrarModal("myModal", "Error", responseText);
             }
@@ -216,4 +199,3 @@ function mostrarModal(idDiv, titulo, mensaje) {
 function ocultarModal(idDiv) {
     $("#" + idDiv).modal("hide");
 }
-
