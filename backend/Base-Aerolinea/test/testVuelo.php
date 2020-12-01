@@ -14,14 +14,13 @@ $obj_Vuelo = new Vuelo();
 $obj_Vuelo->setIdVuelo(45672);
 $obj_Vuelo->setRuta_idRuta(123456);
 $obj_Vuelo->setAvion_idAvion(1234);
-$obj_Vuelo->setPersona_PK_cedula(1234567);
 $obj_Vuelo->setCosto(70000);
 
   
 
 $bo_Vuelo = new VueloBo();
 
-$operacion = 4; //variable para pruebas
+$operacion = 2; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

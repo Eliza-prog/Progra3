@@ -33,23 +33,21 @@ class VueloDao {
     public function add(Vuelo $Vuelo) {
 
         try {
-            $sql = sprintf("insert into Vuelo (idVuelo, Ruta_idRuta,Avion_idAvion,Persona_PK_cedula, Costo) 
-                                          values (%s,%s,%s,%s,%s,CURDATE())",
+            $sql = sprintf("insert into Vuelo (idVuelo, Ruta_idRuta,Avion_idAvion, Costo) 
+                                          values (%s,%s,%s,%s)",
                     $this->labAdodb->Param("idVuelo"),
                     $this->labAdodb->Param("Ruta_idRuta"),
                     $this->labAdodb->Param("Avion_idAvion"),
-                    $this->labAdodb->Param("Persona_PK_cedula"),
                     $this->labAdodb->Param("Costo"));
              
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["idVuelo"]       = $Vuelo->getidVuelo();
-            $valores["Ruta_idRuta"]   = $Vuelo->getRuta_idRuta();
-            $valores["Vuelo_idVuelo"] = $Vuelo->getVuelo_idVuelo();
-            $valores["Persona_PK_cedula"]          = $Vuelo->getPersona_PK_cedula();
-            $valores["Costo"]       = $Vuelo->getCosto();
+            $valores["idVuelo"]             = $Vuelo->getidVuelo();
+            $valores["Ruta_idRuta"]         = $Vuelo->getRuta_idRuta();
+            $valores["Avion_idAvion"]       = $Vuelo->getAvion_idAvion();
+            $valores["Costo"]               = $Vuelo->getCosto();
            
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
@@ -93,13 +91,11 @@ class VueloDao {
             $sql = sprintf("update Vuelo set idVuelo = %s, 
                                                 Ruta_idRuta = %s,
                                                 Avion_idAvion = %s,
-                                                Persona_PK_cedula = %s,
-                                                Costo = %s, 
-                                                LASTMODIFICATION = CURDATE()
+                                                Costo = %s 
+                                                
                             where idVuelo = %s",
                     $this->labAdodb->Param("Ruta_idRuta"),
                     $this->labAdodb->Param("Avion_idAvion"),
-                    $this->labAdodb->Param("Persona_PK_cedula"),
                     $this->labAdodb->Param("Costo"),
                     $this->labAdodb->Param("idVuelo"));
             $sqlParam = $this->labAdodb->Prepare($sql);
@@ -109,7 +105,6 @@ class VueloDao {
 
             $valores["Ruta_idRuta"]       = $Vuelo->getRuta_idRuta();
             $valores["Avion_idAvion"]          = $Vuelo->getAvion_idAvion();
-            $valores["Persona_PK_cedula"]          = $Vuelo->getPersona_PK_cedula();
             $valores["Costo"]       = $Vuelo->getCosto();
             $valores["idVuelo"]       = $Vuelo->getidVuelo();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
@@ -161,8 +156,7 @@ class VueloDao {
                 $returnVuelo = Vuelo::createNullVuelo();
                 $returnVuelo->setidVuelo($resultSql->Fields("idVuelo"));
                 $returnVuelo->setRuta_idRuta($resultSql->Fields("Ruta_idRuta"));
-                $returnVuelo->setVuelo_idVuelo($resultSql->Fields("idvuelo"));
-                $returnVuelo->setPersona_PK_cedula($resultSql->Fields("cedula persona"));
+                $returnVuelo->setAvion_idAvion($resultSql->Fields("idAvion"));
                 $returnVuelo->setCosto($resultSql->Fields("Costo"));
                 
             }

@@ -51,9 +51,7 @@ class Vuelo extends BaseDomain implements \JsonSerializable{
         return $this->Avion_idAvion;
     }
 
-    function getPersona_PK_cedula() {
-        return $this->Personas_PK_cedula;
-    }
+  
     function getCosto() {
         return $this->Costo;
     }
@@ -70,10 +68,7 @@ class Vuelo extends BaseDomain implements \JsonSerializable{
         $this->Avion_idAvion = $Avion_idAvion;
     }
 
-    function setPersona_PK_cedula($Personas_PK_cedula): void {
-        $this->Personas_PK_cedula = $Personas_PK_cedula;
-    }
-        function Costo($Costo): void {
+    function setCosto($Costo): void {
         $this->Costo = $Costo;
     }
     

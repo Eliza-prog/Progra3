@@ -28,11 +28,10 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Vuelo" or $action === "update_Vuelo") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idVuelo') != null) &&(filter_input(INPUT_POST, 'Ruta_idRuta') != null) &&(filter_input(INPUT_POST, 'Avion_idAvion_') != null)&&(filter_input(INPUT_POST, 'Persona_PK_cedula') != null)&& (filter_input(INPUT_POST, 'Costo')) != null) {
+            if ((filter_input(INPUT_POST, 'idVuelo') != null) &&(filter_input(INPUT_POST, 'Ruta_idRuta') != null) &&(filter_input(INPUT_POST, 'Avion_idAvion_') != null)&& (filter_input(INPUT_POST, 'Costo')) != null) {
                 $myVuelo->setidVuelo(filter_input(INPUT_POST, 'idVuelo'));
                 $myVuelo->setRuta_idRuta(filter_input(INPUT_POST, 'Ruta_idRuta'));
                 $myVuelo->setAvion_idAvion(filter_input(INPUT_POST, 'idAvion'));
-                $myVuelo->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
                 $myVuelo->setCosto(filter_input(INPUT_POST, 'Costo'));
                 if ($action == "add_Vuelo") {
                     $myVueloBo->add($myVuelo);

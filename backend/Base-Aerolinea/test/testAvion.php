@@ -15,12 +15,12 @@ $obj_Avion->setNombre("hvhgv");
 $obj_Avion->setTipoAvion("kbhj");
 $obj_Avion->setPasajerosMax(200);
 $obj_Avion->setCargaMax(14);
-$obj_Avion->setcantidad(150);
+$obj_Avion->setcantidad(800);
 
 
 $bo_Avion = new AvionBo();
 
-$operacion = 5; //variable para pruebas
+$operacion = 1; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos
