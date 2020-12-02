@@ -31,7 +31,7 @@
                 </table>
             </section>
             <section class="col-md-12">
-                <input type="hidden" id="typeAction" value="add_personas" />
+                <input type="hidden" id="typeAction" value="add_Prueba" />
                 <button type="submit" id="enviar"  >Registrar</button>
                 <button type="reset" id="cancelar">cancelar</button>
                 <br>

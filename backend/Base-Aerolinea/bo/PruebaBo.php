@@ -10,32 +10,32 @@ require_once("../dao/PruebaDao.php");
  * Comment: It was created
  *
  */
-class PersonaBo {
+class PruebaBo {
 
-    private $PersonaDao;
+    private $PruebaDao;
 
     public function __construct() {
-        $this->PersonaDao = new PruebaDao();
+        $this->PruebaDao = new PruebaDao();
     }
 
-    public function getPersonaDao() {
-        return $this->PersonaDao;
+    public function getPruebaDao() {
+        return $this->PruebaDao;
     }
 
-    public function setPersonaDao(PersonaDao $PersonaDao) {
-        $this->PersonaDao = $PersonaDao;
+    public function setPruebaDao(PruebaDao $PruebaDao) {
+        $this->PruebaDao = $PruebaDao;
     }
 
     //***********************************************************
     //agrega a una persona a la base de datos
     //***********************************************************
 
-    public function add(Persona $Persona) {
+    public function add(Prueba $Prueba) {
         try {
-            if (!$this->PersonaDao->exist($Persona)) {
-                $this->PersonaDao->add($Persona);
+            if (!$this->PruebaDao->exist($Prueba)) {
+                $this->PruebaDao->add($Prueba);
             } else {
-                throw new Exception("El Persona ya existe en la base de datos!!");
+                throw new Exception("El Prueba ya existe en la base de datos!!");
             }
         } catch (Exception $e) {
             throw $e;
@@ -46,9 +46,9 @@ class PersonaBo {
     //modifica a una persona a la base de datos
     //***********************************************************
 
-    public function update(Persona $Persona) {
+    public function update(Prueba $Prueba) {
         try {
-            $this->PersonaDao->update($Persona);
+            $this->PruebaDao->update($Prueba);
         } catch (Exception $e) {
             throw $e;
         }
@@ -58,9 +58,9 @@ class PersonaBo {
     //eliminar a una persona a la base de datos
     //***********************************************************
 
-    public function delete(Persona $Persona) {
+    public function delete(Prueba $Prueba) {
         try {
-            $this->PersonaDao->delete($Persona);
+            $this->PruebaDao->delete($Prueba);
         } catch (Exception $e) {
             throw $e;
         }
@@ -70,21 +70,21 @@ class PersonaBo {
     //consulta a una persona a la base de datos
     //***********************************************************
 
-    public function searchById(Persona $Persona) {
+    public function searchById(Prueba $Prueba) {
         try {
-            return $this->PersonaDao->searchById($Persona);
+            return $this->PruebaDao->searchById($Prueba);
         } catch (Exception $e) {
             throw $e;
         }
     }
 
     //***********************************************************
-    //consultar todas las Persona de la base de datos
+    //consultar todas las Prueba de la base de datos
     //***********************************************************
 
     public function getAll() {
         try {
-            return $this->PersonaDao->getAll();
+            return $this->PruebaDao->getAll();
         } catch (Exception $e) {
             throw $e;
         }
@@ -92,5 +92,5 @@ class PersonaBo {
 
 }
 
-//end of the class PersonaBo
+//end of the class PruebaBo
 ?>

@@ -2,7 +2,7 @@
 
 require_once("baseDomain.php");
 
-class Persona extends BaseDomain implements \JsonSerializable{
+class Prueba extends BaseDomain implements \JsonSerializable{
 
     //attributes
     private $PK_cedula;
@@ -13,12 +13,12 @@ class Persona extends BaseDomain implements \JsonSerializable{
         parent::__construct();
     }
 
-    public static function createNullPersonas() {
+    public static function createNullPrueba() {
         $instance = new self();
         return $instance;
     }
 
-    public static function createPersona($PK_cedula, $nombre) {
+    public static function createPrueba($PK_cedula, $nombre) {
         $instance = new self();
         $instance->PK_cedula        = $PK_cedula;
         $instance->nombre           = $nombre;

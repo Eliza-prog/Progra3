@@ -7,7 +7,7 @@
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
-        addOrUpdatePersona(false);
+        addOrUpdatePrueba(false);
     });
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
@@ -16,8 +16,8 @@ $(function () { //para la creación de los controles
 
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
-        clearFormPersona();
-        $("#typeAction").val("add_Persona");
+        clearFormPrueba();
+        $("#typeAction").val("add_Prueba");
         $("#myModalFormulario").modal();
     });
 });
@@ -27,7 +27,7 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLPersona(true);
+    showALLPrueba(true);
     
 });
 
@@ -35,11 +35,11 @@ $(document).ready(function () {
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdatePersona(ocultarModalBool) {
+function addOrUpdatePrueba(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/Base-Aerolinea/controller/PersonaController.php',
+            url: '../backend/Base-Aerolinea/controller/PruebaController.php',
             data: {
                 action:         $("#typeAction").val(),
                 PK_cedula:      $("#txtPK_cedula").val(),
@@ -54,8 +54,8 @@ function addOrUpdatePersona(ocultarModalBool) {
                 var typeOfMessage = messageComplete.substring(0, 2);
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
-                    clearFormPersona();
-                    showALLPersona();
+                    clearFormPrueba();
+                    showALLPrueba();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -91,8 +91,8 @@ function validar() {
 //*****************************************************************
 //*****************************************************************
 
-function clearFormPersona() {
-    $('#formPersona').trigger("reset");
+function clearFormPrueba() {
+    $('#formPrueba').trigger("reset");
 }
 
 //*****************************************************************
@@ -100,23 +100,23 @@ function clearFormPersona() {
 
 function cancelAction() {
     //clean all fields of the form
-    clearFormPersona();
-    $("#typeAction").val("add_Persona");
+    clearFormPrueba();
+    $("#typeAction").val("add_Prueba");
     $("#myModalFormulario").modal("hide");
 }
 
 //*****************************************************************
 //*****************************************************************
 
-function showALLPersona(ocultarModalBool) {
+function showALLPrueba(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
+        url: '../backend/Base-Aerolinea/controller/PruebaController.php',
         data: {
-            action: "showAll_Persona"
+            action: "showAll_Prueba"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Prueba en la base de datos");
             if (ocultarModalBool) {
                 ocultarModal("myModal");
             }
@@ -133,22 +133,22 @@ function showALLPersona(ocultarModalBool) {
 //*****************************************************************
 //*****************************************************************
 
-function showPersonaByID(PK_cedula) {
+function showPruebaByID(PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/PersonaController.php',
+        url: 'admin/PruebaController.php',
         data: {
-            action: "show_Persona",
+            action: "show_Prueba",
             PK_cedula: PK_cedula
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Prueba en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var objPersonaJSon = JSON.parse(data);
-            $("#txtPK_cedula").val(objPersonaJSon.PK_cedula);
-            $("#txtnombre").val(objPersonaJSon.nombre);
-            $("#typeAction").val("update_Persona");
+            var objPruebaJSon = JSON.parse(data);
+            $("#txtPK_cedula").val(objPruebaJSon.PK_cedula);
+            $("#txtnombre").val(objPruebaJSon.nombre);
+            $("#typeAction").val("update_Prueba");
             $("#myModalFormulario").modal();
         },
         type: 'POST'
@@ -158,23 +158,23 @@ function showPersonaByID(PK_cedula) {
 //*****************************************************************
 //*****************************************************************
 
-function deletePersonaByID(PK_cedula) {
+function deletePruebaByID(PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
+        url: '../backend/Base-Aerolinea/controller/PruebaController.php',
         data: {
-            action: "delete_Persona",
+            action: "delete_Prueba",
             PK_cedula: PK_cedula
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Prueba en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLPersona(false);
+                showALLPrueba(false);
             } else {//existe un error
                 mostrarModal("myModal", "Error", responseText);
             }
