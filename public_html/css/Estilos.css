@@ -46,3 +46,22 @@ input[type="search"],[type="date"]{
     white-space: nowrap;
     
 }
+
+
+.asiento {
+        width: 25px;
+        height: 25px;
+	
+	line-height: 17px;
+	margin: 5px;
+        
+	}
+.desocupado {
+  	background-color: #61D149;
+  	}
+.escoger {
+  	background-color: #1449c4;
+  	}
+.ocupado {
+        background-color: #DA1A1A;
+}
