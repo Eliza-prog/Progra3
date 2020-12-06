@@ -64,22 +64,22 @@ and open the template in the editor.
                     <p>Somos una aerolinea especializada en brindar los mejores viajes y ofertas en los que puedes conocer las asombrosas maravillas que el planeta ofrese y realizar las vacaciones que siempre quisiste. </p>
                     <div class="features">
                         <section>
-                            <span class="icon solid major"><a><img src="img/vuelo.png" ></a></span>
+                            <span class="icon solid major"><a><img src="img/vuelo.png" class="img-fluid"></a></span>
                             <h3>1</h3>
                             <p>Ofrecemos los mejores y más comodos vuelos.</p>
                         </section>
                         <section>
-                            <span class="icon solid major "><a><img src="img/tiquete.png" ></a></span>
+                            <span class="icon solid major "><a><img src="img/tiquete.png" class="img-fluid"></a></span>
                             <h3>2</h3>
                             <p>Facilitamos la compra de los tiquetes.</p>
                         </section>
                         <section>
-                            <span class="icon solid major "><a><img src="img/busqueda.png" ></a></span>
+                            <span class="icon solid major "><a><img src="img/busqueda.png" class="img-fluid" ></a></span>
                             <h3>3</h3>
                             <p>Buscar los mejores destinos turisticos del mundo.</p>
                         </section>
                         <section>
-                            <span class="icon solid major "><a><img src="img/vacaciones.png" ></a></span>
+                            <span class="icon solid major "><a><img src="img/vacaciones.png" class="img-fluid" ></a></span>
                             <h3>4</h3>
                             <p>Vacacionar con tus seres queridos.</p>
                         </section>

@@ -5,82 +5,60 @@
  */
 
 $(document).ready(function () {
-    Asientos();
-    
+    genera_tabla();
+
 
 });
+         
+    function genera_tabla() {
+        // Obtener la referencia del elemento body
+        body = document.getElementsByClassName("asientos")[0];
 
-function Asientos() {
+        // Crea un elemento <table> y un elemento <tbody>
+        tabla = document.createElement("table");
+        tabla.setAttribute("class","table");
+        tblBody = document.createElement("tbody");
+        contador= 0;
+        Fila="";
+        // Crea las celdas
+        for (i = 0; i < 4; i++) {
+            // Crea las hileras de la tabla
+            hilera = document.createElement("tr");
+            if(i===0){
+                    Fila="A";
+                }if(i===1){
+                    Fila="B";
+                }if(i===2){
+                    Fila="C";
+                }if(i===3){
+                    Fila="D";
+                }if(i===4){
+                    Fila="E";
+                }
+                
+            for (j = 0; j < 15; j++) {
+                
+                celda = document.createElement("td");                
+                info = document.createElement("div");
+                info.setAttribute("class","asiento desocupado");
+                info.setAttribute("Onclick", "cambiarBack(this)");
+                textoCelda = document.createTextNode(Fila + "-" + (j + 1));
+                info.appendChild(textoCelda);
+                celda.appendChild(info);
+                hilera.appendChild(celda);
+                contador++;
+            }
 
-    avion = {
-        asientos: [
-            {numero: "1A", ocupado: false},
-            {numero: "1B", ocupado: false},
-            {numero: "2A", ocupado: true},
-            {numero: "2B", ocupado: false},
-            {numero: "3A", ocupado: true},
-            {numero: "3B", ocupado: false},
-            {numero: "4A", ocupado: false},
-            {numero: "4B", ocupado: true},
-            {numero: "5A", ocupado: false},
-            {numero: "5B", ocupado: false},
-            {numero: "6A", ocupado: false},
-            {numero: "6B", ocupado: false},
-        ]
-    };
-
-// Llamar al atributo asientos del objeto avion
-// Hacer un for de los asientos
-// Comprobar disponibilidad
-// si es falso el asiento es verde
-// Colocar asiento
-
-
-    avionContainer = document.getElementById("avion-container");
-    avionContainer.innerHTML = "";
-    asientos = avion.asientos;
-
-    Campo = "";
-    contador = 0;
-
-    cajaPeq = document.createElement("div");
-    cajaPeq.setAttribute("class", "col s4");
-
-    for (var i = 0; i < asientos.length; i++) {
-        Campo = document.createElement("div");
-        Campo.innerHTML = asientos[i].numero;
-        
-        
-        
-        //[i] posicion de i
-        if (asientos[i].ocupado) {
-            Campo.setAttribute("class", "ocupado asiento");
-        } else {
-            Campo.setAttribute("class", "desocupado asiento");
+            // agrega la hilera al final de la tabla (al final del elemento tblbody)
+            tblBody.appendChild(hilera);
+            
         }
-        ;
+
+        // posiciona el <tbody> debajo del elemento <table>
+        tabla.appendChild(tblBody);
+        // appends <table> into <body>
+        body.appendChild(tabla);
+        // modifica el atributo "border" de la tabla y lo fija a "2";
+        tabla.setAttribute("border", "2");
         
-        if(asientos[i].ocupado===true){
-            Campo.removeAttribute("Onclick","cambiarBack(this)")
-        }else            
-            Campo.setAttribute("Onclick", "cambiarBack(this)");
-
-
-        if (cajaPeq.children.length >= 2) {
-            avionContainer.appendChild(cajaPeq);
-            cajaPeq = document.createElement("div");
-            cajaPeq.setAttribute("class", "col s4");
-            cajaPeq.appendChild(Campo);
-        } else {
-            cajaPeq.appendChild(Campo);
-            contador++;
-        }
-        ;
-        if (i == asientos.length - 1) {
-            avionContainer.appendChild(cajaPeq);
-        }
     }
-    ;
-
-}
-

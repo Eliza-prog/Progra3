@@ -49,19 +49,18 @@ input[type="search"],[type="date"]{
 
 
 .asiento {
-        width: 25px;
-        height: 25px;
-	
-	line-height: 17px;
-	margin: 5px;
-        
-	}
+    width: 30px;
+    height: 30px;
+    
+    line-height: 17px;
+    margin: 5px;
+}
 .desocupado {
-  	background-color: #61D149;
-  	}
+    background-color: #61D149;
+}
 .escoger {
-  	background-color: #1449c4;
-  	}
+    background-color: #1449c4;
+}
 .ocupado {
-        background-color: #DA1A1A;
+    background-color: #DA1A1A;
 }
