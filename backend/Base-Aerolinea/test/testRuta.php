@@ -10,17 +10,17 @@ require_once ("../bo/RutaBo.php");
 require_once ("../domain/Ruta.php");
 
 $obj_Ruta = new Ruta();
-$obj_Ruta->setIdRuta(123909);
-$obj_Ruta->setHorario_idHorario(897383);
-$obj_Ruta->setOrigen_idOrigen1(689900);
-$obj_Ruta->setDestino_idDestino1(83982776);
+$obj_Ruta->setIdRuta(1234);
+$obj_Ruta->setTrayecto("san jose-cartago");
+$obj_Ruta->setDuracion(156);
+$obj_Ruta->setPrecio(1000);
 
 
   
 
 $bo_Ruta = new RutaBo();
 
-$operacion = 1; //variable para pruebas
+$operacion = 3; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

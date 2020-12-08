@@ -1,190 +1,159 @@
-/*
- Hyperspace by HTML5 UP
- html5up.net | @ajlkn
- Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
- */
+;(function () {
+	
+	'use strict';
 
-(function ($) {
 
-    var $window = $(window),
-            $body = $('body'),
-            $sidebar = $('#sidebar');
 
-    // Breakpoints.
-    breakpoints({
-        xlarge: ['1281px', '1680px'],
-        large: ['981px', '1280px'],
-        medium: ['737px', '980px'],
-        small: ['481px', '736px'],
-        xsmall: [null, '480px']
-    });
+	// iPad and iPod detection	
+	var isiPad = function(){
+		return (navigator.platform.indexOf("iPad") != -1);
+	};
 
-    // Hack: Enable IE flexbox workarounds.
-    if (browser.name == 'ie')
-        $body.addClass('is-ie');
+	var isiPhone = function(){
+	    return (
+			(navigator.platform.indexOf("iPhone") != -1) || 
+			(navigator.platform.indexOf("iPod") != -1)
+	    );
+	};
 
-    // Play initial animations on page load.
-    $window.on('load', function () {
-        window.setTimeout(function () {
-            $body.removeClass('is-preload');
-        }, 100);
-    });
+	// Main Menu Superfish
+	var mainMenu = function() {
 
-    // Forms.
+		$('#fh5co-primary-menu').superfish({
+			delay: 0,
+			animation: {
+				opacity: 'show'
+			},
+			speed: 'fast',
+			cssArrows: true,
+			disableHI: true
+		});
 
-    // Hack: Activate non-input submits.
-    $('form').on('click', '.submit', function (event) {
+	};
 
-        // Stop propagation, default.
-        event.stopPropagation();
-        event.preventDefault();
+	//Date Picker
 
-        // Submit form.
-        $(this).parents('form').submit();
+   $('#date-start, #date-end').datepicker();
 
-    });
+   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
+      new SelectFx(el);
+   } );
 
-    // Sidebar.
-    if ($sidebar.length > 0) {
+	// Parallax
+	var parallax = function() {
+		if ( !isiPad() || !isiPhone() ) {
+			$(window).stellar();
+		}
+	};
 
-        var $sidebar_a = $sidebar.find('a');
 
-        $sidebar_a
-                .addClass('scrolly')
-                .on('click', function () {
+	// Offcanvas and cloning of the main menu
+	var offcanvas = function() {
 
-                    var $this = $(this);
+		var $clone = $('#fh5co-menu-wrap').clone();
+		$clone.attr({
+			'id' : 'offcanvas-menu'
+		});
+		$clone.find('> ul').attr({
+			'class' : '',
+			'id' : ''
+		});
 
-                    // External link? Bail.
-                    if ($this.attr('href').charAt(0) != '#')
-                        return;
+		$('#fh5co-page').prepend($clone);
 
-                    // Deactivate all links.
-                    $sidebar_a.removeClass('active');
+		// click the burger
+		$('.js-fh5co-nav-toggle').on('click', function(){
 
-                    // Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-                    $this
-                            .addClass('active')
-                            .addClass('active-locked');
+			if ( $('body').hasClass('fh5co-offcanvas') ) {
+				$('body').removeClass('fh5co-offcanvas');
+			} else {
+				$('body').addClass('fh5co-offcanvas');
+			}
+			// event.preventDefault();
 
-                })
-                .each(function () {
+		});
 
-                    var $this = $(this),
-                            id = $this.attr('href'),
-                            $section = $(id);
+		$('#offcanvas-menu').css('height', $(window).height());
 
-                    // No section for this link? Bail.
-                    if ($section.length < 1)
-                        return;
+		$(window).resize(function(){
+			var w = $(window);
 
-                    // Scrollex.
-                    $section.scrollex({
-                        mode: 'middle',
-                        top: '-20vh',
-                        bottom: '-20vh',
-                        initialize: function () {
 
-                            // Deactivate section.
-                            $section.addClass('inactive');
+			$('#offcanvas-menu').css('height', w.height());
 
-                        },
-                        enter: function () {
+			if ( w.width() > 769 ) {
+				if ( $('body').hasClass('fh5co-offcanvas') ) {
+					$('body').removeClass('fh5co-offcanvas');
+				}
+			}
 
-                            // Activate section.
-                            $section.removeClass('inactive');
+		});	
 
-                            // No locked links? Deactivate all links and activate this section's one.
-                            if ($sidebar_a.filter('.active-locked').length == 0) {
+	}
 
-                                $sidebar_a.removeClass('active');
-                                $this.addClass('active');
+	
 
-                            }
+	// Click outside of the Mobile Menu
+	var mobileMenuOutsideClick = function() {
+		$(document).click(function (e) {
+	    var container = $("#offcanvas-menu, .js-fh5co-nav-toggle");
+	    if (!container.is(e.target) && container.has(e.target).length === 0) {
+	      if ( $('body').hasClass('fh5co-offcanvas') ) {
+				$('body').removeClass('fh5co-offcanvas');
+			}
+	    }
+		});
+	};
 
-                            // Otherwise, if this section's link is the one that's locked, unlock it.
-                            else if ($this.hasClass('active-locked'))
-                                $this.removeClass('active-locked');
 
-                        }
-                    });
+	// Animations
 
-                });
+	var contentWayPoint = function() {
+		var i = 0;
+		$('.animate-box').waypoint( function( direction ) {
 
-    }
+			if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+				
+				i++;
 
-    // Scrolly.
-    $('.scrolly').scrolly({
-        speed: 1000,
-        offset: function () {
+				$(this.element).addClass('item-animate');
+				setTimeout(function(){
 
-            // If <=large, >small, and sidebar is present, use its height as the offset.
-            if (breakpoints.active('<=large')
-                    && !breakpoints.active('<=small')
-                    && $sidebar.length > 0)
-                return $sidebar.height();
+					$('body .animate-box.item-animate').each(function(k){
+						var el = $(this);
+						setTimeout( function () {
+							el.addClass('fadeInUp animated');
+							el.removeClass('item-animate');
+						},  k * 50, 'easeInOutExpo' );
+					});
+					
+				}, 100);
+				
+			}
 
-            return 0;
+		} , { offset: '85%' } );
+	};
+	
+	var stickyBanner = function() {
+		var $stickyElement = $('.sticky-banner');
+		var sticky;
+		if ($stickyElement.length) {
+		  sticky = new Waypoint.Sticky({
+		      element: $stickyElement[0],
+		      offset: 0
+		  })
+		}
+	}; 
 
-        }
-    });
+	// Document on load.
+	$(function(){
+		mainMenu();
+		parallax();
+		offcanvas();
+		mobileMenuOutsideClick();
+		contentWayPoint();
+		stickyBanner();
+	});
 
-    // Spotlights.
-    $('.spotlights > section')
-            .scrollex({
-                mode: 'middle',
-                top: '-10vh',
-                bottom: '-10vh',
-                initialize: function () {
 
-                    // Deactivate section.
-                    $(this).addClass('inactive');
-
-                },
-                enter: function () {
-
-                    // Activate section.
-                    $(this).removeClass('inactive');
-
-                }
-            })
-            .each(function () {
-
-                var $this = $(this),
-                        $image = $this.find('.image'),
-                        $img = $image.find('img'),
-                        x;
-
-                // Assign image.
-                $image.css('background-image', 'url(' + $img.attr('src') + ')');
-
-                // Set background position.
-                if (x = $img.data('position'))
-                    $image.css('background-position', x);
-
-                // Hide <img>.
-                $img.hide();
-
-            });
-
-    // Features.
-    $('.features')
-            .scrollex({
-                mode: 'middle',
-                top: '-20vh',
-                bottom: '-20vh',
-                initialize: function () {
-
-                    // Deactivate section.
-                    $(this).addClass('inactive');
-
-                },
-                enter: function () {
-
-                    // Activate section.
-                    $(this).removeClass('inactive');
-
-                }
-            });
-
-})(jQuery);
+}());

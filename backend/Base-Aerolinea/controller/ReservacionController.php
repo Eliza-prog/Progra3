@@ -34,10 +34,13 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Reservacion" or $action === "update_Reservacion") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'Persona_PK_cedula') != null) && (filter_input(INPUT_POST, 'Vuelo_idVuelo') != null) && (filter_input(INPUT_POST, 'Asiento') != null)) {
-                $myReservacion->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
-                $myReservacion->setVuelo_idVuelo(filter_input(INPUT_POST, 'Vuelo_idVuelo'));
-                $myReservacion->setAsiento(filter_input(INPUT_POST, 'Asiento'));
+            if ((filter_input(INPUT_POST, 'idReservacion') != null) && (filter_input(INPUT_POST, 'Numero_Fila') != null) && (filter_input(INPUT_POST, 'Numero_Asiento') != null)&& (filter_input(INPUT_POST, 'Vuelo_id_Vuelo') != null)&& (filter_input(INPUT_POST, 'Fecha_Reserva') != null)&& (filter_input(INPUT_POST, 'Persona_Usuario1') != null)) {
+                $myReservacion->setidReservacion(filter_input(INPUT_POST, 'idReservacion'));
+                $myReservacion->setNumero_Fila(filter_input(INPUT_POST, 'Numero_Fila'));
+                $myReservacion->setNumero_Asiento(filter_input(INPUT_POST, 'Numero_Asiento'));
+                $myReservacion->setVuelo_id_Vuelo(filter_input(INPUT_POST, 'Vuelo_id_Vuelo'));
+                $myReservacion->setFecha_Reserva(filter_input(INPUT_POST, 'Fecha_Reserva'));
+                $myReservacion->setPersona_Usuario1(filter_input(INPUT_POST, 'Fecha_Reserva'));
                 if ($action == "add_Reservacion") {
                     $myReservacionBo->add($myReservacion);
                     echo('M~Registro Incluido Correctamente');
@@ -68,8 +71,8 @@ if (filter_input(INPUT_POST, 'action') != null) {
         
         if ($action === "show_Reservacion") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'Persona_PK_cedula') != null) {
-                $myReservacion->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
+            if (filter_input(INPUT_POST, 'idReservacion') != null) {
+                $myReservacion->setidReservacion(filter_input(INPUT_POST, 'idReservacion'));
                 $myReservacion = $myReservacionBo->searchById($myReservacion);
                 if ($myReservacion != null) {
                     echo json_encode(($myReservacion));
@@ -84,8 +87,8 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "delete_Reservacion") {//accion de eliminar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'Persona_PK_cedula') != null) {
-                $myReservacion->setPersona_PK_cedula(filter_input(INPUT_POST, 'Persona_PK_cedula'));
+            if (filter_input(INPUT_POST, 'idReservacion') != null) {
+                $myReservacion->setidReservacion(filter_input(INPUT_POST, 'idReservacion'));
                 $myReservacionBo->delete($myReservacion);
                 echo('M~Registro Fue Eliminado Correctamente');
             }

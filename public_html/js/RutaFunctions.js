@@ -43,9 +43,9 @@ function addOrUpdateRuta(ocultarModalBool) {
             data: {
                 action:         $("#typeAction").val(),
                 idRuta:         $("#txtidRuta").val(),
-                Horario_idHorario:   $("#txtHorario_idHorario").val(),
-                Origen_idOrigen1:    $("#txtOrigen_idOrigen1").val(),
-                Destino_idDestino1:  $("#txtDestino_idDestino1").val()
+                Trayecto:   $("#txtTrayecto").val(),
+                Duracion:    $("#txtDuracion").val(),
+                Precio:  $("#txtPrecio").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -81,15 +81,15 @@ function validar() {
         validacion = false;
     }
 
-    if ($("#txtHorario_idHorario").val() === "") {
+    if ($("#txtTrayecto").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtOrigen_idOrigen1").val() === "") {
+    if ($("#txtDuracion").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtDestino_idDestino1").val() === "") {
+    if ($("#txtPrecio").val() === "") {
         validacion = false;
     
     }
@@ -157,9 +157,9 @@ function showRutaByID(idRuta) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objRutaJSon = JSON.parse(data);
             $("#txtidRuta").val(objRutaJSon.idRuta);
-            $("#txtHorario_idHorario").val(objRutaJSon.Horario_idHorario);
-            $("#txtOrigen_idOrigen1").val(objRutaJSon.Origen_idOrigen1);
-            $("#txtDestino_idDestino1").val(objRutaJSon.Destino_idDestino1);
+            $("#txtTrayecto").val(objRutaJSon.Trayecto);
+            $("#txtDuracion").val(objRutaJSon.Duracion);
+            $("#txtPrecio").val(objRutaJSon.Precio);
             $("#typeAction").val("update_Ruta");
             $("#myModalFormulario").modal();
         },

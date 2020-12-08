@@ -28,8 +28,7 @@ class ReservacionDao {
         $this->labAdodb->setCharset('utf8');
         //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
         $this->labAdodb->Connect("localhost", "root","root", "progra3");
-        
-        $this->labAdodb->debug=true;
+//        $this->labAdodb->debug=true;
     }
 
     //***********************************************************
@@ -39,20 +38,26 @@ class ReservacionDao {
     public function add(Reservacion $Reservacion) {
 
         try {
-            $sql = sprintf("insert into Reservacion (Persona_PK_cedula, Vuelo_idVuelo, Asiento, Destino_idDestino1) 
+            $sql = sprintf("insert into Reservacion (idReservacion, Numero_Fila, Numero_Asiento, Vuelo_id_Vuelo,Fecha_Reserva,Persona_Usuario1) 
                                           values (%s,%s,%s,%s)",
-                    $this->labAdodb->Param("Persona_PK_cedula"),
-                    $this->labAdodb->Param("Vuelo_idVuelo"),
-                    $this->labAdodb->Param("Asiento"));
+                    $this->labAdodb->Param("idReservacion"),
+                    $this->labAdodb->Param("Numero_Fila"),
+                    $this->labAdodb->Param("Numero_Asiento"),
+                    $this->labAdodb->Param("Vuelo_id_Vuelo"),
+                    $this->labAdodb->Param("Fecha_Reserva"),
+                    $this->labAdodb->Param("Persona_Usuario1"));
                     
 
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Persona_PK_cedula"]       = $Reservacion->getPersona_PK_cedula();
-            $valores["Vuelo_idVuelo"]          = $Reservacion->getVuelo_idVuelo();
-            $valores["Asiento"]       = $Reservacion->getAsiento();
+            $valores["idReservacion"]       = $Reservacion->getidReservacion();
+            $valores["Numero_Fila"]          = $Reservacion->getNumero_Fila();
+            $valores["Numero_Asiento"]       = $Reservacion->getNumero_Asiento();
+            $valores["Vuelo_id_Vuelo"]       = $Reservacion->getVuelo_id_Vuelo();
+            $valores["Fecha_Reserva"]       = $Reservacion->getFecha_Reserva();
+            $valores["Persona_Usuario1"]       = $Reservacion->getPersona_Usuario1();
             
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
@@ -69,12 +74,12 @@ class ReservacionDao {
 
         $exist = false;
         try {
-            $sql = sprintf("select * from Reservacion where  Persona_PK_cedula = %s ",
-                            $this->labAdodb->Param("Persona_PK_cedula"));
+            $sql = sprintf("select * from Reservacion where  idReservacion = %s ",
+                            $this->labAdodb->Param("idReservacion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-            $valores["Persona_PK_cedula"] = $Reservacion->getPersona_PK_cedula();
+            $valores["idReservacion"] = $Reservacion->getidReservacion();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             if ($resultSql->RecordCount() > 0) {
@@ -93,20 +98,29 @@ class ReservacionDao {
     public function update(Reservacion $Reservacion) {
 
         try {
-            $sql = sprintf("update Reservacion set Vuelo_idVuelo = %s, 
-                                                Asiento = %s, , 
-                                                LASTMODIFICATION = CURDATE() 
-                            where Persona_PK_cedula = %s",
-                    $this->labAdodb->Param("Vuelo_idVuelo"),
-                    $this->labAdodb->Param("Asiento"),
-                    $this->labAdodb->Param("Persona_PK_cedula"));
+            $sql = sprintf("update Reservacion set Numero_Fila = %s, 
+                                                Numero_Asiento = %s,  
+                                                Vuelo_id_Vuelo = %s,
+                                                Fecha_Reserva = CURDATE(),
+                                                Persona_Usuario1 = %s
+                            where idReservacion = %s",
+                    $this->labAdodb->Param("Numero_Fila"),
+                    $this->labAdodb->Param("Numero_Asiento"),
+                    $this->labAdodb->Param("Vuelo_id_Vuelo"),
+                    $this->labAdodb->Param("Fecha_Reserva"),
+                    $this->labAdodb->Param("Persona_Usuario1"),
+                    $this->labAdodb->Param("idReservacion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Vuelo_idVuelo"]          = $Reservacion->getVuelo_idVuelo();
-            $valores["Asiento"]       = $Reservacion->getAsiento(); $Reservacion->getDestino_idDestino1();
-            $valores["Persona_PK_cedula"]       = $Reservacion->getPersona_PK_cedula();
+            $valores["Numero_Fila"]         = $Reservacion->getNumero_Fila();
+            $valores["Numero_Asiento"]      = $Reservacion->getNumero_Asiento();
+            $valores["Numero_Asiento"]      = $Reservacion->getNumero_Asiento();
+            $valores["Vuelo_id_Vuelo"]      = $Reservacion->getVuelo_id_Vuelo();
+            $valores["Fecha_Reserva"]       = $Reservacion->getFecha_Reserva();
+            $valores["Persona_Usuario1"]    = $Reservacion->getPersona_Usuario1();
+            $valores["idReservacion"]       = $Reservacion->getidReservacion();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
             throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase ReservacionDao), error:'.$e->getMessage());
@@ -120,13 +134,13 @@ class ReservacionDao {
     public function delete(Reservacion $Reservacion) {
 
         try {
-            $sql = sprintf("delete from Reservacion where  Persona_PK_cedula = %s",
-                            $this->labAdodb->Param("Persona_PK_cedula"));
+            $sql = sprintf("delete from Reservacion where  idReservacion = %s",
+                            $this->labAdodb->Param("idReservacion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Persona_PK_cedula"] = $Reservacion->getPersona_PK_cedula();
+            $valores["idReservacion"] = $Reservacion->getidReservacion();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -142,21 +156,24 @@ class ReservacionDao {
 
         $returnReservacion = null;
         try {
-            $sql = sprintf("select * from Reservacion where  Persona_PK_cedula = %s",
-                            $this->labAdodb->Param("Persona_PK_cedula"));
+            $sql = sprintf("select * from Reservacion where  idReservacion = %s",
+                            $this->labAdodb->Param("idReservacion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Persona_PK_cedula"] = $Reservacion->getPersona_PK_cedula();
+            $valores["idReservacion"] = $Reservacion->getidReservacion();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
             if ($resultSql->RecordCount() > 0) {
                 $returnReservacion = Reservacion::createNullReservacion();
-                $returnReservacion->setPersona_PK_cedula($resultSql->Fields("Persona_PK_cedula"));
-                $returnReservacion->setVuelo_idVuelo($resultSql->Fields("Vuelo_idVuelo"));
-                $returnReservacion->setAsiento($resultSql->Fields("Asiento"));
+                $returnReservacion->setidReservacion($resultSql->Fields("idReservacion"));
+                $returnReservacion->setNumero_Fila($resultSql->Fields("Numero_Fila"));
+                $returnReservacion->setNumero_Asiento($resultSql->Fields("Numero_Asiento"));
+                $returnReservacion->setNumero_Asiento($resultSql->Fields("Vuelo_id_Vuelo"));
+                $returnReservacion->setNumero_Asiento($resultSql->Fields("Fecha_Reserva"));
+                $returnReservacion->setNumero_Asiento($resultSql->Fields("Persona_Usuario1"));
 
             }
         } catch (Exception $e) {

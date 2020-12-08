@@ -12,9 +12,9 @@ class Ruta extends BaseDomain implements \JsonSerializable{
 
     //attributes
     private $idRuta;
-    private $Horario_idHorario;
-    private $Origen_idOrigen1;
-    private $Destino_idDestino1;
+    private $Trayecto;
+    private $Duracion;
+    private $Precio;
 
     
 
@@ -28,12 +28,12 @@ class Ruta extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createRuta($idRuta, $Horario_idHorario, $Origen_idOrigen1, $Destino_idDestino1) {
+    public static function createRuta($idRuta, $Trayecto, $Duracion, $Precio) {
         $instance = new self();
         $instance->idRuta        = $idRuta;
-        $instance->Horario_idHorario           = $Horario_idHorario;
-        $instance->Origen_idOrigen1        = $Origen_idOrigen1;
-        $instance->Destino_idDestino1        = $Destino_idDestino1;
+        $instance->Trayecto           = $Trayecto;
+        $instance->Duracion        = $Duracion;
+        $instance->Precio        = $Precio;
 
         return $instance;
     }
@@ -51,43 +51,36 @@ class Ruta extends BaseDomain implements \JsonSerializable{
 
     /****************************************************************************/
 
-    public function getNombre() {
-        return $this->Horario_idHorario;
+    public function getTrayecto() {
+        return $this->Trayecto;
     }
 
-    public function setNombre($Horario_idHorario) {
-        $this->Horario_idHorario = $Horario_idHorario;
-    }
-
-    /****************************************************************************/
-
-    public function getOrigen_idOrigen1() {
-        return $this->Origen_idOrigen1;
-    }
-
-    public function setOrigen_idOrigen1($Origen_idOrigen1) {
-        $this->Origen_idOrigen1 = $Origen_idOrigen1;
+    public function setTrayecto($Trayecto) {
+        $this->Trayecto = $Trayecto;
     }
 
     /****************************************************************************/
 
-    public function getDestino_idDestino1() {
-        return $this->Destino_idDestino1;
+    public function getDuracion() {
+        return $this->Duracion;
     }
 
-    public function setDestino_idDestino1($Destino_idDestino1) {
-        $this->Destino_idDestino1 = $Destino_idDestino1;
+    public function setDuracion($Duracion) {
+        $this->Duracion = $Duracion;
     }
 
     /****************************************************************************/
 
-    public function getUltUsuario() {
-        return $this->ultUsuario;
+    public function getPrecio() {
+        return $this->Precio;
     }
 
-    public function setUltUsuario($ultUsuario) {
-        $this->ultUsuario = $ultUsuario;
+    public function setPrecio($Precio) {
+        $this->Precio = $Precio;
     }
+
+    /****************************************************************************/
+
 
     /****************************************************************************/
     //Convertir el obj a JSON

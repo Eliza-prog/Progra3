@@ -42,10 +42,10 @@ function addOrUpdateVuelo(ocultarModalBool) {
             url: '../backend/controller/VueloController.php',
             data: {
                 action:         $("#typeAction").val(),
-                idVuelo:        $("#txtidVuelo").val(),
-                Ruta_idRuta:    $("#txtRuta_idRuta").val(),
-                Avion_idAvion:  $("#txtAvion_idAvion").val(),
-                Costo:          $("#txtCosto").val()
+                id_Vuelo:        $("#txtid_Vuelo").val(),
+                Fecha_Hora:    $("#txtFecha_Hora").val(),
+                Ruta_idRuta:  $("#txtRuta_idRuta").val(),
+                Tipo_Avion_idTipo_Aviones:          $("#txtTipo_Avion_idTipo_Aviones").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -77,7 +77,11 @@ function validar() {
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#txtidVuelo").val() === "") {
+    if ($("#txtid_Vuelo").val() === "") {
+        validacion = false;
+    }
+
+    if ($("#txtFecha_Hora").val() === "") {
         validacion = false;
     }
 
@@ -85,12 +89,8 @@ function validar() {
         validacion = false;
     }
 
-    if ($("#txtAvion_idAvion").val() === "") {
-        validacion = false;
-    }
-
     
-    if ($("#txtCosto").val() === "") {
+    if ($("#txtTipo_Avion_idTipo_Aviones").val() === "") {
         validacion = false;
     }
 
@@ -143,23 +143,23 @@ function showALLVuelo(ocultarModalBool) {
 //*****************************************************************
 //*****************************************************************
 
-function showVueloByID(idVuelo) {
+function showVueloByID(id_Vuelo) {
     //Se envia la información por ajax
     $.ajax({
         url: 'admin/VueloController.php',
         data: {
             action: "show_Vuelo",
-            idVuelo: idVuelo
+            id_Vuelo: id_Vuelo
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Vuelo en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objVueloJSon = JSON.parse(data);
-            $("#txtidVuelo").val(objVueloJSon.idVuelo);
+            $("#txtid_Vuelo").val(objVueloJSon.id_Vuelo);
+            $("#txtFecha_Hora").val(objVueloJSon.Fecha_Hora);
             $("#txtRuta_idRuta").val(objVueloJSon.Ruta_idRuta);
-            $("#txtAvion_idAvion").val(objVueloJSon.Avion_idAvion);
-            $("#txtCosto").val(objVueloJSon.Costo);
+            $("#txtTipo_Avion_idTipo_Aviones").val(objVueloJSon.Tipo_Avion_idTipo_Aviones);
             $("#typeAction").val("update_Vuelo");
             $("#myModalFormulario").modal();
         },
@@ -170,13 +170,13 @@ function showVueloByID(idVuelo) {
 //*****************************************************************
 //*****************************************************************
 
-function deleteVueloByID(idVuelo) {
+function deleteVueloByID(id_Vuelo) {
     //Se envia la información por ajax
     $.ajax({
         url: 'admin/VueloController.php',
         data: {
             action: "delete_Vuelo",
-            idVuelo: idVuelo
+            id_Vuelo: id_Vuelo
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Vuelo en la base de datos");

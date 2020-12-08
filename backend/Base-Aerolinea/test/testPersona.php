@@ -10,8 +10,8 @@ require_once ("../bo/PersonaBo.php");
 require_once ("../domain/Persona.php");
 /*
 $obj_Persona = new Personas();
-$obj_Persona->setPK_cedula(112540148);
-$obj_Persona->setNombre("Esteba mod");
+$obj_Persona->setusuario(112540148);
+$obj_Persona->setnombre("Esteba mod");
 $obj_Persona->setApellido1("Garita");
 $obj_Persona->setApellido2("Fonseca");
 $obj_Persona->setSexo(1);
@@ -22,19 +22,25 @@ $obj_Persona->setLastUser("chgari");
 
 
 $obj_Persona = new Persona();
-$obj_Persona->setPK_cedula(402480931);
-$obj_Persona->setNombre("Esteban");
-$obj_Persona->setApellido1("Murillo");
-$obj_Persona->setApellido2("Chaves");
-$obj_Persona->setSexo("Femenino");
-$obj_Persona->setFecNacimiento(10/15/20);
-$obj_Persona->setlastUser("YO");
+$obj_Persona->setusuario(402480931);
+$obj_Persona->setnombre("Esteban");
+$obj_Persona->setcontrasena("Esteban");
+$obj_Persona->setfecha_nacimiento("2020-05-08");
+$obj_Persona->setapellido1("Murillo");
+$obj_Persona->setapellido2("Chaves");
+$obj_Persona->setcorreo("hbhhue@bbfe");
+$obj_Persona->setdireccion("san jose");
+$obj_Persona->settelefono1(678901074);
+$obj_Persona->settelefono2(123456789);
+$obj_Persona->settipo_usuario(3);
+$obj_Persona->setsexo("f");
+
 
   
 
 $bo_Persona = new PersonaBo();
 
-$operacion = 1; //variable para pruebas
+$operacion = 5; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

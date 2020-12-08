@@ -10,9 +10,12 @@ require_once ("../bo/ReservacionBo.php");
 require_once ("../domain/Reservacion.php");
 
 $obj_Reservacion = new Reservacion();
-$obj_Reservacion->setPersona_PK_cedula(402480931);
-$obj_Reservacion->setVuelo_idVuelo(45672);
-$obj_Reservacion->setAsiento(689900);
+$obj_Reservacion->setidReservacion(123);
+$obj_Reservacion->setNumero_Fila(5);
+$obj_Reservacion->setNumero_Asiento(15);
+$obj_Reservacion->setVuelo_id_Vuelo(456);
+$obj_Reservacion->setFecha_Reserva("2020-08-15");
+$obj_Reservacion->setPersona_Usuario1("Maria");
 
 
 

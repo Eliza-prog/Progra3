@@ -11,16 +11,16 @@ require_once ("../domain/Vuelo.php");
 
 
 $obj_Vuelo = new Vuelo();
-$obj_Vuelo->setIdVuelo(45672);
-$obj_Vuelo->setRuta_idRuta(123909);
-$obj_Vuelo->setAvion_idAvion(1234);
-$obj_Vuelo->setCosto(70000);
+$obj_Vuelo->setid_Vuelo(404);
+$obj_Vuelo->setFecha_Hora("2020-08-16");
+$obj_Vuelo->setRuta_idRuta(1234567);
+$obj_Vuelo->setTipo_Avion_idTipo_Aviones(700);
 
   
 
 $bo_Vuelo = new VueloBo();
 
-$operacion = 2; //variable para pruebas
+$operacion = 1;//variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

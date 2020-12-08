@@ -28,12 +28,11 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Ruta" or $action === "update_Ruta") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idRuta') != null) && (filter_input(INPUT_POST, 'Horario_idHorario') != null) && (filter_input(INPUT_POST, 'Origen_idOrigen1') != null) && (filter_input(INPUT_POST, 'Destino_idDestino1')) != null) {
+            if ((filter_input(INPUT_POST, 'idRuta') != null) && (filter_input(INPUT_POST, 'Trayecto') != null) && (filter_input(INPUT_POST, 'Duracion') != null) && (filter_input(INPUT_POST, 'Precio')) != null) {
                 $myRuta->setidRuta(filter_input(INPUT_POST, 'idRuta'));
-                $myRuta->setHorario_idHorario(filter_input(INPUT_POST, 'Horario_idHorario'));
-                $myRuta->setOrigen_idOrigen1(filter_input(INPUT_POST, 'Origen_idOrigen1'));
-                $myRuta->setDestino_idDestino1(filter_input(INPUT_POST, 'Destino_idDestino1'));
-                $myRuta->setLastUser('112540148');
+                $myRuta->setTrayecto(filter_input(INPUT_POST, 'Trayecto'));
+                $myRuta->setDuracion(filter_input(INPUT_POST, 'Duracion'));
+                $myRuta->setPrecio(filter_input(INPUT_POST, 'Precio'));
                 if ($action == "add_Ruta") {
                     $myRutaBo->add($myRuta);
                     echo('M~Registro Incluido Correctamente');

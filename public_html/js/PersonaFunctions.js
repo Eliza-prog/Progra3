@@ -42,13 +42,18 @@ function addOrUpdatePersona(ocultarModalBool) {
             url: '../backend/Base-Aerolinea/controller/PersonaController.php',
             data: {
                 action:         $("#typeAction").val(),
-                PK_cedula:      $("#txtPK_cedula").val(),
+                usuario:      $("#txtusuario").val(),
+                contrasena:         $("#txtcontrasena").val(),
                 nombre:         $("#txtnombre").val(),
                 apellido1:      $("#txtapellido1").val(),
                 apellido2:      $("#txtapellido2").val(),
-                fecNacimiento:  $("#txtfecNacimiento").val(),
-                sexo:           $("#txtsexo").val(),
-                lastUser:       $("#txtlastUser").val()
+                correo:         $("#txtcorreo").val(),
+                fecha_nacimiento:  $("#txtfecha_nacimiento").val(),
+                direccion:         $("#txtdireccion").val(),
+                telefono1:         $("#txttelefono1").val(),
+                telefono2:         $("#txttelefono2").val(),
+                tipo_usuario:         $("#txttipo_usuario").val(),
+                sexo:           $("#txtsexo").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -80,33 +85,53 @@ function validar() {
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#PK_cedula").val() === "") {
+    if ($("#txtusuario").val() === "") {
+        validacion = false;
+    }
+    
+    if ($("#txtcontrasena").val() === "") {
         validacion = false;
     }
 
-    if ($("#nombre").val() === "") {
+    if ($("#txtnombre").val() === "") {
         validacion = false;
     }
 
-    if ($("#apellido1").val() === "") {
+    if ($("#txtapellido1").val() === "") {
         validacion = false;
     }
 
-    if ($("#apellido2").val() === "") {
+    if ($("#txtapellido2").val() === "") {
+        validacion = false;
+    }
+    
+    if ($("#txtcorreo").val() === "") {
+        validacion = false;
+    }
+    
+    if ($("#txtfecha_nacimiento").val() === "") {
+        validacion = false;
+    }
+    
+    if ($("#txtdireccion").val() === "") {
+        validacion = false;
+    }
+    if ($("#txttelefono1").val() === "") {
+        validacion = false;
+    }
+    if ($("#txttelefono2").val() === "") {
         validacion = false;
     }
 
-    if ($("#fecNacimiento").val() === "") {
+    if ($("#txttipo_usuario").val() === "") {
         validacion = false;
     }
 
-    if ($("#sexo").val() === "") {
+    if ($("#txtsexo").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtlastUser").val() === "") {
-        validacion = false;
-    }
+   
 
 
     return validacion;
@@ -157,24 +182,29 @@ function showALLPersona(ocultarModalBool) {
 //*****************************************************************
 //*****************************************************************
 
-function showPersonaByID(PK_cedula) {
+function showPersonaByID(usuario) {
     //Se envia la información por ajax
     $.ajax({
         url: 'admin/PersonaController.php',
         data: {
             action: "show_Persona",
-            PK_cedula: PK_cedula
+            usuario: usuario
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objPersonaJSon = JSON.parse(data);
-            $("#txtPK_cedula").val(objPersonaJSon.PK_cedula);
+            $("#txtusuario").val(objPersonaJSon.usuario);
+            $("#txtcontrasena").val(objPersonaJSon.usuario);
             $("#txtnombre").val(objPersonaJSon.nombre);
             $("#txtapellido1").val(objPersonaJSon.apellido1);
             $("#txtapellido2").val(objPersonaJSon.apellido2);
             $("#txtfecNacimiento").val(objPersonaJSon.fecNacimiento);
+            $("#txtdireccion").val(objPersonaJSon.usuario);
+            $("#txttelefono1").val(objPersonaJSon.usuario);
+            $("#txttelefono2").val(objPersonaJSon.usuario);
+            $("#txttipo_usuario").val(objPersonaJSon.usuario);
             $("#txtsexo").val(objPersonaJSon.sexo);
             $("#txtlastUser").val(objPersonaJSon.lastUser);
             $("#typeAction").val("update_Persona");
@@ -187,13 +217,13 @@ function showPersonaByID(PK_cedula) {
 //*****************************************************************
 //*****************************************************************
 
-function deletePersonaByID(PK_cedula) {
+function deletePersonaByID(usuario) {
     //Se envia la información por ajax
     $.ajax({
         url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "delete_Persona",
-            PK_cedula: PK_cedula
+            usuario: usuario
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
