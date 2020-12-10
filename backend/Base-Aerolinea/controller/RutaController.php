@@ -28,11 +28,12 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Ruta" or $action === "update_Ruta") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idRuta') != null) && (filter_input(INPUT_POST, 'Trayecto') != null) && (filter_input(INPUT_POST, 'Duracion') != null) && (filter_input(INPUT_POST, 'Precio')) != null) {
+            if ((filter_input(INPUT_POST, 'idRuta') != null) && (filter_input(INPUT_POST, 'Trayecto') != null) && (filter_input(INPUT_POST, 'Precio') != null) && (filter_input(INPUT_POST, 'Duracion') != null)) {
                 $myRuta->setidRuta(filter_input(INPUT_POST, 'idRuta'));
                 $myRuta->setTrayecto(filter_input(INPUT_POST, 'Trayecto'));
                 $myRuta->setDuracion(filter_input(INPUT_POST, 'Duracion'));
                 $myRuta->setPrecio(filter_input(INPUT_POST, 'Precio'));
+            
                 if ($action == "add_Ruta") {
                     $myRutaBo->add($myRuta);
                     echo('M~Registro Incluido Correctamente');
@@ -85,6 +86,27 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 echo('M~Registro Fue Eliminado Correctamente');
             }
         }
+                
+        if ($action === "persona_Login") {//accion de mostrar cliente por ID
+            //se valida que los parametros hayan sido enviados por post
+            if (filter_input(INPUT_POST, 'idRuta') != null && filter_input(INPUT_POST, 'Duracion') != null) {
+                $myRuta->setidRuta(filter_input(INPUT_POST, 'idRuta'));
+                $myRuta = $myRutaBo->IntoById($myRuta);
+                $Duracion = filter_input(INPUT_POST, 'Duracion');
+                if ($myRuta != null) {
+                    if($myRuta->getContrasena() === $Duracion ){                       
+                        session_name("Progra");
+                        session_start();
+                        $_SESSION["Progra_idRuta"] = $myRuta->getidRuta(); 
+                        $_SESSION["Progra_tipo_idRuta"] = $myRuta->getidRuta();
+                    }else{
+                        echo('E~Usuairio y/o Duracion invalidos');
+                    }
+                } else {
+                    echo('E~NO Existe un idRuta con el ID especificado');
+                }
+            }
+        }
 
         //***********************************************************
         //se captura cualquier error generado
@@ -96,4 +118,5 @@ if (filter_input(INPUT_POST, 'action') != null) {
     echo('M~Parametros no enviados desde el formulario'); //se codifica un mensaje para enviar
 }
 ?>
+
 

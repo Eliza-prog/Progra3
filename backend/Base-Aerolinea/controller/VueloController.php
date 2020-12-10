@@ -31,7 +31,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
             if ((filter_input(INPUT_POST, 'id_Vuelo') != null) &&(filter_input(INPUT_POST, 'Fecha_Hora') != null) &&(filter_input(INPUT_POST, 'Ruta_idRuta_') != null)&& (filter_input(INPUT_POST, 'Tipo_Avion_idTipo_Aviones')) != null) {
                 $myVuelo->setid_Vuelo(filter_input(INPUT_POST, 'id_Vuelo'));
                 $myVuelo->setFecha_Hora(filter_input(INPUT_POST, 'Fecha_Hora'));
-                $myVuelo->setAvion_Ruta_idRuta(filter_input(INPUT_POST, 'Ruta_idRuta'));
+                $myVuelo->setRuta_idRuta(filter_input(INPUT_POST, 'Ruta_idRuta'));
                 $myVuelo->setTipo_Avion_idTipo_Aviones(filter_input(INPUT_POST, 'Tipo_Avion_idTipo_Aviones'));
                 if ($action == "add_Vuelo") {
                     $myVueloBo->add($myVuelo);

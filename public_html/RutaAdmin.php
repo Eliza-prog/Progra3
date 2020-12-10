@@ -1,7 +1,7 @@
 <?php
 $templateTitle = 'Mantenimiento de las Rutas';
 $templateScripts = '<script type="text/javascript" src="js/RutaFunctions.js"></script>';
-$templatePageHeader = '<h1><Nombre Sistema><small> Mantenimiento de las Rutas</small><img src="img/logo/logo.png" align="right"/></h1>';
+$templatePageHeader = '<h1><Nombre Sistema><small> Mantenimiento de las Rutas</small><img src="img/logo_1.png" align="right"/></h1>';
 
 include_once("template/templateHead.php");
 ?>

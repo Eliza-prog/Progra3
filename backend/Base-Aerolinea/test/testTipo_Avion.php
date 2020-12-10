@@ -10,7 +10,7 @@ require_once ("../bo/Tipo_AvionBo.php");
 require_once ("../domain/Tipo_Avion.php");
 
 $obj_Tipo_Avion = new Tipo_Avion();
-$obj_Tipo_Avion->setIdTipo_Avion(10);
+$obj_Tipo_Avion->setidTipo_Avion(10);
 $obj_Tipo_Avion->setFecha(2004);
 $obj_Tipo_Avion->setModelo("505");
 $obj_Tipo_Avion->setMarca("hola");
@@ -20,7 +20,7 @@ $obj_Tipo_Avion->setAsiento_Fila(7);
 
 $bo_Tipo_Avion = new Tipo_AvionBo();
 
-$operacion = 3; //variable para pruebas
+$operacion = 5; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

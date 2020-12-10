@@ -30,9 +30,9 @@ class Vuelo extends BaseDomain implements \JsonSerializable{
 
     public static function createVuelo($id_Vuelo, $Fecha_Hora, $Ruta_idRuta, $Tipo_Avion_idTipo_Aviones) {
         $instance = new self();
-        $instance->id_Vuelo        = $id_Vuelo;
-        $instance->Fecha_Hora           = $Fecha_Hora;
-        $instance->Ruta_idRuta        = $Ruta_idRuta;
+        $instance->id_Vuelo                         = $id_Vuelo;
+        $instance->Fecha_Hora                       = $Fecha_Hora;
+        $instance->Ruta_idRuta                      = $Ruta_idRuta;
         $instance->Tipo_Avion_idTipo_Aviones        = $Tipo_Avion_idTipo_Aviones;
         return $instance;
     }

@@ -1,7 +1,7 @@
 <?php
 $templateTitle = 'Mantenimiento de la Reservacion';
 $templateScripts = '<script type="text/javascript" src="js/ReservacionFunctions.js"></script>';
-$templatePageHeader = '<h1><Nombre Sistema><small> Mantenimiento de la Reservacion</small><img src="img/logo/logo.png" align="right"/></h1>';
+$templatePageHeader = '<h1><Nombre Sistema><small> Mantenimiento de la Reservacion</small><img src="img/logo_1.png" align="right"/></h1>';
 
 include_once("template/templateHead.php");
 ?>
@@ -32,7 +32,7 @@ include_once("template/templateHead.php");
                     </div>
                     <div class="form-group" id="groupVuelo_id_Vuelo">
                         <label for="txtVuelo_id_Vuelo">Vuelo_id_Vuelo</label>
-                        <input type="text" class="form-control" id="txtVuelo_id_Vuelo"  placeholder="Vuelo_id_Vuelo">
+                        <input type="text" class="form-control" id="txtVuelo_id_Vuelo"  placeholder="idVuelo">
                     </div>
                     <div class="form-group" id="groupFecha_Reserva">
                         <label for="txtFecha_Reserva">Fecha_Reserva</label>

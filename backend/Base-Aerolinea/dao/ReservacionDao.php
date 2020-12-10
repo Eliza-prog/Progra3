@@ -26,7 +26,7 @@ class ReservacionDao {
         $driver = 'mysqli';
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
-        //$this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
+        $this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
         $this->labAdodb->Connect("localhost", "root","root", "progra3");
 //        $this->labAdodb->debug=true;
     }
@@ -116,7 +116,6 @@ class ReservacionDao {
 
             $valores["Numero_Fila"]         = $Reservacion->getNumero_Fila();
             $valores["Numero_Asiento"]      = $Reservacion->getNumero_Asiento();
-            $valores["Numero_Asiento"]      = $Reservacion->getNumero_Asiento();
             $valores["Vuelo_id_Vuelo"]      = $Reservacion->getVuelo_id_Vuelo();
             $valores["Fecha_Reserva"]       = $Reservacion->getFecha_Reserva();
             $valores["Persona_Usuario1"]    = $Reservacion->getPersona_Usuario1();
@@ -171,9 +170,9 @@ class ReservacionDao {
                 $returnReservacion->setidReservacion($resultSql->Fields("idReservacion"));
                 $returnReservacion->setNumero_Fila($resultSql->Fields("Numero_Fila"));
                 $returnReservacion->setNumero_Asiento($resultSql->Fields("Numero_Asiento"));
-                $returnReservacion->setNumero_Asiento($resultSql->Fields("Vuelo_id_Vuelo"));
-                $returnReservacion->setNumero_Asiento($resultSql->Fields("Fecha_Reserva"));
-                $returnReservacion->setNumero_Asiento($resultSql->Fields("Persona_Usuario1"));
+                $returnReservacion->setVuelo_id_Vuelo($resultSql->Fields("Vuelo_id_Vuelo"));
+                $returnReservacion->setFecha_Reserva($resultSql->Fields("Fecha_Reserva"));
+                $returnReservacion->setPersona_Usuario1($resultSql->Fields("Persona_Usuario1"));
 
             }
         } catch (Exception $e) {
