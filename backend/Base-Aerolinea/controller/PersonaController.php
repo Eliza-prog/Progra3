@@ -28,7 +28,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Persona" or $action === "update_Persona") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'usuario') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'contrasena') != null)&& (filter_input(INPUT_POST, 'apellido2') != null)&& (filter_input(INPUT_POST, 'correo')!= null) &&(filter_input(INPUT_POST, 'direccion') != null) && (filter_input(INPUT_POST, 'telefono1')&& (filter_input(INPUT_POST, 'telefono2') != null)&&(filter_input(INPUT_POST, 'fecNacimiento') != null) && (filter_input(INPUT_POST, 'tipo_usuario') != null) && (filter_input(INPUT_POST, 'sexo') != null))) {
+            if ((filter_input(INPUT_POST, 'usuario') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'contrasena') != null)&& (filter_input(INPUT_POST, 'apellido2') != null)&& (filter_input(INPUT_POST, 'correo')!= null) &&(filter_input(INPUT_POST, 'direccion') != null) && (filter_input(INPUT_POST, 'telefono1') != null) && (filter_input(INPUT_POST, 'telefono2') != null)&&(filter_input(INPUT_POST, 'fecha_nacimiento') != null) && (filter_input(INPUT_POST, 'tipo_usuario') != null) && (filter_input(INPUT_POST, 'sexo') != null)) {
                 $myPersona->setusuario(filter_input(INPUT_POST, 'usuario'));
                 $myPersona->setnombre(filter_input(INPUT_POST, 'nombre'));
                 $myPersona->setcontrasena(filter_input(INPUT_POST, 'contrasena'));
@@ -38,7 +38,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 $myPersona->setdireccion(filter_input(INPUT_POST, 'direccion'));
                 $myPersona->settelefono1(filter_input(INPUT_POST, 'telefono1'));
                 $myPersona->settelefono2(filter_input(INPUT_POST, 'telefono2'));
-                $myPersona->setfecha_nacimiento(filter_input(INPUT_POST, 'fecNacimiento'));
+                $myPersona->setfecha_nacimiento(filter_input(INPUT_POST, 'fecha_nacimiento'));
                 $myPersona->settipo_usuario(filter_input(INPUT_POST, 'tipo_usuario'));
                 $myPersona->setsexo(filter_input(INPUT_POST, 'sexo'));
                 if ($action == "add_Persona") {

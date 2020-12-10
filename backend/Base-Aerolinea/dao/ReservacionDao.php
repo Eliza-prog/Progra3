@@ -39,7 +39,7 @@ class ReservacionDao {
 
         try {
             $sql = sprintf("insert into Reservacion (idReservacion, Numero_Fila, Numero_Asiento, Vuelo_id_Vuelo,Fecha_Reserva,Persona_Usuario1) 
-                                          values (%s,%s,%s,%s)",
+                                          values (%s,%s,%s,%s,%s,%s)",
                     $this->labAdodb->Param("idReservacion"),
                     $this->labAdodb->Param("Numero_Fila"),
                     $this->labAdodb->Param("Numero_Asiento"),

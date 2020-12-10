@@ -1,7 +1,7 @@
 <?php
-$templateTitle = 'Mantenimiento de Personas';
-$templateScripts = '<script type="text/javascript" src="js/personasFunctions.js"></script>';
-$templatePageHeader = '<h1><Nombre Sistema><small> Mantenimiento de Personas</small><img src="img/logo/logo.png" align="right"/></h1>';
+$templateTitle = 'Mantenimiento de Vuelos';
+$templateScripts = '<script type="text/javascript" src="js/VueloFunctions.js"></script>';
+$templatePageHeader = '<h1><Nombre Sistema><small> Mantenimiento de Vuelos</small><img src="img/logo/logo.png" align="right"/></h1>';
 
 include_once("template/templateHead.php");
 ?>
@@ -11,41 +11,29 @@ include_once("template/templateHead.php");
 <!-- ********************************************************** -->
 <div class="row">
     <div class="col-md-12">
-        <form role="form" onsubmit="return false;" id="formPersonas">
+        <form role="form" onsubmit="return false;" id="formVuelo">
             <div class="row">
                 <!-- ******************************************************** -->
                 <!-- Campos de formulario      -->
                 <!-- ******************************************************** -->
                 <div class="col-md-12">
 
-                    <div class="form-group" id="groupPK_cedula">
-                        <label for="txtPK_cedula">PK_cedula</label>
-                        <input type="text" class="form-control" id="txtPK_cedula"  placeholder="PK_cedula">
+                    <div class="form-group" id="groupid_Vuelo">
+                        <label for="txtid_Vuelo">id_Vuelo</label>
+                        <input type="text" class="form-control" id="txtid_Vuelo"  placeholder="id_Vuelo">
                     </div>
-                    <div class="form-group" id="groupnombre">
-                        <label for="txtnombre">nombre</label>
-                        <input type="text" class="form-control" id="txtnombre"  placeholder="nombre">
+                    <div class="form-group" id="groupFecha_Hora">
+                        <label for="txtFecha_Hora">Fecha_Hora</label>
+                        <input type="text" class="form-control" id="txtFecha_Hora"  placeholder="Fecha_Hora">
                     </div>
-                    <div class="form-group" id="groupapellido1">
-                        <label for="txtapellido1">apellido1</label>
-                        <input type="text" class="form-control" id="txtapellido1"  placeholder="apellido1">
+                    <div class="form-group" id="groupRuta_idRuta">
+                        <label for="txtRuta_idRuta">Ruta_idRuta</label>
+                        <input type="text" class="form-control" id="txtRuta_idRuta"  placeholder="Ruta_idRuta">
                     </div>
-                    <div class="form-group" id="groupapellido2">
-                        <label for="txtapellido2">apellido2</label>
-                        <input type="text" class="form-control" id="txtapellido2"  placeholder="apellido2">
-                    </div>
-                    <div class="form-group" id="groupfecNacimiento">
-                        <label for="txtfecNacimiento">fecNacimiento</label>
-                        <input type="text" class="form-control" id="txtfecNacimiento"  placeholder="fecNacimiento">
-                    </div>
-                    <div class="form-group" id="groupsexo">
-                        <label for="txtsexo">sexo</label>
-                        <input type="text" class="form-control" id="txtsexo"  placeholder="sexo">
-                    </div>
-                    <div class="form-group" id="groupobservaciones">
-                        <label for="txtobservaciones">observaciones</label>
-                        <input type="text" class="form-control" id="txtobservaciones"  placeholder="observaciones">
-                    </div>
+                    <div class="form-group" id="groupTipo_Avion_idTipo_Aviones">
+                        <label for="txtTipo_Avion_idTipo_Aviones">Tipo_Avion_idTipo_Aviones</label>
+                        <input type="text" class="form-control" id="txtTipo_Avion_idTipo_Aviones"  placeholder="Tipo_Avion_idTipo_Aviones">
+                    </div>       
                     <div class="form-group">
                         <input type="hidden" id="typeAction" value="add_personas" />
                         <input type="hidden" value="" id="idTarea"/>
@@ -59,7 +47,7 @@ include_once("template/templateHead.php");
 </div>
 
 <br>
-<h3>Tabla con informacion de personas</h3>
+<h3>Tabla con informacion de Vuelos</h3>
 <br><br>
 <div class="row">
     <div class="col-md-12">

@@ -40,7 +40,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 $myReservacion->setNumero_Asiento(filter_input(INPUT_POST, 'Numero_Asiento'));
                 $myReservacion->setVuelo_id_Vuelo(filter_input(INPUT_POST, 'Vuelo_id_Vuelo'));
                 $myReservacion->setFecha_Reserva(filter_input(INPUT_POST, 'Fecha_Reserva'));
-                $myReservacion->setPersona_Usuario1(filter_input(INPUT_POST, 'Fecha_Reserva'));
+                $myReservacion->setPersona_Usuario1(filter_input(INPUT_POST, 'Persona_Usuario1'));
                 if ($action == "add_Reservacion") {
                     $myReservacionBo->add($myReservacion);
                     echo('M~Registro Incluido Correctamente');

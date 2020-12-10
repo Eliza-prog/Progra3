@@ -94,78 +94,71 @@ http://www.tooplate.com/view/2095-level
                     <div class="container ie-h-align-center-fix">
                         <div class="row">
                             <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
-                                <form role="form" onsubmit="return false;" id="formPersonas" class="tm-search-form tm-section-pad-2">                                   
-                                        
-                                        <!-- Espacios: I --> 
-                                           
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                                            <label>Usuario</label>
-                                                <input type="text" id="txtusuario" class="form-control" placeholder="Usuario" />
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
-                                            <label>Contrasena</label>
-                                                <input type="password" id="txtcontrasena" class="form-control" placeholder="Contraseña" />
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
-                                            <label>Nombre</label>
-                                                <input type="text" id="txtnombre" class="form-control" placeholder="Nombre" />
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1"> 
-                                            <label>Primer Apellido</label>
-                                                <input type="text" id="txtapellido1" class="form-control" placeholder="Primer apellido" />
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
-                                            <label>Segundo Apellido</label>
-                                                <input type="text" id="txtapellido2" class="form-control" placeholder="Segundo apellido" />
-                                        </div>   
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
-                                            <label>Correo electronico</label>
-                                                <input type="email" id="txtcorreo" class="form-control" placeholder="Example@email.com" />
-                                            <label>Direccion</label>
-                                                <input type="text" id="txtdireccion" class="form-control" placeholder="Distrito, Canton, Provincia" /> 
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">   
-                                            <label>Telefono Celular</label>
-                                                <input type="tel" id="txtelefono1" class="form-control"  placeholder="12345678"  pattern="[0-9]{8}">
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">    
-                                            <label>Telefono Fijo</label>
-                                                <input type="tel" id="txttelefono2" name="phone" class="form-control" placeholder="12345678"  pattern="[0-9]{8}">
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
-                                            <label for="inputCheckIn">Genero</label> 
-                                            <select class="form-control tm-select" id="txtsexo">
-                                                <option value="1" selected>Femenino</option>
-                                                <option value="2">Maculino</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
-                                            <label for="inputCheckIn">Fecha de nacimiento</label> 
-                                            <input type="text" class="form-control" id="txtfecha_nacimiento" placeholder="AA-MM-DD">
-                                        </div>
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
-                                            <label>Tipo Usuario</label>
-                                            <input type="text" id="txttipo_usuario" class="form-control" placeholder="1: Usuario o 2:Admin" />
-                                        </div>
-                                        
-                                        <!-- Espacios: F -->
-                                        
-                                        <!-- Botones: I -->
-                                        
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
-                                            <input type="hidden" id="typeAction" value="add_Persona" />
-                                            <input type="hidden" value="" id="idTarea"/>
-                                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="enviar">Finalizar registro</button>
-                                        </div>
-                                        
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
-                                            <button type="reset" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="cancelar">Cancelar</button>
-                                        </div>
-                                        
-                                        <!-- Botones: F -->
-                                        
-                                       </div>
-                                    
-                                </form>
+                              <form role="form" onsubmit="return false;" id="formPersona">
+            <div class="row">
+                <!-- ******************************************************** -->
+                <!-- Campos de formulario      -->
+                <!-- ******************************************************** -->
+                <div class="col-md-12">
+
+                    <div class="form-group" id="groupusuario">
+                        <label for="txtusuario">Usuario</label>
+                        <input type="text" class="form-control" id="txtusuario"  placeholder="Cedula">
+                    </div>
+                    <div class="form-group" id="groupusuario">
+                        <label for="txtusuario">Contrasena</label>
+                        <input type="text" class="form-control" id="txtcontrasena"  placeholder="Cedula">
+                    </div>
+                    <div class="form-group" id="groupnombre">
+                        <label for="txtnombre">Nombre</label>
+                        <input type="text" class="form-control" id="txtnombre"  placeholder="Nombre">
+                    </div>
+                    <div class="form-group" id="groupapellido1">
+                        <label for="txtapellido1">apellido1</label>
+                        <input type="text" class="form-control" id="txtapellido1"  placeholder="apellido1">
+                    </div>
+                    <div class="form-group" id="groupapellido2">
+                        <label for="txtapellido2">apellido2</label>
+                        <input type="text" class="form-control" id="txtapellido2"  placeholder="apellido2">
+                    </div>
+                     <div class="form-group" id="groupapellido2">
+                        <label for="txtcorreo">Correo</label>
+                        <input type="text" class="form-control" id="txtcorreo"  placeholder="Correo">
+                    </div>
+                    <div class="form-group" id="groupfecha_nacimiento">
+                        <label for="txtfecha_nacimiento">Fecha Nacimiento</label>
+                        <input type="text" class="form-control" id="txtfecha_nacimiento"  placeholder="Fecha Nacimiento">
+                    </div>
+                    <div class="form-group" id="groupfecha_nacimiento">
+                        <label for="txtfecha_nacimiento">Direccion</label>
+                        <input type="text" class="form-control" id="txtdireccion"  placeholder="Fecha Nacimiento">
+                    </div>
+                     <div class="form-group" id="grouptelefono1">
+                        <label for="txttelefono1">telefono1</label>
+                        <input type="text" class="form-control" id="txttelefono1"  placeholder="telefono1">
+                    </div>
+                     <div class="form-group" id="groupfecha_nacimiento">
+                        <label for="txttelefono2">telefono2</label>
+                        <input type="text" class="form-control" id="txttelefono2"  placeholder="telefono2">
+                    </div>
+                     <div class="form-group" id="grouptipo_usuario">
+                        <label for="txttipo_usuario">tipo_usuario</label>
+                        <input type="text" class="form-control" id="txttipo_usuario"  placeholder="tipo_usuario">
+                    </div>
+                    <div class="form-group" id="groupsexo">
+                        <label for="txtsexo">sexo</label>
+                        <input type="text" class="form-control" id="txtsexo"  placeholder="sexo">
+                    </div>
+                   
+                    <div class="form-group">
+                        <input type="hidden" id="typeAction" value="add_Persona"/>
+                        <input type="hidden" value="" id="idTarea"/>
+                        <button type="submit" class="btn btn-primary" id="enviar">Registrar</button>
+                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
                             </div>                        
                         </div>      
                     </div>

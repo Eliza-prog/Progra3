@@ -41,19 +41,19 @@ function addOrUpdatePersona(ocultarModalBool) {
         $.ajax({
             url: '../backend/Base-Aerolinea/controller/PersonaController.php',
             data: {
-                action:         $("#typeAction").val(),
-                usuario:      $("#txtusuario").val(),
+                action:             "add_Persona",
+                usuario:            $("#txtusuario").val(),
                 contrasena:         $("#txtcontrasena").val(),
-                nombre:         $("#txtnombre").val(),
-                apellido1:      $("#txtapellido1").val(),
-                apellido2:      $("#txtapellido2").val(),
-                correo:         $("#txtcorreo").val(),
-                fecha_nacimiento:  $("#txtfecha_nacimiento").val(),
-                direccion:         $("#txtdireccion").val(),
-                telefono1:         $("#txttelefono1").val(),
-                telefono2:         $("#txttelefono2").val(),
-                tipo_usuario:         $("#txttipo_usuario").val(),
-                sexo:           $("#txtsexo").val()
+                nombre:             $("#txtnombre").val(),
+                apellido1:          $("#txtapellido1").val(),
+                apellido2:          $("#txtapellido2").val(),
+                correo:             $("#txtcorreo").val(),
+                fecha_nacimiento:   $("#txtfecha_nacimiento").val(),
+                direccion:          $("#txtdireccion").val(),
+                telefono1:          $("#txttelefono1").val(),
+                telefono2:          $("#txttelefono2").val(),
+                tipo_usuario:       $("#txttipo_usuario").val(),
+                sexo:               $("#txtsexo").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
