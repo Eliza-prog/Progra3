@@ -39,7 +39,7 @@ function addOrUpdateVuelo(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/VueloController.php',
+            url: '../backend/Base-Aerolinea/controller/VueloController.php',
             data: {
                 action:         $("#typeAction").val(),
                 id_Vuelo:        $("#txtid_Vuelo").val(),
@@ -121,7 +121,7 @@ function cancelAction() {
 function showALLVuelo(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/VueloController.php',
+        url: '../backend/Base-Aerolinea/controller/VueloController.php',
         data: {
             action: "showAll_Vuelo"
         },
@@ -146,7 +146,7 @@ function showALLVuelo(ocultarModalBool) {
 function showVueloByID(id_Vuelo) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/VueloController.php',
+        url: '../backend/Base-Aerolinea/controller/VueloController.php',
         data: {
             action: "show_Vuelo",
             id_Vuelo: id_Vuelo
@@ -173,7 +173,7 @@ function showVueloByID(id_Vuelo) {
 function deleteVueloByID(id_Vuelo) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/VueloController.php',
+        url: '../backend/Base-Aerolinea/controller/VueloController.php',
         data: {
             action: "delete_Vuelo",
             id_Vuelo: id_Vuelo

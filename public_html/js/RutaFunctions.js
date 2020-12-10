@@ -39,7 +39,7 @@ function addOrUpdateRuta(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/RutaController.php',
+            url: '../backend/Base-Aerolinea/controller/RutaController.php',
             data: {
                 action:         $("#typeAction").val(),
                 idRuta:         $("#txtidRuta").val(),
@@ -121,7 +121,7 @@ function cancelAction() {
 function showALLRuta(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/RutaController.php',
+        url: '../backend/Base-Aerolinea/controller/RutaController.php',
         data: {
             action: "showAll_Ruta"
         },
@@ -146,7 +146,7 @@ function showALLRuta(ocultarModalBool) {
 function showRutaByID(idRuta) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/RutaController.php',
+        url: '../backend/Base-Aerolinea/controller/RutaController.php',
         data: {
             action: "show_Ruta",
             idRuta: idRuta
@@ -173,7 +173,7 @@ function showRutaByID(idRuta) {
 function deleteRutaByID(idRuta) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/RutaController.php',
+        url: '../backend/Base-Aerolinea/controller/RutaController.php',
         data: {
             action: "delete_Ruta",
             idRuta: idRuta

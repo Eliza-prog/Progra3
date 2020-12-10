@@ -20,7 +20,7 @@ $obj_Ruta->setPrecio(1000);
 
 $bo_Ruta = new RutaBo();
 
-$operacion = 3; //variable para pruebas
+$operacion = 1; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

@@ -13,8 +13,8 @@ require_once ("../domain/Vuelo.php");
 $obj_Vuelo = new Vuelo();
 $obj_Vuelo->setid_Vuelo(404);
 $obj_Vuelo->setFecha_Hora("2020-08-16 20:00:00");
-$obj_Vuelo->setRuta_idRuta(123909);
-$obj_Vuelo->setTipo_Avion_idTipo_Aviones(1);
+$obj_Vuelo->setRuta_idRuta(1234);
+$obj_Vuelo->setTipo_Avion_idTipo_Aviones(10);
 
   
 

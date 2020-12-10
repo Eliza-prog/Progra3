@@ -20,7 +20,7 @@ $obj_Tipo_Avion->setAsiento_Fila(7);
 
 $bo_Tipo_Avion = new Tipo_AvionBo();
 
-$operacion = 5; //variable para pruebas
+$operacion = 1; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

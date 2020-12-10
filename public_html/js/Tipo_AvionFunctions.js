@@ -39,7 +39,7 @@ function addOrUpdateTipo_Avion(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/Tipo_AvionController.php',
+            url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
             data: {
                 action:         $("#typeAction").val(),
                 idTipo_Avion:   $("#txtidTipo_Avion").val(),
@@ -131,7 +131,7 @@ function cancelAction() {
 function showALLTipo_Avion(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/Tipo_AvionController.php',
+        url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
         data: {
             action: "showAll_Tipo_Avion"
         },
@@ -156,7 +156,7 @@ function showALLTipo_Avion(ocultarModalBool) {
 function showTipo_AvionByID(idTipo_Avion) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/Tipo_AvionController.php',
+        url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
         data: {
             action: "showTipo_Avion",
             idTipo_Avion: idTipo_Avion
@@ -185,7 +185,7 @@ function showTipo_AvionByID(idTipo_Avion) {
 function deleteTipo_AvionByID(idTipo_Avion) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/Tipo_AvionController.php',
+        url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
         data: {
             action: "delete_Tipo_Avion",
             idTipo_Avion: idTipo_Avion

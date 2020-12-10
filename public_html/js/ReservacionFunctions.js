@@ -39,7 +39,7 @@ function addOrUpdateidReservacion(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/idReservacionController.php',
+            url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
             data: {
                 action:               $("#typeAction").val(),
                 idReservacion:  $("#txtidReservacion").val(),
@@ -132,7 +132,7 @@ function cancelAction() {
 function showALLidReservacion(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/idReservacionController.php',
+        url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
         data: {
             action: "showAll_idReservacion"
         },
@@ -157,7 +157,7 @@ function showALLidReservacion(ocultarModalBool) {
 function showidReservacionByID(idReservacion) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/idReservacionController.php',
+        url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
         data: {
             action: "show_idReservacion",
             idReservacion: idReservacion
@@ -186,7 +186,7 @@ function showidReservacionByID(idReservacion) {
 function deleteidReservacionByID(idReservacion) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/idReservacionController.php',
+        url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
         data: {
             action: "delete_idReservacion",
             idReservacion: idReservacion

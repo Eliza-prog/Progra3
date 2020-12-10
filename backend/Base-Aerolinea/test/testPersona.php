@@ -40,7 +40,7 @@ $obj_Persona->setsexo("f");
 
 $bo_Persona = new PersonaBo();
 
-$operacion = 5; //variable para pruebas
+$operacion = 1; //variable para pruebas
 
 switch ($operacion) {
     case 1: //Prueba para guardar en la base de datos

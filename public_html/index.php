@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Level HTML Template</title>
+    <link rel="shortcut icon" href="img/LogoPeque.png">
+    <title>Traveling Earth</title>
 <!--
 
 Template 2095 Level
@@ -63,8 +63,8 @@ http://www.tooplate.com/view/2095-level
                         
                         <nav class="navbar navbar-expand-lg narbar-light">
                             <a class="navbar-brand mr-auto" href="#">
-                                <img src="img/logo.png" alt="Site logo">
-                                Level
+                                <img src="img/LogoPeque.png" alt="Site logo">
+                                Traveling Earth
                             </a>
                             <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -72,13 +72,13 @@ http://www.tooplate.com/view/2095-level
                             <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
                                 <ul class="navbar-nav ml-auto">
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#top">Inicio <span class="sr-only">(current)</span></a>
                                   </li>
                                   <li class="nav-item">
                                     <a class="nav-link" href="#tm-section-4">Portfolio</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#tm-section-5">Blog Entries</a>
+                                    <a class="nav-link" href="#tm-section-5">Blog</a>
                                   </li>
                                   <li class="nav-item">
                                     <a class="nav-link" href="#tm-section-6">Contactenos</a>
@@ -169,9 +169,9 @@ http://www.tooplate.com/view/2095-level
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <h2 class="tm-section-title">We are here to help you?</h2>
-                            <p class="tm-color-white tm-section-subtitle">Subscribe to get our newsletters</p>
-                            <a href="#" class="tm-color-white tm-btn-white-bordered">Subscribe Newletters</a>
+                            <h2 class="tm-section-title">Estamos aquí para ayudarle</h2>
+                            <p class="tm-color-white tm-section-subtitle">Suscribase a nuesto noticiero</p>
+                            <a href="#" class="tm-color-white tm-btn-white-bordered">suscribirse</a>
                         </div>                
                     </div>
                 </div>        
@@ -265,7 +265,7 @@ http://www.tooplate.com/view/2095-level
                             <div class="tm-bg-white">
                                 <div class="tm-bg-primary tm-sidebar-pad">
                                     <h3 class="tm-color-white tm-sidebar-title">Lugares Recomendados para ti</h3>
-                                    <p class="tm-color-white tm-margin-b-0 tm-font-light">Enamel pin cliche tilde, kitsch and VHS thundercats</p>
+                                    <p class="tm-color-white tm-margin-b-0 tm-font-light">Lugares del mundo a los que puedes visitar</p>
                                 </div>
                                 <div class="tm-sidebar-pad-2">
                                     <a href="#" class="media tm-media tm-recommended-item">
@@ -289,7 +289,7 @@ http://www.tooplate.com/view/2095-level
                                     <a href="#" class="media tm-media tm-recommended-item">
                                         <img src="img/tn-img-04.jpg" alt="Image">
                                         <div class="media-body tm-media-body tm-bg-gray">
-                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">South America</h4>
+                                            <h4 class="text-uppercase tm-font-semibold tm-sidebar-item-title">Sur America</h4>
                                         </div>
                                     </a>
                                 </div>
