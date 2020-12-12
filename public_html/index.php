@@ -27,7 +27,10 @@ http://www.tooplate.com/view/2095-level
     <link href="lib/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css"/>
     <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
     <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+    <link rel="stylesheet" type="text/css" href="CSS/Estilo.css" />
+
     <!-- Templatemo style -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -213,49 +216,41 @@ http://www.tooplate.com/view/2095-level
                                 <article class="tm-bg-white mr-2 tm-carousel-item">
                                     <img src="img/img-01.jpg" alt="Image" class="img-fluid">
                                     <div class="tm-article-pad">
-                                        <header><h3 class="text-uppercase tm-article-title-2">Nunc in felis aliquet metus luctus iaculis</h3></header>
-                                        <p>Aliquam ac lacus volutpat, dictum risus at, scelerisque nulla. Nullam sollicitudin at augue venenatis eleifend. Nulla ligula ligula, egestas sit amet viverra id, iaculis sit amet ligula.</p>
+                                        <header><h3 class="text-uppercase tm-article-title-2">PARIS</h3></header>
+                                        <p>Paris es la capital de Francia y su ciudad más poblada. Capital de la región de Isla de Francia (o "Región Parisina"), constituye el único departamento unicomunal del país.</p>
                                         <a href="#" class="text-uppercase btn-primary tm-btn-primary">Get More Info.</a>
                                     </div>                                
                                 </article>                    
                                 <article class="tm-bg-white mr-2 tm-carousel-item">
                                     <img src="img/img-02.jpg" alt="Image" class="img-fluid">
                                     <div class="tm-article-pad">
-                                        <header><h3 class="text-uppercase tm-article-title-2">Sed cursus dictum nunc quis molestie</h3></header>
-                                        <p>Pellentesque quis dui sit amet purus scelerisque eleifend sed ut eros. Morbi viverra blandit massa in varius. Sed nec ex eu ex tincidunt iaculis. Curabitur eget turpis gravida.</p>
+                                        <header><h3 class="text-uppercase tm-article-title-2">BRASIL</h3></header>
+                                        <p>Brasil es un vasto país de Sudamérica que se extiende desde la Cuenca del Amazonas en el norte hasta los viñedos y las enormes cataratas del Iguazú en el sur. Río de Janeiro, simbolizado por su estatua de 38 m del Cristo Redentor sobre el cerro del Corcovado, es famoso por sus ajetreadas playas Copacabana e Ipanema, junto con su enorme y estridente festival del Carnaval, que cuenta con carros alegóricos, exuberantes disfraces y danza y música samba..</p>
                                         <a href="#" class="text-uppercase btn-primary tm-btn-primary">View Detail</a>
                                     </div>                                
                                 </article>
                                 <article class="tm-bg-white mr-2 tm-carousel-item">
-                                    <img src="img/img-01.jpg" alt="Image" class="img-fluid">
+                                    <img src="img/tailandia.jpg" alt="Image" class="img-fluid">
                                     <div class="tm-article-pad">
-                                        <header><h3 class="text-uppercase tm-article-title-2">Eget diam pellentesque interdum ut porta</h3></header>
-                                        <p>Aenean finibus tempor nulla, et maximus nibh dapibus ac. Duis consequat sed sapien venenatis consequat. Aliquam ac lacus volutpat, dictum risus at, scelerisque nulla.</p>
+                                        <header><h3 class="text-uppercase tm-article-title-2">TAILANDIA</h3></header>
+                                        <p>Tailandia es un país del Sudeste Asiático. Es famoso por sus playas tropicales, los opulentos palacios reales, las ruinas antiguas y los templos adornados con figuras de Buda. En Bangkok, la capital, un paisaje urbano ultramoderno se alza junto a las tranquilas comunidades a orillas de los canales y a los icónicos templos de Wat Arun, Wat Pho y el Templo del Buda de Esmeralda (Wat Phra Kaew). Entre los centros turísticos en las playas cercanas, se encuentran el desbordante Pattaya y el moderno Hua Hin</p>
                                         <a href="#" class="text-uppercase btn-primary tm-btn-primary">More Info.</a>
                                     </div>                                
                                 </article>
                                 <article class="tm-bg-white mr-2 tm-carousel-item">
-                                    <img src="img/img-02.jpg" alt="Image" class="img-fluid">
+                                    <img src="img/Noruega.jpg" alt="Image" class="img-fluid">
                                     <div class="tm-article-pad">
-                                        <header><h3 class="text-uppercase tm-article-title-2">Lorem ipsum dolor sit amet, consectetur</h3></header>
-                                        <p>Suspendisse molestie sed dui eget faucibus. Duis accumsan sagittis tortor in ultrices. Praesent tortor ante, fringilla ac nibh porttitor, fermentum commodo nulla.</p>
+                                        <header><h3 class="text-uppercase tm-article-title-2">NORUEGA</h3></header>
+                                        <p>Noruega es un país escandinavo que incluye montañas, glaciares y profundos fiordos costeros. Oslo, su capital, es una ciudad de áreas verdes y museos. En el Museo de barcos vikingos de Oslo, se muestran navíos vikingos preservados del siglo IX. Bergen, con coloridas casas de madera, es el punto de partida de los cruceros hacia el sorprendente fiordo de Sogn. Noruega también es famosa por la pesca, el excursionismo y el esquí, especialmente en el centro olímpico Lillehammer</p>
                                         <a href="#" class="text-uppercase btn-primary tm-btn-primary">Detail Info.</a>
                                     </div>                                
                                 </article>                    
                                 <article class="tm-bg-white mr-2 tm-carousel-item">
-                                    <img src="img/img-01.jpg" alt="Image" class="img-fluid">
+                                    <img src="img/Escocia.jpg" alt="Image" class="img-fluid">
                                     <div class="tm-article-pad">
-                                        <header><h3 class="text-uppercase tm-article-title-2">Orci varius natoque penatibus et</h3></header>
-                                        <p>Pellentesque quis dui sit amet purus scelerisque eleifend sed ut eros. Morbi viverra blandit massa in varius. Sed nec ex eu ex tincidunt iaculis. Curabitur eget turpis gravida.</p>
+                                        <header><h3 class="text-uppercase tm-article-title-2">Escocia</h3></header>
+                                        <p>Escocia, el país más septentrional del Reino Unido, es una tierra de áreas naturales en montañas, como los Cairngorms y las Tierras Altas del Noroeste, intercaladas con valles glaciales y lagos. Sus ciudades principales son Edimburgo, la capital, con su incónico castillo sobre un cerro, y Glasgow, famosa por su animado ambiente cultural. Escocia también es famosa por el golf, cuyo primer partido se disputó en el campo Old Course de St Andrews en el siglo XV.</p>
                                         <a href="#" class="text-uppercase btn-primary tm-btn-primary">Read More</a>
-                                    </div>                                
-                                </article>
-                                <article class="tm-bg-white tm-carousel-item">
-                                    <img src="img/img-02.jpg" alt="Image" class="img-fluid">
-                                    <div class="tm-article-pad">
-                                        <header><h3 class="text-uppercase tm-article-title-2">Nullam sollicitudin at augue venenatis eleifend</h3></header>
-                                        <p>Aenean finibus tempor nulla, et maximus nibh dapibus ac. Duis consequat sed sapien venenatis consequat. Aliquam ac lacus volutpat, dictum risus at, scelerisque nulla.</p>
-                                        <a href="#" class="text-uppercase btn-primary tm-btn-primary">More Details</a>
                                     </div>                                
                                 </article>
                             </div>    
@@ -299,16 +294,31 @@ http://www.tooplate.com/view/2095-level
                 </div>
             </div>
 
-            <div class="tm-bg-video">
-                <div class="overlay">
-                    <i class="fa fa-5x fa-play-circle tm-btn-play"></i>
-                    <i class="fa fa-5x fa-pause-circle tm-btn-pause"></i>
+            
+        <div class="container">
+            <div class="row">
+
+
+            <div class="row">
+                <div class="col sm 12">
+                    <div id="avion-container" class="asientos table-responsive-sm ">
+                        <a>ESCOGER ASIENTOS</a>
+
+
+
+                        <script>
+                            function cambiarBack(elemento) {
+                                if (elemento.getAttribute("class") == "escoger asiento") {
+                                    elemento.setAttribute("class", "desocupado asiento");
+                                } else {
+                                    elemento.setAttribute("class", "escoger asiento");
+                                }
+                            }
+                        </script>
+                    </div>
                 </div>
-                <video controls loop class="tmVideo">
-                    <source src="videos/video.mp4" type="video/mp4">
-                    <source src="videos/video.ogg" type="video/ogg">
-                    Your browser does not support the video tag.
-                </video>
+            </div>
+        </div>
                 <div class="tm-section tm-section-pad tm-bg-img" id="tm-section-5">                                                        
                     <div class="container ie-h-align-center-fix">
                         <div class="row tm-flex-align-center">
@@ -543,6 +553,11 @@ http://www.tooplate.com/view/2095-level
         <script src="lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
         <script src="js/PersonaFunctions.js" type="text/javascript"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/JavaScript.js" type="text/JavaScript"></script>
 
 </body>
 </html>

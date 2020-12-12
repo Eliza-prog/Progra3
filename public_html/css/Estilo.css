@@ -1,0 +1,63 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/11/2020, 05:04:21 PM
+    Author     : negro
+*/
+body{
+    background-image: url(../img/avion2.jpg);
+    background-size: calc(150%) ;
+    background-repeat: no-repeat;
+    background-position-y: 150px;
+    background-position-x: center;
+    font-size: 13px;
+}
+
+
+.desocupado {
+    background-color: #61D149;
+}
+.escoger {
+    background-color: #1449c4;
+}
+.ocupado {
+    background-color: #DA1A1A;
+}	
+
+.sinBorde{
+    border-collapse: collapse;
+    
+}
+
+.asientos{
+    margin-top: 210px;
+    margin-left: 15px;
+}
+
+
+td{
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  border:  1px;
+}
+button{
+    padding:3px;
+    margin: 2px;
+}
+
+#tabla2{
+    margin-top: 56px;
+}
+
+.tabla3{
+    
+    
+}
+
+.tabla4{
+    
+}
