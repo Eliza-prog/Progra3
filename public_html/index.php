@@ -102,9 +102,18 @@ http://www.tooplate.com/view/2095-level
                 <!-- ******************************************************** -->
                 <!-- Campos de formulario      -->
                 <!-- ******************************************************** -->
+                
+                <div>
+                    <div>
+                        <a href="FaceLogin.php"><li>Login</li></a> 
+                        <a ><li>Registro</li></a> 
+                    </div>
+                </div>   
                 <div class="col-md-12">
 
                     <div class="form-group" id="groupusuario">
+                        <br>
+                        <br>
                         <label for="txtusuario">Usuario</label>
                         <input type="text" class="form-control" id="txtusuario"  placeholder="Cedula">
                     </div>
