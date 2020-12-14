@@ -1,7 +1,26 @@
 //*****************************************************************
 //Inyección de eventos en el HTML
 //*****************************************************************
-
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
 
 
 $(function () { //para la creación de los controles
@@ -27,33 +46,33 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLPersona(true);
-    
+    cargarTablas();
+
 });
 
 //*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdatePersona(ocultarModalBool) {
+function addOrUpdatePersona() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
             url: '../backend/Base-Aerolinea/controller/PersonaController.php',
             data: {
-                action:             "add_Persona",
-                usuario:            $("#txtusuario").val(),
-                contrasena:         $("#txtcontrasena").val(),
-                nombre:             $("#txtnombre").val(),
-                apellido1:          $("#txtapellido1").val(),
-                apellido2:          $("#txtapellido2").val(),
-                correo:             $("#txtcorreo").val(),
-                fecha_nacimiento:   $("#txtfecha_nacimiento").val(),
-                direccion:          $("#txtdireccion").val(),
-                telefono1:          $("#txttelefono1").val(),
-                telefono2:          $("#txttelefono2").val(),
-                tipo_usuario:       $("#txttipo_usuario").val(),
-                sexo:               $("#txtsexo").val()
+                action: $("#typeAction").val(),
+                usuario: $("#txtusuario").val(),
+                contrasena: $("#txtcontrasena").val(),
+                nombre: $("#txtnombre").val(),
+                apellido1: $("#txtapellido1").val(),
+                apellido2: $("#txtapellido2").val(),
+                correo: $("#txtcorreo").val(),
+                fecha_nacimiento: $("#txtfecha_nacimiento").val(),
+                direccion: $("#txtdireccion").val(),
+                telefono1: $("#txttelefono1").val(),
+                telefono2: $("#txttelefono2").val(),
+                tipo_usuario: $("#txttipo_usuario").val(),
+                sexo: $("#txtsexo").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -65,14 +84,14 @@ function addOrUpdatePersona(ocultarModalBool) {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormPersona();
-                    showALLPersona();
+                    $('#dt_personas').DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
             },
             type: 'POST'
         });
-    }else{
+    } else {
         swal("Error de validación", "Los datos del formulario no fueron digitados, por favor verificar", "error");
     }
 }
@@ -82,13 +101,13 @@ function addOrUpdatePersona(ocultarModalBool) {
 function validar() {
     var validacion = true;
 
-    
+
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
     if ($("#txtusuario").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtcontrasena").val() === "") {
         validacion = false;
     }
@@ -104,15 +123,15 @@ function validar() {
     if ($("#txtapellido2").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtcorreo").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtfecha_nacimiento").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtdireccion").val() === "") {
         validacion = false;
     }
@@ -131,7 +150,7 @@ function validar() {
         validacion = false;
     }
 
-   
+
 
 
     return validacion;
@@ -154,30 +173,7 @@ function cancelAction() {
     $("#myModalFormulario").modal("hide");
 }
 
-//*****************************************************************
-//*****************************************************************
 
-function showALLPersona(ocultarModalBool) {
-    //Se envia la información por ajax
-    $.ajax({
-        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
-        data: {
-            action: "showAll_Persona"
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
-            if (ocultarModalBool) {
-                ocultarModal("myModal");
-            }
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            $("#divResult").html(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
-            
-        },
-        type: 'POST'
-    });
-}
 
 //*****************************************************************
 //*****************************************************************
@@ -185,7 +181,7 @@ function showALLPersona(ocultarModalBool) {
 function showPersonaByID(usuario) {
     //Se envia la información por ajax
     $.ajax({
-        url: 'admin/PersonaController.php',
+        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "show_Persona",
             usuario: usuario
@@ -196,17 +192,16 @@ function showPersonaByID(usuario) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objPersonaJSon = JSON.parse(data);
             $("#txtusuario").val(objPersonaJSon.usuario);
-            $("#txtcontrasena").val(objPersonaJSon.usuario);
             $("#txtnombre").val(objPersonaJSon.nombre);
             $("#txtapellido1").val(objPersonaJSon.apellido1);
             $("#txtapellido2").val(objPersonaJSon.apellido2);
-            $("#txtfecNacimiento").val(objPersonaJSon.fecNacimiento);
-            $("#txtdireccion").val(objPersonaJSon.usuario);
-            $("#txttelefono1").val(objPersonaJSon.usuario);
-            $("#txttelefono2").val(objPersonaJSon.usuario);
-            $("#txttipo_usuario").val(objPersonaJSon.usuario);
+            $("#txtfecha_nacimiento").val(objPersonaJSon.fecha_nacimiento);
+            $("#txtcorreo").val(objPersonaJSon.correo);
+            $("#txtdireccion").val(objPersonaJSon.direccion);
+            $("#txttelefono1").val(objPersonaJSon.telefono1);
+            $("#txttelefono2").val(objPersonaJSon.telefono2);
+            $("#txttipo_usuario").val(objPersonaJSon.tipo_usuario);
             $("#txtsexo").val(objPersonaJSon.sexo);
-            $("#txtlastUser").val(objPersonaJSon.lastUser);
             $("#typeAction").val("update_Persona");
             $("#myModalFormulario").modal();
         },
@@ -232,10 +227,10 @@ function deletePersonaByID(usuario) {
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLPersona(false);
+                swal("Eliminacion realizada", responseText, "success");
+              $('#dt_personas').DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+                swal("Error", responseText, "error");
             }
         },
         type: 'POST'
@@ -251,6 +246,89 @@ function mostrarModal(idDiv, titulo, mensaje) {
 function ocultarModal(idDiv) {
     $("#" + idDiv).modal("hide");
 }
+
+
+function cargarTablas() {
+
+
+
+    var dataTablePersonas_const = function () {
+        if ($("#dt_personas").length) {
+            $("#dt_personas").DataTable({
+                dom: "Bfrtip",
+                bFilter: false,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 11,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showPersonaByID(\'' + row[0] + '\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deletePersonaByID(\'' + row[0] + '\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 2,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/Base-Aerolinea/controller/PersonaController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_Persona"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_personas').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTablePersonas_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
+}
+
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_personas').DataTable().columns.adjust().responsive.recalc();
+};
+
 
 
 

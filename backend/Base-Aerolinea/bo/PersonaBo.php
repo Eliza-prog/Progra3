@@ -77,6 +77,14 @@ class PersonaBo {
             throw $e;
         }
     }
+    
+     public function loguear(Persona $Persona) {
+        try {
+            return $this->PersonaDao->loguear($Persona);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 
     //***********************************************************
     //consultar todas las Persona de la base de datos

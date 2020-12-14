@@ -6,9 +6,7 @@
  * and open the template in the editor.
  */
 
-session_name('Progra');
+session_name('LoginUsuario');
 session_start();
 session_destroy();
-$header = "http://localhost/Proyecto_AEROLINEA/public_html/Login.php";
-$header("location:".$header);
 echo("La sesión fue destruida correctamente");

@@ -84,7 +84,24 @@ include_once("template/templateHead.php");
 <br><br>
 <div class="row">
     <div class="col-md-12">
-        <div id="divResult" style="text-align:center;">Resultado de la consulta</div>
+         <table id="dt_personas"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>USUARIO</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO1</th>
+                    <th>APELLIDO2</th>
+                    <th>CORREO</th>
+                    <th>FEC. NACIMIENTO</th>
+                    <th>DIRECCION</th>
+                    <th>TELEFONO1</th>
+                    <th>TELEFONO2</th>
+                    <th>TIPO USUARIO</th>
+                    <th>SEXO</th>
+                    <th>ACCION</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
 <?php

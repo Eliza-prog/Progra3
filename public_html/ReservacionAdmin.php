@@ -59,7 +59,19 @@ include_once("template/templateHead.php");
 <br><br>
 <div class="row">
     <div class="col-md-12">
-        <div id="divResult" style="text-align:center;">Resultado de la consulta</div>
+        <table id="dt_reservacion"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>ID RESERVACION</th>
+                    <th>NUMERO DE FILA</th>
+                    <th>NUMERO DE ASIENTO</th>
+                    <th>ID VUELO</th>
+                    <th>FECHA RESERVA</th>
+                    <th>USUARIO</th>
+                    <th>ACCION</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
 <?php

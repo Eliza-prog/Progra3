@@ -97,15 +97,16 @@ if (filter_input(INPUT_POST, 'action') != null) {
         if ($action === "persona_Login") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
             if (filter_input(INPUT_POST, 'usuario') != null && filter_input(INPUT_POST, 'contrasena') != null) {
-                $myPersona->setUsuario(filter_input(INPUT_POST, 'usuario'));
-                $myPersona = $myPersonaBo->IntoById($myPersona);
+                $myPersona->setusuario(filter_input(INPUT_POST, 'usuario'));
+                $myPersona = $myPersonaBo->loguear($myPersona);
                 $contrasena = filter_input(INPUT_POST, 'contrasena');
                 if ($myPersona != null) {
-                    if($myPersona->getContrasena() === $contrasena ){                       
-                        session_name("Progra");
+                    if($myPersona->getcontrasena() === $contrasena){                       
+                        session_name("LoginUsuario");
                         session_start();
-                        $_SESSION["Progra_usuario"] = $myPersona->getUsuario(); 
-                        $_SESSION["Progra_tipo_usuario"] = $myPersona->getTipo_Usuario();
+                        $_SESSION["Usuario"] = $myPersona->getusuario(); 
+                        $_SESSION["tipo_usuario"] = $myPersona->gettipo_usuario();
+                         echo('M~Hecho');
                     }else{
                         echo('E~Usuairio y/o contrasena invalidos');
                     }

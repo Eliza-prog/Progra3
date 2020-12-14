@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-session_name('Progra');
+session_name('LoginUsuario');
 session_start();
 
 if (!(isset($_SESSION['arregloValores']))) {

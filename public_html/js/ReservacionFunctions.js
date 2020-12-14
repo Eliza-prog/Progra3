@@ -4,6 +4,26 @@
  * and open the template in the editor.
  */
 
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
@@ -27,7 +47,8 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLidReservacion(true);
+    
+    cargarTablas();
     
 });
 
@@ -159,7 +180,7 @@ function showidReservacionByID(idReservacion) {
     $.ajax({
         url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
         data: {
-            action: "show_idReservacion",
+            action: "show_Reservacion",
             idReservacion: idReservacion
         },
         error: function () { //si existe un error en la respuesta del ajax
@@ -188,7 +209,7 @@ function deleteidReservacionByID(idReservacion) {
     $.ajax({
         url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
         data: {
-            action: "delete_idReservacion",
+            action: "delete_Reservacion",
             idReservacion: idReservacion
         },
         error: function () { //si existe un error en la respuesta del ajax
@@ -198,10 +219,10 @@ function deleteidReservacionByID(idReservacion) {
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLidReservacion(false);
+                swal("Eliminacion realizada", responseText, "success");
+              $('#dt_reservacion').DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+                swal("Error", responseText, "error");
             }
         },
         type: 'POST'
@@ -217,3 +238,86 @@ function mostrarModal(idDiv, titulo, mensaje) {
 function ocultarModal(idDiv) {
     $("#" + idDiv).modal("hide");
 }
+
+
+function cargarTablas() {
+
+
+
+    var dataTableReservacion_const = function () {
+        if ($("#dt_reservacion").length) {
+            $("#dt_reservacion").DataTable({
+                dom: "Bfrtip",
+                bFilter: false,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 6,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showidReservacionByID(\'' + row[0] + '\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteidReservacionByID(\'' + row[0] + '\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 2,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_Reservacion"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_reservacion').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTableReservacion_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
+}
+
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_reservacion').DataTable().columns.adjust().responsive.recalc();
+};
+

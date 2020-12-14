@@ -1,46 +1,35 @@
 
-
-
-
-
-
-$(document).ready(function(){
-	$("#login_a").click(function(){
-        $("#shadow").fadeIn("normal");
-         $("#login_form").fadeIn("normal");
-         $("#user_name").focus();
-    });
-	$("#cancel_hide").click(function(){
-        $("#login_form").fadeOut("normal");
-        $("#shadow").fadeOut();
-   });
-   $("#login").click(function(){
-    
-        NombreUsuario=$("#user_name").val();
-        Contraseña=$("#password").val();
-         $.ajax({
-            type: "POST",
-            url: "login.php",
-            data: "name="+NombreUsuario+"&pwd="+Contraseña,
-            success: function(html){
-              if(html=='true')
-              {
-                $("#login_form").fadeOut("normal");
-				$("#shadow").fadeOut();
-				$("#profile").html("<a href='logout.php' id='logout'>Logout</a>");
-				
-              }
-              else
-              {
-                    $("#add_err").html("Wrong username or password");
-              }
-            },
-            beforeSend:function()
-			{
-                 $("#add_err").html("Loading...")
-            }
-        });
-         return false;
+$(function () { //para la creación de los controles
+    //agrega los eventos las capas necesarias
+    $("#login").click(function () {
+        Login();
     });
 });
 
+
+function Login() {
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../backend/Base-Aerolinea/controller/PersonaController.php',
+        data: {
+            action: "persona_Login",
+            usuario: $("#user_name").val(),
+            contrasena: $("#password").val()
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
+        },
+        success: function (data) {
+            var responseText = data.substring(2);
+            var typeOfMessage = data.substring(0, 2);
+            if (typeOfMessage === "M~") { //si todo esta corecto
+                swal("Hecho", responseText, "success");
+                $('#dt_personas').DataTable().ajax.reload();
+                location.reload();
+            } else {//existe un error
+                swal("Error", responseText, "error");
+            }
+        },
+        type: 'POST'
+    });
+}

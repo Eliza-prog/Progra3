@@ -15,7 +15,7 @@ class PersonaDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         $this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root", "root", "progra3");
+        $this->labAdodb->Connect("localhost", "root", "bases1", "progra3");
         
     }
 
@@ -204,7 +204,7 @@ class PersonaDao {
         }
     }
     
-     public function IntoById(Persona $personas) {
+     public function loguear(Persona $personas) {
 
         
         $returnPersonas = null;
@@ -215,12 +215,12 @@ class PersonaDao {
 
             $valores = array();
 
-            $valores["Usuario"] = $personas->getUsuario();
+            $valores["Usuario"] = $personas->getusuario();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
             if ($resultSql->RecordCount() > 0) {
-                $returnPersonas = Personas::createNullPersonas();
+                $returnPersonas = Persona::createNullPersona();
                 $returnPersonas->setusuario($resultSql->Fields("Usuario"));
                 $returnPersonas->setcontrasena($resultSql->Fields("Contrasena"));
                 $returnPersonas->settipo_usuario($resultSql->Fields("Tipo_Usuario"));
