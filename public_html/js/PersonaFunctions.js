@@ -191,7 +191,6 @@ function showPersonaByID(cliente) {
             $("#txtcorreo").val(objPersonaJSon.correo);
             $("#txtdireccion").val(objPersonaJSon.direccion);
             $("#txttelefono1").val(objPersonaJSon.telefono1);
-            $("#txttipo_cliente").val(objPersonaJSon.tipo_cliente);
             $("#txtsexo").val(objPersonaJSon.sexo);
             $("#typeAction").val("update_Persona");
             $("#myModalFormulario").modal();

@@ -87,7 +87,6 @@ include_once("template/templateHead.php");
                     <th>FEC. NACIMIENTO</th>
                     <th>DIRECCION</th>
                     <th>TELEFONO1</th>
-                    <th>TIPO CLIENTE</th>
                     <th>SEXO</th>
                     <th>ACCION</th>
                 </tr>
