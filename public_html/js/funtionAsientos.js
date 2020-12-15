@@ -21,32 +21,32 @@ function genera_tabla() {
     contador = 0;
     Fila = "";
     // Crea las celdas
-    for (i = 0; i < 3; i++) {
+    for (i = 1; i < 4; i++) {
         // Crea las hileras de la tabla
         hilera = document.createElement("tr");
-        hilera.setAttribute("id","txtNumero_Fila");
-        hilera.setAttribute("value",i+1);
-        if (i === 0) {
+        //hilera.setAttribute("id","txtNumero_Fila");
+        hilera.setAttribute("value",i);
+        if (i === 1) {
             Fila = "A";
         }
-        if (i === 1) {
+        if (i === 2) {
             Fila = "B";
         }
-        if (i === 2) {
+        if (i === 3) {
             Fila = "C";
         }
 
 
 
-        for (j = 0; j < 11; j++) {
+        for (j = 1; j < 12; j++) {
 
             celda = document.createElement("td");
-            celda.setAttribute("id","txtNumero_Asiento");
-            celda.setAttribute("value",j+1);
+            //celda.setAttribute("id","txtNumero_Asiento");
+            celda.setAttribute("value",j);
             info = document.createElement("button");
             info.setAttribute("class", " desocupado");
             info.setAttribute("Onclick", "cambiarBack(this)");
-            textoCelda = document.createTextNode(Fila + "-" + (j + 1));
+            textoCelda = document.createTextNode(Fila + "-" + (j));
             info.appendChild(textoCelda);
             celda.appendChild(info);
             hilera.appendChild(celda);
@@ -80,27 +80,31 @@ function genera_tabla2() {
     contador = 0;
     Fila = "";
     // Crea las celdas
-    for (i = 0; i < 3; i++) {
+    for (i = 4; i < 7; i++) {
         // Crea las hileras de la tabla
         hilera = document.createElement("tr");
-        if (i === 0) {
+        //hilera.setAttribute("id","txtNumero_Fila");
+        hilera.setAttribute("value",i);
+        if (i === 4) {
             Fila = "D";
         }
-        if (i === 1) {
+        if (i === 5) {
             Fila = "E";
         }
-        if (i === 2) {
+        if (i === 6) {
             Fila = "F";
         }
 
 
-        for (j = 0; j < 11; j++) {
+        for (j = 1; j < 12; j++) {
 
             celda = document.createElement("td");
+           // celda.setAttribute("id","txtNumero_Asiento");
+            celda.setAttribute("value",j);
             info = document.createElement("button");
             info.setAttribute("class", " desocupado");
             info.setAttribute("Onclick", "cambiarBack(this)");
-            textoCelda = document.createTextNode(Fila + "-" + (j + 1));
+            textoCelda = document.createTextNode(Fila + "-" + (j));
             info.appendChild(textoCelda);
             celda.appendChild(info);
             hilera.appendChild(celda);

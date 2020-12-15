@@ -24,15 +24,15 @@ include_once("template/templateHead.php");
                     </div>
                     <div class="form-group" id="groupTrayecto">
                         <label for="txtTrayecto">Trayecto</label>
-                        <input type="text" class="form-control" id="txtTrayecto"  placeholder="Trayecto">
+                        <input type="text" class="form-control" id="txtRecorrido"  placeholder="Trayecto">
                     </div>
                     <div class="form-group" id="groupDuracion">
                         <label for="txtDuracion">Duracion</label>
-                        <input type="text" class="form-control" id="txtDuracion"  placeholder="Duracion">
+                        <input type="text" class="form-control" id="txtTiempo"  placeholder="Duracion">
                     </div>
                     <div class="form-group" id="groupPrecio">
                         <label for="txtPrecio">Precio</label>
-                        <input type="text" class="form-control" id="txtPrecio"  placeholder="Precio">
+                        <input type="text" class="form-control" id="txtValor"  placeholder="Precio">
                     </div>
                     <div class="form-group">
                         <input type="hidden" id="typeAction" value="add_Ruta" />

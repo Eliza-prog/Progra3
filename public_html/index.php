@@ -154,7 +154,7 @@
                                                 </div>
                                                 <div class="form-group-tm2" id="groupcliente">
                                                     <label for="txtcliente">Contrasena</label>
-                                                    <input type="text" class="form-control" id="txtcontrasena"  placeholder="Cedula">
+                                                    <input type="text" class="form-control" id="txtcontrasena"  placeholder="Contrasena">
                                                 </div>
                                                 <div class="form-group-tm1" id="groupnombre">
                                                     <label for="txtnombre">Nombre</label>
@@ -173,7 +173,7 @@
                                                     <input type="text" class="form-control" id="txtcorreo"  placeholder="Correo">
                                                 </div>
                                                 <div class="form-group-tm1" id="groupfecha_nacimiento">
-                                                    <label for="txtfecha_nacimiento">Fecha Nacimiento</label>
+                                                    <label for="txtfecha_nacimiento">Fecha Nacimiento formato(aaaa-mm-dd)</label>
                                                     <input type="text" class="form-control" id="txtfecha_nacimiento"  placeholder="Fecha Nacimiento">
                                                 </div>
                                                 <div class="form-group-tm2" id="groupfecha_nacimiento">
@@ -203,9 +203,7 @@
 
                                             </div>
                                         </div>
-                                </div>
-
-                            </div>
+                              
                             </form>
                         </div>
 

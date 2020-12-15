@@ -5,23 +5,23 @@
  */
 
 var dt_lenguaje_espanol = {
-    decimal:        "",
-    emptyTable:     "No existe información",
-    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
-    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
-    infoFiltered:   "(filtered from _MAX_ total entries)",
-    infoPostFix:    "",
-    thousands:      ",",
-    lengthMenu:     "Mostrar _MENU_ registros por página",
+    decimal: "",
+    emptyTable: "No existe información",
+    info: "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty: "Mostrando 0 a 0 de 0 registros",
+    infoFiltered: "(filtered from _MAX_ total entries)",
+    infoPostFix: "",
+    thousands: ",",
+    lengthMenu: "Mostrar _MENU_ registros por página",
     loadingRecords: "Cargando, por favor espere...",
-    processing:     "Procesando...",
-    search:         "Buscar ",
-    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    processing: "Procesando...",
+    search: "Buscar ",
+    zeroRecords: "No se encontraron registros que cumplan con el criterio",
     paginate: {
-        first:      "Primero",
-        last:       "Último",
-        next:       "Siguiente",
-        previous:   "Anterior"
+        first: "Primero",
+        last: "Último",
+        next: "Siguiente",
+        previous: "Anterior"
     }
 };
 $(function () { //para la creación de los controles
@@ -47,9 +47,9 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    
+
     cargarTablas();
-    
+
 });
 //if(document.getElementById(txtNumero_Fila).class==="escoger asiento")
 //*********************************************************************
@@ -58,17 +58,37 @@ $(document).ready(function () {
 
 function addOrUpdateidReservacion(ocultarModalBool) {
     //Se envia la información por ajax
+
+    if ($("#txtNumero_Fila").val() === "A" || "a") {
+        dato = 1;
+    } else
+    if ($("#txtNumero_Fila").val() === "B" || "b") {
+        dato = 2;
+    }else
+    if ($("#txtNumero_Fila").val() === "C" || "c") {
+        dato = 3;
+    } else
+    if ($("#txtNumero_Fila").val() === "D" || "d") {
+        dato = 4;
+    } else
+    if ($("#txtNumero_Fila").val() === "E" || "e") {
+        dato = 5;
+    } else
+    if ($("#txtNumero_Fila").val() === "F" || "f") {
+        dato = 6;
+    }
+
     if (validar()) {
         $.ajax({
             url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
             data: {
-                action:               "add_Reservacion",
-                idReservacion:  $("#txtidReservacion").val(),
-                Numero_Fila:        $("#txtNumero_Fila").val(),
-                Numero_Asiento:              $("#txtNumero_Asiento").val(),
-                Vuelo_id_Vuelo:              $("#txtVuelo_id_Vuelo").val(),
-                Fecha_Reserva:              $("#txtFecha_Reserva").val(),
-                Persona_Cliente1:              $("#txtPersona_Cliente1").val()
+                action: "add_Reservacion",
+                idReservacion: $("#txtidReservacion").val(),
+                Numero_Fila: dato,
+                Numero_Asiento: $("#txtNumero_Asiento").val(),
+                Vuelo_id_Vuelo: $("#txtVuelo_id_Vuelo").val(),
+                Fecha_Reserva: $("#txtFecha_Reserva").val(),
+                Persona_Cliente1: $("#txtPersona_Cliente1").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -87,7 +107,7 @@ function addOrUpdateidReservacion(ocultarModalBool) {
             },
             type: 'POST'
         });
-    }else{
+    } else {
         swal("Error de validación", "Los datos del formulario no fueron digitados, por favor verificar", "error");
     }
 }
@@ -97,7 +117,7 @@ function addOrUpdateidReservacion(ocultarModalBool) {
 function validar() {
     var validacion = true;
 
-    
+
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
     if ($("#txtidReservacion").val() === "") {
@@ -111,20 +131,20 @@ function validar() {
     if ($("#txtNumero_Asiento").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtVuelo_id_Vuelo").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtFecha_Reserva").val() === "") {
         validacion = false;
     }
-    
+
     if ($("#txtPersona_Cliente1").val() === "") {
         validacion = false;
     }
 
-   
+
 
 
     return validacion;
@@ -166,7 +186,7 @@ function showALLidReservacion(ocultarModalBool) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             $("#divResult").html(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
-            
+
         },
         type: 'POST'
     });
@@ -220,7 +240,7 @@ function deleteidReservacionByID(idReservacion) {
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 swal("Eliminacion realizada", responseText, "success");
-              $('#dt_reservacion').DataTable().ajax.reload();
+                $('#dt_reservacion').DataTable().ajax.reload();
             } else {//existe un error
                 swal("Error", responseText, "error");
             }

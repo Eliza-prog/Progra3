@@ -27,7 +27,7 @@ class ReservacionDao {
         $this->labAdodb = newAdoConnection($driver);
         $this->labAdodb->setCharset('utf8');
         $this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
-        $this->labAdodb->Connect("localhost", "root","root", "progra3");
+        $this->labAdodb->Connect("localhost", "root","bases1", "progra3");
 //        $this->labAdodb->debug=true;
     }
 

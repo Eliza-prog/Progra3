@@ -21,7 +21,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script src="js/ReservacionFunctions.js" type="text/JavaScript"></script>
-        <script src="js/JavaScript.js" type="text/JavaScript"></script>
+        <script src="js/funtionAsientos.js" type="text/JavaScript"></script>
         <!--<script src="js/pruebaTabla.js" type="text/JavaScript"></script>-->
 
 
@@ -29,22 +29,24 @@
     <body >
         <div class="container">
             <div class="row">
-
-                <div class="Vuelo">
-                    <a>Escoger Vuelo</a>
-                    <select>
-                        <option id="txtVuelo_id_Vuelo" value="1">Costa Rica - Panama</option>
-                        <option id="txtVuelo_id_Vuelo" value="2">Costa Rica - Estados unidos</option>
-                        <option id="txtVuelo_id_Vuelo" value="3">Costa Rica - Argentina</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <div class="form-group-tm2">
-                        <input  type="text" placeholder="Dijite su cedula" id="txtPersona_Cliente1">
+                <article class="tm-bg-white mr-2 ">
+                    <div class="Vuelo " >
+                        <a>Escoger Vuelo</a>
+                        <select class="tm-select">
+                            <option id="txtVuelo_id_Vuelo" value="1">Costa Rica - Panama</option>
+                            <option id="txtVuelo_id_Vuelo" value="2">Costa Rica - Estados unidos</option>
+                            <option id="txtVuelo_id_Vuelo" value="3">Costa Rica - Argentina</option>
+                        </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="Reservar">Registrar</button>
-                    <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
-                </div>
+                    <div class="form-group">
+                        <div class="form-group-tm2">
+                            <a>Cedula</a>
+                            <input  type="text" placeholder="Dijite su cedula" id="txtPersona_Cliente1">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="Reservar">Registrar</button>
+                        <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                    </div>
+                </article>
                 <div class="row">
                     <div class="col sm 12">
 
@@ -64,9 +66,20 @@
                                 }
                             </script>
                         </div>
+                        <br>
+                        <br>
+                        <br>
+                        <article class="tm-bg-white mr-2 ">
+                            <div>
+                                <label>Dijite la fila :</label>
+                                <input type="text" id="txtNumero_Fila"/>
+                                <label>Dijite la Asiento :</label>
+                                <input type="text" id="txtNumero_Asiento"/>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
-
+        </div>
     </body>
 </html>

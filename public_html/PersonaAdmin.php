@@ -80,6 +80,7 @@ include_once("template/templateHead.php");
             <thead>
                 <tr>
                     <th>CLIENTE</th>
+                    <th>CONTRASENA</th>
                     <th>NOMBRE</th>
                     <th>APELLIDO1</th>
                     <th>APELLIDO2</th>

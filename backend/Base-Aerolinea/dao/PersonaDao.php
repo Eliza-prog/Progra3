@@ -184,7 +184,7 @@ class PersonaDao {
 
         
         try {
-            $sql = sprintf("select Cliente, Nombre, Apellido1, Apellido2, Correo, Fecha_Nacimiento, Direccion, Telefono1, Tipo_Cliente, Sexo from Persona");
+            $sql = sprintf("select * from persona");
             $resultSql = $this->labAdodb->Execute($sql);
             return $resultSql;
         } catch (Exception $e) {
