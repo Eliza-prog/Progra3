@@ -18,13 +18,13 @@ include_once("template/templateHead.php");
                 <!-- ******************************************************** -->
                 <div class="col-md-12">
 
-                    <div class="form-group" id="groupusuario">
-                        <label for="txtusuario">Usuario</label>
-                        <input type="text" class="form-control" id="txtusuario"  placeholder="Cedula">
+                    <div class="form-group" id="groupcliente">
+                        <label for="txtcliente">Cliente</label>
+                        <input type="text" class="form-control" id="txtcliente"  placeholder="Cliente">
                     </div>
-                    <div class="form-group" id="groupusuario">
-                        <label for="txtusuario">Contrasena</label>
-                        <input type="text" class="form-control" id="txtcontrasena"  placeholder="Cedula">
+                    <div class="form-group" id="groupcontrasena">
+                        <label for="txtcliente">Contrasena</label>
+                        <input type="text" class="form-control" id="txtcontrasena"  placeholder="contrasena">
                     </div>
                     <div class="form-group" id="groupnombre">
                         <label for="txtnombre">Nombre</label>
@@ -48,20 +48,12 @@ include_once("template/templateHead.php");
                     </div>
                     <div class="form-group" id="groupdireccion">
                         <label for="txtdireccion">Direccion</label>
-                        <input type="text" class="form-control" id="txtdireccion"  placeholder="Fecha Nacimiento">
+                        <input type="text" class="form-control" id="txtdireccion"  placeholder="Direccion">
                     </div>
                      <div class="form-group" id="grouptelefono1">
                         <label for="txttelefono1">telefono1</label>
                         <input type="text" class="form-control" id="txttelefono1"  placeholder="telefono1">
-                    </div>
-                     <div class="form-group" id="groupfecha_nacimiento">
-                        <label for="txttelefono2">telefono2</label>
-                        <input type="text" class="form-control" id="txttelefono2"  placeholder="telefono2">
-                    </div>
-                     <div class="form-group" id="grouptipo_usuario">
-                        <label for="txttipo_usuario">tipo_usuario</label>
-                        <input type="text" class="form-control" id="txttipo_usuario"  placeholder="tipo_usuario">
-                    </div>
+                     </div>
                     <div class="form-group" id="groupsexo">
                         <label for="txtsexo">sexo</label>
                         <input type="text" class="form-control" id="txtsexo"  placeholder="sexo">
@@ -87,7 +79,7 @@ include_once("template/templateHead.php");
          <table id="dt_personas"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>USUARIO</th>
+                    <th>CLIENTE</th>
                     <th>NOMBRE</th>
                     <th>APELLIDO1</th>
                     <th>APELLIDO2</th>
@@ -95,8 +87,7 @@ include_once("template/templateHead.php");
                     <th>FEC. NACIMIENTO</th>
                     <th>DIRECCION</th>
                     <th>TELEFONO1</th>
-                    <th>TELEFONO2</th>
-                    <th>TIPO USUARIO</th>
+                    <th>TIPO CLIENTE</th>
                     <th>SEXO</th>
                     <th>ACCION</th>
                 </tr>

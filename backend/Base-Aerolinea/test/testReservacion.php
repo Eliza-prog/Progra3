@@ -15,7 +15,7 @@ $obj_Reservacion->setNumero_Fila(5);
 $obj_Reservacion->setNumero_Asiento(15);
 $obj_Reservacion->setVuelo_id_Vuelo(404);
 $obj_Reservacion->setFecha_Reserva("2020-08-15");
-$obj_Reservacion->setPersona_Usuario1("402480931");
+$obj_Reservacion->setPersona_Cliente1("402480931");
 
 
 

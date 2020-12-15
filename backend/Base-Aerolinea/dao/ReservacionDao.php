@@ -38,14 +38,14 @@ class ReservacionDao {
     public function add(Reservacion $Reservacion) {
 
         try {
-            $sql = sprintf("insert into Reservacion (idReservacion, Numero_Fila, Numero_Asiento, Vuelo_id_Vuelo,Fecha_Reserva,Persona_Usuario1) 
+            $sql = sprintf("insert into Reservacion (idReservacion, Numero_Fila, Numero_Asiento, Vuelo_id_Vuelo,Fecha_Reserva,Persona_Cliente1) 
                                           values (%s,%s,%s,%s,GETDATE(),%s)",
                     $this->labAdodb->Param("idReservacion"),
                     $this->labAdodb->Param("Numero_Fila"),
                     $this->labAdodb->Param("Numero_Asiento"),
                     $this->labAdodb->Param("Vuelo_id_Vuelo"),
                     $this->labAdodb->Param("Fecha_Reserva"),
-                    $this->labAdodb->Param("Persona_Usuario1"));
+                    $this->labAdodb->Param("Persona_Cliente1"));
                     
 
             $sqlParam = $this->labAdodb->Prepare($sql);
@@ -57,7 +57,7 @@ class ReservacionDao {
             $valores["Numero_Asiento"]       = $Reservacion->getNumero_Asiento();
             $valores["Vuelo_id_Vuelo"]       = $Reservacion->getVuelo_id_Vuelo();
             $valores["Fecha_Reserva"]       = $Reservacion->getFecha_Reserva();
-            $valores["Persona_Usuario1"]       = $Reservacion->getPersona_Usuario1();
+            $valores["Persona_Cliente1"]       = $Reservacion->getPersona_Cliente1();
             
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
@@ -102,13 +102,13 @@ class ReservacionDao {
                                                 Numero_Asiento = %s,  
                                                 Vuelo_id_Vuelo = %s,
                                                 Fecha_Reserva = CURDATE(),
-                                                Persona_Usuario1 = %s
+                                                Persona_Cliente1 = %s
                             where idReservacion = %s",
                     $this->labAdodb->Param("Numero_Fila"),
                     $this->labAdodb->Param("Numero_Asiento"),
                     $this->labAdodb->Param("Vuelo_id_Vuelo"),
                     $this->labAdodb->Param("Fecha_Reserva"),
-                    $this->labAdodb->Param("Persona_Usuario1"),
+                    $this->labAdodb->Param("Persona_Cliente1"),
                     $this->labAdodb->Param("idReservacion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -118,7 +118,7 @@ class ReservacionDao {
             $valores["Numero_Asiento"]      = $Reservacion->getNumero_Asiento();
             $valores["Vuelo_id_Vuelo"]      = $Reservacion->getVuelo_id_Vuelo();
             $valores["Fecha_Reserva"]       = $Reservacion->getFecha_Reserva();
-            $valores["Persona_Usuario1"]    = $Reservacion->getPersona_Usuario1();
+            $valores["Persona_Cliente1"]    = $Reservacion->getPersona_Cliente1();
             $valores["idReservacion"]       = $Reservacion->getidReservacion();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -172,7 +172,7 @@ class ReservacionDao {
                 $returnReservacion->setNumero_Asiento($resultSql->Fields("Numero_Asiento"));
                 $returnReservacion->setVuelo_id_Vuelo($resultSql->Fields("Vuelo_id_Vuelo"));
                 $returnReservacion->setFecha_Reserva($resultSql->Fields("Fecha_Reserva"));
-                $returnReservacion->setPersona_Usuario1($resultSql->Fields("Persona_Usuario1"));
+                $returnReservacion->setPersona_Cliente1($resultSql->Fields("Persona_Cliente1"));
 
             }
         } catch (Exception $e) {

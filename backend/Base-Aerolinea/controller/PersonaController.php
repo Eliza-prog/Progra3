@@ -28,8 +28,8 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Persona" or $action === "update_Persona") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'usuario') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'contrasena') != null)&& (filter_input(INPUT_POST, 'apellido2') != null)&& (filter_input(INPUT_POST, 'correo')!= null) &&(filter_input(INPUT_POST, 'direccion') != null) && (filter_input(INPUT_POST, 'telefono1') != null) && (filter_input(INPUT_POST, 'telefono2') != null)&&(filter_input(INPUT_POST, 'fecha_nacimiento') != null) && (filter_input(INPUT_POST, 'tipo_usuario') != null) && (filter_input(INPUT_POST, 'sexo') != null)) {
-                $myPersona->setusuario(filter_input(INPUT_POST, 'usuario'));
+            if ((filter_input(INPUT_POST, 'cliente') != null) && (filter_input(INPUT_POST, 'nombre') != null) && (filter_input(INPUT_POST, 'apellido1') != null) && (filter_input(INPUT_POST, 'contrasena') != null)&& (filter_input(INPUT_POST, 'apellido2') != null)&& (filter_input(INPUT_POST, 'correo')!= null) &&(filter_input(INPUT_POST, 'direccion') != null) && (filter_input(INPUT_POST, 'telefono1') != null) &&(filter_input(INPUT_POST, 'fecha_nacimiento') != null) && (filter_input(INPUT_POST, 'sexo') != null)) {
+                $myPersona->setcliente(filter_input(INPUT_POST, 'cliente'));
                 $myPersona->setnombre(filter_input(INPUT_POST, 'nombre'));
                 $myPersona->setcontrasena(filter_input(INPUT_POST, 'contrasena'));
                 $myPersona->setapellido1(filter_input(INPUT_POST, 'apellido1'));
@@ -37,9 +37,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 $myPersona->setcorreo(filter_input(INPUT_POST, 'correo'));
                 $myPersona->setdireccion(filter_input(INPUT_POST, 'direccion'));
                 $myPersona->settelefono1(filter_input(INPUT_POST, 'telefono1'));
-                $myPersona->settelefono2(filter_input(INPUT_POST, 'telefono2'));
                 $myPersona->setfecha_nacimiento(filter_input(INPUT_POST, 'fecha_nacimiento'));
-                $myPersona->settipo_usuario(filter_input(INPUT_POST, 'tipo_usuario'));
                 $myPersona->setsexo(filter_input(INPUT_POST, 'sexo'));
                 if ($action == "add_Persona") {
                     $myPersonaBo->add($myPersona);
@@ -71,8 +69,8 @@ if (filter_input(INPUT_POST, 'action') != null) {
         
         if ($action === "show_Persona") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'usuario') != null) {
-                $myPersona->setusuario(filter_input(INPUT_POST, 'usuario'));
+            if (filter_input(INPUT_POST, 'cliente') != null) {
+                $myPersona->setcliente(filter_input(INPUT_POST, 'cliente'));
                 $myPersona = $myPersonaBo->searchById($myPersona);
                 if ($myPersona != null) {
                     echo json_encode(($myPersona));
@@ -87,8 +85,8 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "delete_Persona") {//accion de eliminar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'usuario') != null) {
-                $myPersona->setusuario(filter_input(INPUT_POST, 'usuario'));
+            if (filter_input(INPUT_POST, 'cliente') != null) {
+                $myPersona->setcliente(filter_input(INPUT_POST, 'cliente'));
                 $myPersonaBo->delete($myPersona);
                 echo('M~Registro Fue Eliminado Correctamente');
             }
@@ -96,22 +94,22 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 
         if ($action === "persona_Login") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'usuario') != null && filter_input(INPUT_POST, 'contrasena') != null) {
-                $myPersona->setusuario(filter_input(INPUT_POST, 'usuario'));
+            if (filter_input(INPUT_POST, 'cliente') != null && filter_input(INPUT_POST, 'contrasena') != null) {
+                $myPersona->setcliente(filter_input(INPUT_POST, 'cliente'));
                 $myPersona = $myPersonaBo->loguear($myPersona);
                 $contrasena = filter_input(INPUT_POST, 'contrasena');
                 if ($myPersona != null) {
                     if($myPersona->getcontrasena() === $contrasena){                       
-                        session_name("LoginUsuario");
+                        session_name("LoginCliente");
                         session_start();
-                        $_SESSION["Usuario"] = $myPersona->getusuario(); 
-                        $_SESSION["tipo_usuario"] = $myPersona->gettipo_usuario();
+                        $_SESSION["Cliente"] = $myPersona->getcliente(); 
+                        $_SESSION["tipo_cliente"] = $myPersona->gettipo_cliente();
                          echo('M~Hecho');
                     }else{
                         echo('E~Usuairio y/o contrasena invalidos');
                     }
                 } else {
-                    echo('E~NO Existe un usuario con el ID especificado');
+                    echo('E~NO Existe un cliente con el ID especificado');
                 }
             }
         }

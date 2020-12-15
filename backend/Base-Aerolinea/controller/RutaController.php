@@ -28,11 +28,11 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Ruta" or $action === "update_Ruta") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idRuta') != null) && (filter_input(INPUT_POST, 'Trayecto') != null) && (filter_input(INPUT_POST, 'Precio') != null) && (filter_input(INPUT_POST, 'Duracion') != null)) {
+            if ((filter_input(INPUT_POST, 'idRuta') != null) && (filter_input(INPUT_POST, 'Recorrido') != null) && (filter_input(INPUT_POST, 'Valor') != null) && (filter_input(INPUT_POST, 'Tiempo') != null)) {
                 $myRuta->setidRuta(filter_input(INPUT_POST, 'idRuta'));
-                $myRuta->setTrayecto(filter_input(INPUT_POST, 'Trayecto'));
-                $myRuta->setDuracion(filter_input(INPUT_POST, 'Duracion'));
-                $myRuta->setPrecio(filter_input(INPUT_POST, 'Precio'));
+                $myRuta->setRecorrido(filter_input(INPUT_POST, 'Recorrido'));
+                $myRuta->setTiempo(filter_input(INPUT_POST, 'Tiempo'));
+                $myRuta->setValor(filter_input(INPUT_POST, 'Valor'));
             
                 if ($action == "add_Ruta") {
                     $myRutaBo->add($myRuta);
@@ -87,20 +87,20 @@ if (filter_input(INPUT_POST, 'action') != null) {
             }
         }
                 
-        if ($action === "persona_Login") {//accion de mostrar cliente por ID
+        if ($action === "Ruta_Login") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'idRuta') != null && filter_input(INPUT_POST, 'Duracion') != null) {
+            if (filter_input(INPUT_POST, 'idRuta') != null && filter_input(INPUT_POST, 'Tiempo') != null) {
                 $myRuta->setidRuta(filter_input(INPUT_POST, 'idRuta'));
                 $myRuta = $myRutaBo->IntoById($myRuta);
-                $Duracion = filter_input(INPUT_POST, 'Duracion');
+                $Tiempo = filter_input(INPUT_POST, 'Tiempo');
                 if ($myRuta != null) {
-                    if($myRuta->getContrasena() === $Duracion ){                       
+                    if($myRuta->getContrasena() === $Tiempo ){                       
                         session_name("Progra");
                         session_start();
                         $_SESSION["Progra_idRuta"] = $myRuta->getidRuta(); 
-                        $_SESSION["Progra_tipo_idRuta"] = $myRuta->getidRuta();
+                        $_SESSION["Progra_idRuta"] = $myRuta->getidRuta();
                     }else{
-                        echo('E~Usuairio y/o Duracion invalidos');
+                        echo('E~Usuario y/o Tiempo invalidos');
                     }
                 } else {
                     echo('E~NO Existe un idRuta con el ID especificado');

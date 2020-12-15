@@ -6,16 +6,16 @@
  * and open the template in the editor.
  */
 
-session_name('LoginUsuario');
+session_name('LoginCliente');
 session_start();
 
-if ((!isset($_SESSION["Usuario"])) && (!isset($_SESSION["tipo_usuario"]))) {
-    echo ("El atributo proyecto_usuario no existe en sesion, por favor ejecutar el archivo php que la crea<br>");
+if ((!isset($_SESSION["cliente"])) && (!isset($_SESSION["tipo_cliente"]))) {
+    echo ("El atributo proyecto_cliente no existe en sesion, por favor ejecutar el archivo php que la crea<br>");
 } else {
 
-    $arreglo = $_SESSION['Usuario'];
-    $arreglo1 = $_SESSION['tipo_usuario']; // obtiene el dato de la sesión
-    echo('Usuario iniciado: ');
+    $arreglo = $_SESSION['cliente'];
+    $arreglo1 = $_SESSION['tipo_cliente']; // obtiene el dato de la sesión
+    echo('cliente iniciado: ');
     print_r($arreglo);
 
 

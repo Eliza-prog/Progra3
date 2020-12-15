@@ -11,7 +11,7 @@ require_once("baseDomain.php");
 class Persona extends BaseDomain implements \JsonSerializable{
 
     //attributes
-    private $usuario;
+    private $cliente;
     private $contrasena;
     private $nombre;
     private $apellido1;
@@ -20,8 +20,7 @@ class Persona extends BaseDomain implements \JsonSerializable{
     private $fecha_nacimiento;
     private $direccion;
     private $telefono1;
-    private $telefono2;
-    private $tipo_usuario;
+
     private $sexo;
 
     //constructors
@@ -34,9 +33,9 @@ class Persona extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createPersona($usuario, $contrasena, $nombre, $apellido1, $apellido2, $correo, $fecha_nacimiento, $direccion, $telefono1, $telefono2, $tipo_usuario, $sexo) {
+    public static function createPersona($cliente, $contrasena, $nombre, $apellido1, $apellido2, $correo, $fecha_nacimiento, $direccion, $telefono1,  $sexo) {
         $instance = new self();
-        $instance->usuario              = $usuario;
+        $instance->cliente              = $cliente;
         $instance->contrasena           = $contrasena;
         $instance->nombre               = $nombre;
         $instance->apellido1            = $apellido1;
@@ -45,20 +44,19 @@ class Persona extends BaseDomain implements \JsonSerializable{
         $instance->fecha_nacimiento     = $fecha_nacimiento;
         $instance->direccion            = $direccion;
         $instance->telefono1            = $telefono1;
-        $instance->telefono2            = $telefono2;
-        $instance->tipo_usuario         = $tipo_usuario;
+
         $instance->sexo                 = $sexo;
         return $instance;
     }
     /****************************************************************************/
     //properties
     /****************************************************************************/
-    public function getusuario() {
-        return $this->usuario;
+    public function getcliente() {
+        return $this->cliente;
     }
 
-    public function setusuario($usuario) {
-        $this->usuario = $usuario;
+    public function setcliente($cliente) {
+        $this->cliente = $cliente;
     }
     
     public function getcontrasena() {
@@ -129,20 +127,7 @@ class Persona extends BaseDomain implements \JsonSerializable{
 
     public function settelefono1($telefono1) {
         $this->telefono1 = $telefono1;
-    }
-     public function gettelefono2() {
-        return $this->telefono2;
-    }
-
-    public function settelefono2($telefono2) {
-        $this->telefono2 = $telefono2;
-    }
-     public function gettipo_usuario() {
-        return $this->tipo_usuario;
-    }
-
-    public function settipo_usuario($tipo_usuario) {
-        $this->tipo_usuario = $tipo_usuario;
+    
     }
 
     /****************************************************************************/

@@ -61,7 +61,7 @@ function addOrUpdatePersona() {
             url: '../backend/Base-Aerolinea/controller/PersonaController.php',
             data: {
                 action: $("#typeAction").val(),
-                usuario: $("#txtusuario").val(),
+                cliente: $("#txtcliente").val(),
                 contrasena: $("#txtcontrasena").val(),
                 nombre: $("#txtnombre").val(),
                 apellido1: $("#txtapellido1").val(),
@@ -70,8 +70,6 @@ function addOrUpdatePersona() {
                 fecha_nacimiento: $("#txtfecha_nacimiento").val(),
                 direccion: $("#txtdireccion").val(),
                 telefono1: $("#txttelefono1").val(),
-                telefono2: $("#txttelefono2").val(),
-                tipo_usuario: $("#txttipo_usuario").val(),
                 sexo: $("#txtsexo").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
@@ -104,7 +102,7 @@ function validar() {
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#txtusuario").val() === "") {
+    if ($("#txtcliente").val() === "") {
         validacion = false;
     }
 
@@ -136,13 +134,6 @@ function validar() {
         validacion = false;
     }
     if ($("#txttelefono1").val() === "") {
-        validacion = false;
-    }
-    if ($("#txttelefono2").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txttipo_usuario").val() === "") {
         validacion = false;
     }
 
@@ -178,20 +169,21 @@ function cancelAction() {
 //*****************************************************************
 //*****************************************************************
 
-function showPersonaByID(usuario) {
+function showPersonaByID(cliente) {
     //Se envia la información por ajax
     $.ajax({
         url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "show_Persona",
-            usuario: usuario
+            cliente: cliente
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objPersonaJSon = JSON.parse(data);
-            $("#txtusuario").val(objPersonaJSon.usuario);
+            $("#txtcliente").val(objPersonaJSon.cliente);
+            $("#txtcontrasena").val(objPersonaJSon.contrasena);
             $("#txtnombre").val(objPersonaJSon.nombre);
             $("#txtapellido1").val(objPersonaJSon.apellido1);
             $("#txtapellido2").val(objPersonaJSon.apellido2);
@@ -199,8 +191,7 @@ function showPersonaByID(usuario) {
             $("#txtcorreo").val(objPersonaJSon.correo);
             $("#txtdireccion").val(objPersonaJSon.direccion);
             $("#txttelefono1").val(objPersonaJSon.telefono1);
-            $("#txttelefono2").val(objPersonaJSon.telefono2);
-            $("#txttipo_usuario").val(objPersonaJSon.tipo_usuario);
+            $("#txttipo_cliente").val(objPersonaJSon.tipo_cliente);
             $("#txtsexo").val(objPersonaJSon.sexo);
             $("#typeAction").val("update_Persona");
             $("#myModalFormulario").modal();
@@ -212,13 +203,13 @@ function showPersonaByID(usuario) {
 //*****************************************************************
 //*****************************************************************
 
-function deletePersonaByID(usuario) {
+function deletePersonaByID(cliente) {
     //Se envia la información por ajax
     $.ajax({
         url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "delete_Persona",
-            usuario: usuario
+            cliente: cliente
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Persona en la base de datos");

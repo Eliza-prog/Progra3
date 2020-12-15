@@ -34,13 +34,13 @@ if (filter_input(INPUT_POST, 'action') != null) {
 
         if ($action === "add_Reservacion" or $action === "update_Reservacion") {
             //se valida que los parametros hayan sido enviados por post
-            if ((filter_input(INPUT_POST, 'idReservacion') != null) && (filter_input(INPUT_POST, 'Numero_Fila') != null) && (filter_input(INPUT_POST, 'Numero_Asiento') != null)&& (filter_input(INPUT_POST, 'Vuelo_id_Vuelo') != null)&& (filter_input(INPUT_POST, 'Fecha_Reserva') != null)&& (filter_input(INPUT_POST, 'Persona_Usuario1') != null)) {
+            if ((filter_input(INPUT_POST, 'idReservacion') != null) && (filter_input(INPUT_POST, 'Numero_Fila') != null) && (filter_input(INPUT_POST, 'Numero_Asiento') != null)&& (filter_input(INPUT_POST, 'Vuelo_id_Vuelo') != null)&& (filter_input(INPUT_POST, 'Fecha_Reserva') != null)&& (filter_input(INPUT_POST, 'Persona_Cliente1') != null)) {
                 $myReservacion->setidReservacion(filter_input(INPUT_POST, 'idReservacion'));
                 $myReservacion->setNumero_Fila(filter_input(INPUT_POST, 'Numero_Fila'));
                 $myReservacion->setNumero_Asiento(filter_input(INPUT_POST, 'Numero_Asiento'));
                 $myReservacion->setVuelo_id_Vuelo(filter_input(INPUT_POST, 'Vuelo_id_Vuelo'));
                 $myReservacion->setFecha_Reserva(filter_input(INPUT_POST, 'Fecha_Reserva'));
-                $myReservacion->setPersona_Usuario1(filter_input(INPUT_POST, 'Persona_Usuario1'));
+                $myReservacion->setPersona_Cliente1(filter_input(INPUT_POST, 'Persona_Cliente1'));
                 if ($action == "add_Reservacion") {
                     $myReservacionBo->add($myReservacion);
                     echo('M~Registro Incluido Correctamente');

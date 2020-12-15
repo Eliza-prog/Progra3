@@ -33,21 +33,21 @@ class RutaDao {
     public function add(Ruta $Ruta) {
 
         try {
-            $sql = sprintf("insert into Ruta (idRuta, Trayecto, Duracion, Precio) 
+            $sql = sprintf("insert into Ruta (idRuta, Recorrido, Tiempo, Valor) 
                                           values (%s,%s,%s,%s)",
                     $this->labAdodb->Param("idRuta"),
-                    $this->labAdodb->Param("Trayecto"),
-                    $this->labAdodb->Param("Duracion"),
-                    $this->labAdodb->Param("Precio"));
+                    $this->labAdodb->Param("Recorrido"),
+                    $this->labAdodb->Param("Tiempo"),
+                    $this->labAdodb->Param("Valor"));
 
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
             $valores["idRuta"]       = $Ruta->getidRuta();
-            $valores["Trayecto"]          = $Ruta->getTrayecto();
-            $valores["Duracion"]       = $Ruta->getDuracion();
-            $valores["Precio"]       = $Ruta->getPrecio();
+            $valores["Recorrido"]          = $Ruta->getRecorrido();
+            $valores["Tiempo"]       = $Ruta->getTiempo();
+            $valores["Valor"]       = $Ruta->getValor();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -87,22 +87,22 @@ class RutaDao {
     public function update(Ruta $Ruta) {
 
         try {
-            $sql = sprintf("update Ruta set Trayecto = %s, 
-                                                Duracion = %s, 
-                                                Precio = %s    
+            $sql = sprintf("update Ruta set Recorrido = %s, 
+                                                Tiempo = %s, 
+                                                Valor = %s    
                                                 
                             where idRuta = %s",
-                    $this->labAdodb->Param("Trayecto"),
-                    $this->labAdodb->Param("Duracion"),
-                    $this->labAdodb->Param("Precio"),
+                    $this->labAdodb->Param("Recorrido"),
+                    $this->labAdodb->Param("Tiempo"),
+                    $this->labAdodb->Param("Valor"),
                     $this->labAdodb->Param("idRuta"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Trayecto"]          = $Ruta->getTrayecto();
-            $valores["Duracion"]       = $Ruta->getDuracion();
-            $valores["Precio"]       = $Ruta->getPrecio();
+            $valores["Recorrido"]          = $Ruta->getRecorrido();
+            $valores["Tiempo"]       = $Ruta->getTiempo();
+            $valores["Valor"]       = $Ruta->getValor();
             $valores["idRuta"]       = $Ruta->getidRuta();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -152,9 +152,9 @@ class RutaDao {
             if ($resultSql->RecordCount() > 0) {
                 $returnRuta = Ruta::createNullRuta();
                 $returnRuta->setidRuta($resultSql->Fields("idRuta"));
-                $returnRuta->setTrayecto($resultSql->Fields("Trayecto"));
-                $returnRuta->setDuracion($resultSql->Fields("Duracion"));
-                $returnRuta->setPrecio($resultSql->Fields("Precio"));
+                $returnRuta->setRecorrido($resultSql->Fields("Recorrido"));
+                $returnRuta->setTiempo($resultSql->Fields("Tiempo"));
+                $returnRuta->setValor($resultSql->Fields("Valor"));
 
             }
         } catch (Exception $e) {

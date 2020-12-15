@@ -12,9 +12,9 @@ class Ruta extends BaseDomain implements \JsonSerializable{
 
     //attributes
     private $idRuta;
-    private $Trayecto;
-    private $Duracion;
-    private $Precio;
+    private $Recorrido;
+    private $Tiempo;
+    private $Valor;
 
     
 
@@ -28,12 +28,12 @@ class Ruta extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createRuta($idRuta, $Trayecto, $Duracion, $Precio) {
+    public static function createRuta($idRuta, $Recorrido, $Tiempo, $Valor) {
         $instance = new self();
         $instance->idRuta        = $idRuta;
-        $instance->Trayecto           = $Trayecto;
-        $instance->Duracion        = $Duracion;
-        $instance->Precio        = $Precio;
+        $instance->Recorrido           = $Recorrido;
+        $instance->Tiempo        = $Tiempo;
+        $instance->Valor        = $Valor;
 
         return $instance;
     }
@@ -51,32 +51,32 @@ class Ruta extends BaseDomain implements \JsonSerializable{
 
     /****************************************************************************/
 
-    public function getTrayecto() {
-        return $this->Trayecto;
+    public function getRecorrido() {
+        return $this->Recorrido;
     }
 
-    public function setTrayecto($Trayecto) {
-        $this->Trayecto = $Trayecto;
-    }
-
-    /****************************************************************************/
-
-    public function getDuracion() {
-        return $this->Duracion;
-    }
-
-    public function setDuracion($Duracion) {
-        $this->Duracion = $Duracion;
+    public function setRecorrido($Recorrido) {
+        $this->Recorrido = $Recorrido;
     }
 
     /****************************************************************************/
 
-    public function getPrecio() {
-        return $this->Precio;
+    public function getTiempo() {
+        return $this->Tiempo;
     }
 
-    public function setPrecio($Precio) {
-        $this->Precio = $Precio;
+    public function setTiempo($Tiempo) {
+        $this->Tiempo = $Tiempo;
+    }
+
+    /****************************************************************************/
+
+    public function getValor() {
+        return $this->Valor;
+    }
+
+    public function setValor($Valor) {
+        $this->Valor = $Valor;
     }
 
     /****************************************************************************/

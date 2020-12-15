@@ -4,10 +4,31 @@
  * and open the template in the editor.
  */
 
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
+
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
-        addOrUpdateTipo_Avion(false);
+        addOrUpdateAvion(false);
     });
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
@@ -16,8 +37,8 @@ $(function () { //para la creación de los controles
 
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
-        clearFormTipo_Avion();
-        $("#typeAction").val("add_Tipo_Avion");
+        clearFormAvion();
+        $("#typeAction").val("add_Avion");
         $("#myModalFormulario").modal();
     });
 });
@@ -27,22 +48,21 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLTipo_Avion(true);
-    
-});
+    cargarTablas();
 
+});
 //*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateTipo_Avion(ocultarModalBool) {
+function addOrUpdateAvion(ocultarModalBool) {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
+            url: '../backend/Base-Aerolinea/controller/AvionController.php',
             data: {
                 action:         $("#typeAction").val(),
-                idTipo_Avion:   $("#txtidTipo_Avion").val(),
+                idAvion:   $("#txtidAvion").val(),
                 Fecha:          $("#txtFecha").val(),
                 Modelo:         $("#txtModelo").val(),
                 Marca:          $("#txtMarca").val(),
@@ -60,7 +80,7 @@ function addOrUpdateTipo_Avion(ocultarModalBool) {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormAvion();
-                    showALLTipo_Avion();
+                    showALLAvion();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -80,7 +100,7 @@ function validar() {
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#txtidTipo_Avion").val() === "") {
+    if ($("#txtidAvion").val() === "") {
         validacion = false;
     }
 
@@ -111,7 +131,7 @@ function validar() {
 //*****************************************************************
 //*****************************************************************
 
-function clearFormTipo_Avion() {
+function clearFormAvion() {
     $('#formAvion').trigger("reset");
 }
 
@@ -120,20 +140,20 @@ function clearFormTipo_Avion() {
 
 function cancelAction() {
     //clean all fields of the form
-    clearFormTipo_Avion();
-    $("#typeAction").val("add_Tipo_Avion");
+    clearFormAvion();
+    $("#typeAction").val("add_Avion");
     $("#myModalFormulario").modal("hide");
 }
 
 //*****************************************************************
 //*****************************************************************
 
-function showALLTipo_Avion(ocultarModalBool) {
+function showALLAvion(ocultarModalBool) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
+        url: '../backend/Base-Aerolinea/controller/AvionController.php',
         data: {
-            action: "showAll_Tipo_Avion"
+            action: "showAll_Avion"
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las Avion en la base de datos");
@@ -153,26 +173,26 @@ function showALLTipo_Avion(ocultarModalBool) {
 //*****************************************************************
 //*****************************************************************
 
-function showTipo_AvionByID(idTipo_Avion) {
+function showAvionByID(idAvion) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
+        url: '../backend/Base-Aerolinea/controller/AvionController.php',
         data: {
-            action: "showTipo_Avion",
-            idTipo_Avion: idTipo_Avion
+            action: "showAvion",
+            idAvion: idAvion
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de los Tipo_Avion en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de los Avion en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var objTipo_AvionJSon = JSON.parse(data);
-            $("#txtidTipo_Avion").val(objTipo_AvionJSon.idTipo_Avion);
-            $("#txtFecha").val(objTipo_AvionJSon.Fecha);
-            $("#txtModelo").val(objTipo_AvionJSon.Modelo);
-            $("#txtMarca").val(objTipo_AvionJSon.Marca);
-            $("#txtFila").val(objTipo_AvionJSon.Fila);
-            $("#txtAsiento_Fila").val(objTipo_AvionJSon.Asiento_Fila);
-            $("#typeAction").val("update_Tipo_Avion");
+            var objAvionJSon = JSON.parse(data);
+            $("#txtidAvion").val(objAvionJSon.idAvion);
+            $("#txtFecha").val(objAvionJSon.Fecha);
+            $("#txtModelo").val(objAvionJSon.Modelo);
+            $("#txtMarca").val(objAvionJSon.Marca);
+            $("#txtFila").val(objAvionJSon.Fila);
+            $("#txtAsiento_Fila").val(objAvionJSon.Asiento_Fila);
+            $("#typeAction").val("update_Avion");
             $("#myModalFormulario").modal();
         },
         type: 'POST'
@@ -182,23 +202,23 @@ function showTipo_AvionByID(idTipo_Avion) {
 //*****************************************************************
 //*****************************************************************
 
-function deleteTipo_AvionByID(idTipo_Avion) {
+function deleteAvionByID(idAvion) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/Base-Aerolinea/controller/Tipo_AvionController.php',
+        url: '../backend/Base-Aerolinea/controller/AvionController.php',
         data: {
-            action: "delete_Tipo_Avion",
-            idTipo_Avion: idTipo_Avion
+            action: "delete_Avion",
+            idAvion: idAvion
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las Tipo_Avion en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de las Avion en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLTipo_Avion(false);
+                showALLAvion(false);
             } else {//existe un error
                 mostrarModal("myModal", "Error", responseText);
             }
@@ -216,4 +236,85 @@ function mostrarModal(idDiv, titulo, mensaje) {
 function ocultarModal(idDiv) {
     $("#" + idDiv).modal("hide");
 }
+
+function cargarTablas() {
+
+
+
+    var dataTableAvion_const = function () {
+        if ($("#dt_Avion").length) {
+            $("#dt_Avion").DataTable({
+                dom: "Bfrtip",
+                bFilter: false,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 11,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showAvionByID(\'' + row[0] + '\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteAvionByID(\'' + row[0] + '\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 2,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/Base-Aerolinea/controller/AvionController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_Avion"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_Avion').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTableAvion_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
+}
+
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_Avion').DataTable().columns.adjust().responsive.recalc();
+};
 

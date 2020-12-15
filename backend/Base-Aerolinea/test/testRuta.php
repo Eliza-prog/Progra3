@@ -11,9 +11,9 @@ require_once ("../domain/Ruta.php");
 
 $obj_Ruta = new Ruta();
 $obj_Ruta->setIdRuta(1234);
-$obj_Ruta->setTrayecto("san jose-cartago");
-$obj_Ruta->setDuracion(156);
-$obj_Ruta->setPrecio(1000);
+$obj_Ruta->setRecorrido("san jose-cartago");
+$obj_Ruta->setTiempo(156);
+$obj_Ruta->setValor(1000);
 
 
   

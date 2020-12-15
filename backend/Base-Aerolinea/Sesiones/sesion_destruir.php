@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-session_name('LoginUsuario');
+session_name('LoginCliente');
 session_start();
 session_destroy();
 echo("La sesión fue destruida correctamente");

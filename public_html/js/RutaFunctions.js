@@ -4,6 +4,30 @@
  * and open the template in the editor.
  */
 
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
+
+
+
+
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
@@ -27,15 +51,15 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLRuta(true);
-    
+    cargarTablas();
+
 });
 
 //*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateRuta(ocultarModalBool) {
+function addOrUpdateRuta() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
@@ -43,9 +67,9 @@ function addOrUpdateRuta(ocultarModalBool) {
             data: {
                 action:         $("#typeAction").val(),
                 idRuta:         $("#txtidRuta").val(),
-                Trayecto:   $("#txtTrayecto").val(),
-                Duracion:    $("#txtDuracion").val(),
-                Precio:  $("#txtPrecio").val()
+                Recorrido:   $("#txtRecorrido").val(),
+                Tiempo:    $("#txtTiempo").val(),
+                Valor:  $("#txtValor").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -81,15 +105,15 @@ function validar() {
         validacion = false;
     }
 
-    if ($("#txtTrayecto").val() === "") {
+    if ($("#txtRecorrido").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtDuracion").val() === "") {
+    if ($("#txtTiempo").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtPrecio").val() === "") {
+    if ($("#txtValor").val() === "") {
         validacion = false;
     
     }
@@ -157,9 +181,9 @@ function showRutaByID(idRuta) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objRutaJSon = JSON.parse(data);
             $("#txtidRuta").val(objRutaJSon.idRuta);
-            $("#txtTrayecto").val(objRutaJSon.Trayecto);
-            $("#txtDuracion").val(objRutaJSon.Duracion);
-            $("#txtPrecio").val(objRutaJSon.Precio);
+            $("#txtRecorrido").val(objRutaJSon.Recorrido);
+            $("#txtTiempo").val(objRutaJSon.Tiempo);
+            $("#txtValor").val(objRutaJSon.Valor);
             $("#typeAction").val("update_Ruta");
             $("#myModalFormulario").modal();
         },
@@ -205,3 +229,84 @@ function ocultarModal(idDiv) {
     $("#" + idDiv).modal("hide");
 }
 
+
+function cargarTablas() {
+
+
+
+    var dataTableRuta_const = function () {
+        if ($("#dt_Ruta").length) {
+            $("#dt_Ruta").DataTable({
+                dom: "Bfrtip",
+                bFilter: false,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 11,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showRutaByID(\'' + row[0] + '\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteRutaByID(\'' + row[0] + '\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 2,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/Base-Aerolinea/controller/RutaController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_Ruta"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_Ruta').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTableRuta_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
+}
+
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_Ruta').DataTable().columns.adjust().responsive.recalc();
+};

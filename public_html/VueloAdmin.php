@@ -30,12 +30,12 @@ include_once("template/templateHead.php");
                         <label for="txtRuta_idRuta">Ruta_idRuta</label>
                         <input type="text" class="form-control" id="txtRuta_idRuta"  placeholder="Ruta_idRuta">
                     </div>
-                    <div class="form-group" id="groupTipo_Avion_idTipo_Aviones">
-                        <label for="txtTipo_Avion_idTipo_Aviones">Tipo_Avion_idTipo_Aviones</label>
+                    <div class="form-group" id="groupTipo_Avion_idAviones">
+                        <label for="txtTipo_Avion_idAviones">Tipo_Avion_idAviones</label>
                         <input type="text" class="form-control" id="txtTipo_Avion_idTipo_Aviones"  placeholder="Tipo_Avion_idTipo_Aviones">
                     </div>       
                     <div class="form-group">
-                        <input type="hidden" id="typeAction" value="add_personas" />
+                        <input type="hidden" id="typeAction" value="add_Vuelo" />
                         <input type="hidden" value="" id="idTarea"/>
                         <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
                         <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
@@ -47,11 +47,22 @@ include_once("template/templateHead.php");
 </div>
 
 <br>
-<h3>Tabla con informacion de Vuelos</h3>
+<h3>Tabla con informacion de los </h3>
 <br><br>
 <div class="row">
     <div class="col-md-12">
-        <div id="divResult" style="text-align:center;">Resultado de la consulta</div>
+        <table id="dt_reservacion"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>ID VUELO</th>
+                    <th>FECHA Y HORA</th>
+                    <th>NUMERO DE ASIENTO</th>
+                    <th>ID RUTA</th>
+                    <th>TIPO DE AVION</th>
+                    <th>ACCION</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
 <?php

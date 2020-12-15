@@ -38,9 +38,9 @@ include_once("template/templateHead.php");
                         <label for="txtFecha_Reserva">Fecha_Reserva</label>
                         <input type="text" class="form-control" id="txtFecha_Reserva"  placeholder="Fecha_Reserva">
                     </div>
-                    <div class="form-group" id="groupPersona_Usuario1">
-                        <label for="txtPersona_Usuario1">Persona Usuario1</label>
-                        <input type="text" class="form-control" id="txtPersona_Usuario1"  placeholder="Persona Usuario1">
+                    <div class="form-group" id="groupPersona_Cliente1">
+                        <label for="txtPersona_Cliente1">Persona Cliente1</label>
+                        <input type="text" class="form-control" id="txtPersona_Cliente1"  placeholder="Persona Cliente1">
                     </div>
                     <div class="form-group">
                         <input type="hidden" id="typeAction" value="add_Reservacion" />
@@ -67,7 +67,7 @@ include_once("template/templateHead.php");
                     <th>NUMERO DE ASIENTO</th>
                     <th>ID VUELO</th>
                     <th>FECHA RESERVA</th>
-                    <th>USUARIO</th>
+                    <th>PERSONA CLIENTE1</th>
                     <th>ACCION</th>
                 </tr>
             </thead>

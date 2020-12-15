@@ -1,8 +1,8 @@
 <?php
 
 
-require_once("../domain/Tipo_Avion.php");
-require_once("../dao/Tipo_AvionDao.php");
+require_once("../domain/Avion.php");
+require_once("../dao/AvionDao.php");
 
 /**
  * @author ChGari
@@ -10,32 +10,32 @@ require_once("../dao/Tipo_AvionDao.php");
  * Comment: It was created
  *
  */
-class Tipo_AvionBo {
+class AvionBo {
 
-    private $Tipo_AvionDao;
+    private $AvionDao;
 
     public function __construct() {
-        $this->Tipo_AvionDao = new Tipo_AvionDao();
+        $this->AvionDao = new AvionDao();
     }
 
-    public function getTipo_AvionDao() {
-        return $this->Tipo_AvionDao;
+    public function getAvionDao() {
+        return $this->AvionDao;
     }
 
-    public function setTipo_AvionDao(Tipo_AvionDao $Tipo_AvionDao) {
-        $this->Tipo_AvionDao = $Tipo_AvionDao;
+    public function setAvionDao(AvionDao $AvionDao) {
+        $this->AvionDao = $AvionDao;
     }
 
     //***********************************************************
     //agrega a una persona a la base de datos
     //***********************************************************
 
-    public function add(Tipo_Avion $Tipo_Avion) {
+    public function add(Avion $Avion) {
         try {
-            if (!$this->Tipo_AvionDao->exist($Tipo_Avion)) {
-                $this->Tipo_AvionDao->add($Tipo_Avion);
+            if (!$this->AvionDao->exist($Avion)) {
+                $this->AvionDao->add($Avion);
             } else {
-                throw new Exception("El Tipo_Avion ya existe en la base de datos!!");
+                throw new Exception("El Avion ya existe en la base de datos!!");
             }
         } catch (Exception $e) {
             throw $e;
@@ -46,9 +46,9 @@ class Tipo_AvionBo {
     //modifica a una persona a la base de datos
     //***********************************************************
 
-    public function update(Tipo_Avion $Tipo_Avion) {
+    public function update(Avion $Avion) {
         try {
-            $this->Tipo_AvionDao->update($Tipo_Avion);
+            $this->AvionDao->update($Avion);
         } catch (Exception $e) {
             throw $e;
         }
@@ -58,9 +58,9 @@ class Tipo_AvionBo {
     //eliminar a una persona a la base de datos
     //***********************************************************
 
-    public function delete(Tipo_Avion $Tipo_Avion) {
+    public function delete(Avion $Avion) {
         try {
-            $this->Tipo_AvionDao->delete($Tipo_Avion);
+            $this->AvionDao->delete($Avion);
         } catch (Exception $e) {
             throw $e;
         }
@@ -70,21 +70,21 @@ class Tipo_AvionBo {
     //consulta a una persona a la base de datos
     //***********************************************************
 
-    public function searchById(Tipo_Avion $Tipo_Avion) {
+    public function searchById(Avion $Avion) {
         try {
-            return $this->Tipo_AvionDao->searchById($Tipo_Avion);
+            return $this->AvionDao->searchById($Avion);
         } catch (Exception $e) {
             throw $e;
         }
     }
 
     //***********************************************************
-    //consultar todas las Tipo_Avion de la base de datos
+    //consultar todas las Avion de la base de datos
     //***********************************************************
 
     public function getAll() {
         try {
-            return $this->Tipo_AvionDao->getAll();
+            return $this->AvionDao->getAll();
         } catch (Exception $e) {
             throw $e;
         }
@@ -92,6 +92,6 @@ class Tipo_AvionBo {
 
 }
 
-//end of the class Tipo_AvionBo
+//end of the class AvionBo
 ?>
 

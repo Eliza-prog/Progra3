@@ -10,7 +10,7 @@ require_once ("../bo/PersonaBo.php");
 require_once ("../domain/Persona.php");
 /*
 $obj_Persona = new Personas();
-$obj_Persona->setusuario(112540148);
+$obj_Persona->setcliente(112540148);
 $obj_Persona->setnombre("Esteba mod");
 $obj_Persona->setApellido1("Garita");
 $obj_Persona->setApellido2("Fonseca");
@@ -22,7 +22,7 @@ $obj_Persona->setLastUser("chgari");
 
 
 $obj_Persona = new Persona();
-$obj_Persona->setusuario(402480931);
+$obj_Persona->setcliente(402480931);
 $obj_Persona->setnombre("Esteban");
 $obj_Persona->setcontrasena("Esteban");
 $obj_Persona->setfecha_nacimiento("2020-05-08");
@@ -31,8 +31,6 @@ $obj_Persona->setapellido2("Chaves");
 $obj_Persona->setcorreo("hbhhue@bbfe");
 $obj_Persona->setdireccion("san jose");
 $obj_Persona->settelefono1(678901074);
-$obj_Persona->settelefono2(123456789);
-$obj_Persona->settipo_usuario(3);
 $obj_Persona->setsexo("f");
 
 

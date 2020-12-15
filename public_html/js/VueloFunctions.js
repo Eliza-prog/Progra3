@@ -4,6 +4,28 @@
  * and open the template in the editor.
  */
 
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
+
+
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
@@ -27,15 +49,15 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLVuelo(true);
-    
+    cargarTablas();
+
 });
 
 //*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateVuelo(ocultarModalBool) {
+function addOrUpdateVuelo() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
@@ -45,7 +67,7 @@ function addOrUpdateVuelo(ocultarModalBool) {
                 id_Vuelo:        $("#txtid_Vuelo").val(),
                 Fecha_Hora:    $("#txtFecha_Hora").val(),
                 Ruta_idRuta:  $("#txtRuta_idRuta").val(),
-                Tipo_Avion_idTipo_Aviones:          $("#txtTipo_Avion_idTipo_Aviones").val()
+                Tipo_Avion_idAviones:          $("#txtTipo_Avion_idTipo_Aviones").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -90,7 +112,7 @@ function validar() {
     }
 
     
-    if ($("#txtTipo_Avion_idTipo_Aviones").val() === "") {
+    if ($("#txtTipo_Avion_idAviones").val() === "") {
         validacion = false;
     }
 
@@ -159,7 +181,7 @@ function showVueloByID(id_Vuelo) {
             $("#txtid_Vuelo").val(objVueloJSon.id_Vuelo);
             $("#txtFecha_Hora").val(objVueloJSon.Fecha_Hora);
             $("#txtRuta_idRuta").val(objVueloJSon.Ruta_idRuta);
-            $("#txtTipo_Avion_idTipo_Aviones").val(objVueloJSon.Tipo_Avion_idTipo_Aviones);
+            $("#txtTipo_Avion_idAviones").val(objVueloJSon.Tipo_Avion_idTipo_Aviones);
             $("#typeAction").val("update_Vuelo");
             $("#myModalFormulario").modal();
         },
@@ -204,4 +226,85 @@ function mostrarModal(idDiv, titulo, mensaje) {
 function ocultarModal(idDiv) {
     $("#" + idDiv).modal("hide");
 }
+
+function cargarTablas() {
+
+
+
+    var dataTableVuelo_const = function () {
+        if ($("#dt_Vuelo").length) {
+            $("#dt_Vuelo").DataTable({
+                dom: "Bfrtip",
+                bFilter: false,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 11,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showVueloByID(\'' + row[0] + '\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteVueloByID(\'' + row[0] + '\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 2,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/Base-Aerolinea/controller/VueloController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_Vuelo"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_Vuelo').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTableVuelo_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
+}
+
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_Vuelo').DataTable().columns.adjust().responsive.recalc();
+};
 

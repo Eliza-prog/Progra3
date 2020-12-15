@@ -1,7 +1,7 @@
 <?php
 
 require_once("../../utlis/adodb5/adodb.inc.php");
-require_once("../domain/Tipo_Avion.php");
+require_once("../domain/Avion.php");
 
 /**
  * 
@@ -13,7 +13,7 @@ require_once("../domain/Tipo_Avion.php");
 
 //this attribute enable to see the SQL's executed in the data base
 
-class Tipo_AvionDao {
+class AvionDao {
     private $labAdodb;
 
     public function __construct() {
@@ -30,12 +30,12 @@ class Tipo_AvionDao {
     //agrega a una persona a la base de datos
     //***********************************************************
 
-    public function add(Tipo_Avion $Tipo_Avion) {
+    public function add(Avion $Avion) {
 
         try {
-            $sql = sprintf("insert into Tipo_Avion (idTipo_Avion, Fecha, Modelo, Marca, Fila, Asiento_Fila) 
+            $sql = sprintf("insert into Avion (idAvion, Fecha, Modelo, Marca, Fila, Asiento_Fila) 
                                           values (%s,%s,%s,%s,%s,%s)",
-                    $this->labAdodb->Param("idTipo_Avion"),
+                    $this->labAdodb->Param("idAvion"),
                     $this->labAdodb->Param("Fecha"),
                     $this->labAdodb->Param("Modelo"),
                     $this->labAdodb->Param("Marca"),
@@ -45,18 +45,18 @@ class Tipo_AvionDao {
 
             $valores = array();
 
-            $valores["idTipo_Avion"]   = $Tipo_Avion->getidTipo_Avion();
-            $valores["Fecha"]          = $Tipo_Avion->getFecha();
-            $valores["Modelo"]         = $Tipo_Avion->getModelo();
-            $valores["Marca"]          = $Tipo_Avion->getMarca();
-            $valores["Fila"]           = $Tipo_Avion->getFila();
-            $valores["Asiento_Fila"]   = $Tipo_Avion->getAsiento_Fila();
+            $valores["idAvion"]   = $Avion->getidAvion();
+            $valores["Fecha"]          = $Avion->getFecha();
+            $valores["Modelo"]         = $Avion->getModelo();
+            $valores["Marca"]          = $Avion->getMarca();
+            $valores["Fila"]           = $Avion->getFila();
+            $valores["Asiento_Fila"]   = $Avion->getAsiento_Fila();
 
             
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo insertar el registro (Error generado en el metodo add de la clase Tipo_AvionDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo insertar el registro (Error generado en el metodo add de la clase AvionDao), error:'.$e->getMessage());
         }
     }
 
@@ -64,16 +64,16 @@ class Tipo_AvionDao {
     //verifica si una persona existe en la base de datos por ID
     //***********************************************************
 
-    public function exist(Tipo_Avion $Tipo_Avion) {
+    public function exist(Avion $Avion) {
 
         $exist = false;
         try {
-            $sql = sprintf("select * from Tipo_Avion where  idTipo_Avion = %s ",
-                            $this->labAdodb->Param("idTipo_Avion"));
+            $sql = sprintf("select * from Avion where  idAvion = %s ",
+                            $this->labAdodb->Param("idAvion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-            $valores["idTipo_Avion"] = $Tipo_Avion->getidTipo_Avion();
+            $valores["idAvion"] = $Avion->getidAvion();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             if ($resultSql->RecordCount() > 0) {
@@ -81,7 +81,7 @@ class Tipo_AvionDao {
             }
             return $exist;
         } catch (Exception $e) {
-            throw new Exception('No se pudo obtener el registro (Error generado en el metodo exist de la clase Tipo_AvionDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo obtener el registro (Error generado en el metodo exist de la clase AvionDao), error:'.$e->getMessage());
         }
     }
 
@@ -89,37 +89,37 @@ class Tipo_AvionDao {
     //modifica una persona en la base de datos
     //***********************************************************
 
-    public function update(Tipo_Avion $Tipo_Avion) {
+    public function update(Avion $Avion) {
 
         try {
-            $sql = sprintf("update Tipo_Avion set Fecha = %s, 
+            $sql = sprintf("update Avion set Fecha = %s, 
                                                 Modelo = %s, 
                                                 Marca = %s, 
                                                 Fila = %s, 
                                                 Asiento_Fila = %s
                                                 
-                            where idTipo_Avion = %s",
+                            where idAvion = %s",
                     $this->labAdodb->Param("Fecha"),
                     $this->labAdodb->Param("Modelo"),
                     $this->labAdodb->Param("Marca"),
                     $this->labAdodb->Param("Fila"),
                     $this->labAdodb->Param("Asiento_Fila"),                   
-                    $this->labAdodb->Param("idTipo_Avion"));
+                    $this->labAdodb->Param("idAvion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["Fecha"]          = $Tipo_Avion->getFecha();
-            $valores["Modelo"]       = $Tipo_Avion->getModelo();
-            $valores["Marca"]       = $Tipo_Avion->getMarca();
-            $valores["Fila"]   = $Tipo_Avion->getFila();
-            $valores["Asiento_Fila"]            = $Tipo_Avion->getAsiento_Fila();
+            $valores["Fecha"]          = $Avion->getFecha();
+            $valores["Modelo"]       = $Avion->getModelo();
+            $valores["Marca"]       = $Avion->getMarca();
+            $valores["Fila"]   = $Avion->getFila();
+            $valores["Asiento_Fila"]            = $Avion->getAsiento_Fila();
             
             
-            $valores["idTipo_Avion"]       = $Tipo_Avion->getidTipo_Avion();
+            $valores["idAvion"]       = $Avion->getidAvion();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase Tipo_AvionDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase AvionDao), error:'.$e->getMessage());
         }
     }
 
@@ -127,20 +127,20 @@ class Tipo_AvionDao {
     //elimina una persona en la base de datos
     //***********************************************************
 
-    public function delete(Tipo_Avion $Tipo_Avion) {
+    public function delete(Avion $Avion) {
 
         try {
-            $sql = sprintf("delete from Tipo_Avion where  idTipo_Avion = %s",
-                            $this->labAdodb->Param("idTipo_Avion"));
+            $sql = sprintf("delete from Avion where  idAvion = %s",
+                            $this->labAdodb->Param("idAvion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["idTipo_Avion"] = $Tipo_Avion->getidTipo_Avion();
+            $valores["idAvion"] = $Avion->getidAvion();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
-            throw new Exception('No se pudo eliminar el registro (Error generado en el metodo delete de la clase Tipo_AvionDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo eliminar el registro (Error generado en el metodo delete de la clase AvionDao), error:'.$e->getMessage());
         }
     }
 
@@ -148,49 +148,49 @@ class Tipo_AvionDao {
     //busca a una persona en la base de datos
     //***********************************************************
 
-    public function searchById(Tipo_Avion $Tipo_Avion) {
+    public function searchById(Avion $Avion) {
 
-        $returnTipo_Avion = null;
+        $returnAvion = null;
         try {
-            $sql = sprintf("select * from Tipo_Avion where  idTipo_Avion = %s",
-                            $this->labAdodb->Param("idTipo_Avion"));
+            $sql = sprintf("select * from Avion where  idAvion = %s",
+                            $this->labAdodb->Param("idAvion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
 
-            $valores["idTipo_Avion"] = $Tipo_Avion->getidTipo_Avion();
+            $valores["idAvion"] = $Avion->getidAvion();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
             if ($resultSql->RecordCount() > 0) {
-                $returnTipo_Avion = Tipo_Avion::createNullTipo_Avion();
-                $returnTipo_Avion->setidTipo_Avion($resultSql->Fields("idTipo_Avion"));
-                $returnTipo_Avion->setFecha($resultSql->Fields("Fecha"));
-                $returnTipo_Avion->setModelo($resultSql->Fields("Modelo"));
-                $returnTipo_Avion->setMarca($resultSql->Fields("Marca"));
-                $returnTipo_Avion->setFila($resultSql->Fields("Fila"));
-                $returnTipo_Avion->setAsiento_Fila($resultSql->Fields("Asiento_Fila"));
+                $returnAvion = Avion::createNullAvion();
+                $returnAvion->setidAvion($resultSql->Fields("idAvion"));
+                $returnAvion->setFecha($resultSql->Fields("Fecha"));
+                $returnAvion->setModelo($resultSql->Fields("Modelo"));
+                $returnAvion->setMarca($resultSql->Fields("Marca"));
+                $returnAvion->setFila($resultSql->Fields("Fila"));
+                $returnAvion->setAsiento_Fila($resultSql->Fields("Asiento_Fila"));
             
           
             }
         } catch (Exception $e) {
-            throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase Tipo_AvionDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo consultar el registro (Error generado en el metodo searchById de la clase AvionDao), error:'.$e->getMessage());
         }
-        return $returnTipo_Avion;
+        return $returnAvion;
     }
 
     //***********************************************************
-    //obtiene la información de las Tipo_Avion en la base de datos
+    //obtiene la información de las Avion en la base de datos
     //***********************************************************
     
     public function getAll() {
 
         try {
-            $sql = sprintf("select * from Tipo_Avion");
+            $sql = sprintf("select * from Avion");
             $resultSql = $this->labAdodb->Execute($sql);
             return $resultSql;
         } catch (Exception $e) {
-            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase Tipo_AvionDao), error:'.$e->getMessage());
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase AvionDao), error:'.$e->getMessage());
         }
     }
 

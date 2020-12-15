@@ -2,6 +2,7 @@
 $(document).ready(function () {
     
     $("#ContenidoRegistro").hide();
+    //$("#admin").show();
     $("#admin").hide();
     
     

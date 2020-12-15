@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-group-tm2">
-                        <input  type="text" placeholder="Dijite su cedula" id="txtPersona_Usuario1">
+                        <input  type="text" placeholder="Dijite su cedula" id="txtPersona_Cliente1">
                     </div>
                     <button type="submit" class="btn btn-primary" id="Reservar">Registrar</button>
                     <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>

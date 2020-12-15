@@ -8,10 +8,10 @@ require_once("baseDomain.php");
  * Comment: It was created
  *
  */
-class Tipo_Avion extends BaseDomain implements \JsonSerializable{
+class Avion extends BaseDomain implements \JsonSerializable{
 
     //attributes
-    private $idTipo_Avion;
+    private $idAvion;
     private $Fecha;
     private $Modelo;
     private $Marca;
@@ -25,14 +25,14 @@ class Tipo_Avion extends BaseDomain implements \JsonSerializable{
         parent::__construct();
     }
 
-    public static function createNullTipo_Avion() {
+    public static function createNullAvion() {
         $instance = new self();
         return $instance;
     }
 
-    public static function createTipo_Avion($idTipo_Avion, $Fecha, $Modelo, $Marca, $Fila, $Asiento_Fila) {
+    public static function createAvion($idAvion, $Fecha, $Modelo, $Marca, $Fila, $Asiento_Fila) {
         $instance = new self();
-        $instance->idTipo_Avion        = $idTipo_Avion;
+        $instance->idAvion        = $idAvion;
         $instance->Fecha         = $Fecha;
         $instance->Modelo      = $Modelo;
         $instance->Marca   = $Marca;
@@ -46,12 +46,12 @@ class Tipo_Avion extends BaseDomain implements \JsonSerializable{
     /****************************************************************************/
     //properties
     /****************************************************************************/
-    public function getidTipo_Avion() {
-        return $this->idTipo_Avion;
+    public function getidAvion() {
+        return $this->idAvion;
     }
 
-    public function setidTipo_Avion($idTipo_Avion) {
-        $this->idTipo_Avion = $idTipo_Avion;
+    public function setidAvion($idAvion) {
+        $this->idAvion = $idAvion;
     }
 
     /****************************************************************************/

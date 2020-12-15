@@ -21,7 +21,7 @@ class Reservacion extends BaseDomain implements \JsonSerializable{
     private $Numero_Asiento;
     private $Vuelo_id_Vuelo;
     private $Fecha_Reserva;
-    private $Persona_Usuario1;
+    private $Persona_Cliente1;
 
 
 
@@ -36,14 +36,14 @@ class Reservacion extends BaseDomain implements \JsonSerializable{
         return $instance;
     }
 
-    public static function createReservacion($idReservacion, $Numero_Fila, $Numero_Asiento, $Vuelo_id_Vuelo, $Fecha_Reserva, $Persona_Usuario1) {
+    public static function createReservacion($idReservacion, $Numero_Fila, $Numero_Asiento, $Vuelo_id_Vuelo, $Fecha_Reserva, $Persona_Cliente1) {
         $instance = new self();
         $instance->idReservacion         = $idReservacion;
         $instance->Numero_Fila           = $Numero_Fila;
         $instance->Numero_Asiento        = $Numero_Asiento;
         $instance->Vuelo_id_Vuelo        = $Vuelo_id_Vuelo;
         $instance->Fecha_Reserva         = $Fecha_Reserva;
-        $instance->Persona_Usuario1      = $Persona_Usuario1;
+        $instance->Persona_Cliente1      = $Persona_Cliente1;
         
 
         return $instance;
@@ -96,12 +96,12 @@ class Reservacion extends BaseDomain implements \JsonSerializable{
         $this->Fecha_Reserva = $Fecha_Reserva;
     }
     
-    public function getPersona_Usuario1() {
-        return $this->Persona_Usuario1;
+    public function getPersona_Cliente1() {
+        return $this->Persona_Cliente1;
     }
 
-    public function setPersona_Usuario1($Persona_Usuario1) {
-        $this->Persona_Usuario1 = $Persona_Usuario1;
+    public function setPersona_Cliente1($Persona_Cliente1) {
+        $this->Persona_Cliente1 = $Persona_Cliente1;
     }
 
     /****************************************************************************/

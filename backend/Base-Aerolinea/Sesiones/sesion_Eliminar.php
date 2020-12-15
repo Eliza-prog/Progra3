@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-session_name('LoginUsuario');
+session_name('LoginCliente');
 session_start();
 
 if (!(isset($_SESSION['arregloValores']))) {

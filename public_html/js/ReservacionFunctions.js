@@ -68,7 +68,7 @@ function addOrUpdateidReservacion(ocultarModalBool) {
                 Numero_Asiento:              $("#txtNumero_Asiento").val(),
                 Vuelo_id_Vuelo:              $("#txtVuelo_id_Vuelo").val(),
                 Fecha_Reserva:              $("#txtFecha_Reserva").val(),
-                Persona_Usuario1:              $("#txtPersona_Usuario1").val()
+                Persona_Cliente1:              $("#txtPersona_Cliente1").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -120,7 +120,7 @@ function validar() {
         validacion = false;
     }
     
-    if ($("#txtPersona_Usuario1").val() === "") {
+    if ($("#txtPersona_Cliente1").val() === "") {
         validacion = false;
     }
 
@@ -193,7 +193,7 @@ function showidReservacionByID(idReservacion) {
             $("#txtNumero_Asiento").val(objidReservacionJSon.Numero_Asiento);
             $("#txtVuelo_id_Vuelo").val(objidReservacionJSon.Vuelo_id_Vuelo);
             $("#txtFecha_Reserva").val(objidReservacionJSon.Fecha_Reserva);
-            $("#txtPersona_Usuario1").val(objidReservacionJSon.Persona_Usuario1);
+            $("#txtPersona_Cliente1").val(objidReservacionJSon.Persona_Cliente1);
             $("#typeAction").val("update_idReservacion");
             $("#myModalFormulario").modal();
         },
