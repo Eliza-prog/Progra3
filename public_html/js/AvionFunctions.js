@@ -267,7 +267,7 @@ function cargarTablas() {
                 ],
                 "columnDefs": [
                     {
-                        targets: 11,
+                        targets: 6,
                         className: "dt-center",
                         render: function (data, type, row, meta) {
                             var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showAvionByID(\'' + row[0] + '\');">Cargar</button> ';

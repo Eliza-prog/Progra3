@@ -5,7 +5,7 @@
 <html >
     <head>
         <meta charset="UTF-8">
-        <title>Avión</title>
+        <title>Reserva</title>
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
@@ -76,7 +76,15 @@
                                 <label>Dijite la Asiento :</label>
                                 <input type="text" id="txtNumero_Asiento"/>
                             </div>
-                        </article>
+                            <br>
+                        </article>                       
+                        <div>
+                            <a href="PagoPAYPAL.php">Pagar</a>
+                        </div>
+                        <br>
+                        <div>
+                            <a href="index.php">Volver</a>
+                        </div>
                     </div>
                 </div>
             </div>
