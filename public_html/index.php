@@ -150,7 +150,7 @@
                                                 <div class="form-group-tm1" id="groupusuario">
                                                     <br>
                                                     <br>
-                                                    <label for="txtusuario">Usuario</label>
+                                                    <label for="txtusuario">Usuario/Cedula</label>
                                                     <input type="text" class="form-control" id="txtusuario"  placeholder="Cedula">
                                                 </div>
                                                 <div class="form-group-tm2" id="groupusuario">
@@ -226,7 +226,7 @@
                 <div class="col text-center">
                     <h2 class="tm-section-title">Estamos aquí para ayudarle</h2>
                     <p class="tm-color-white tm-section-subtitle">Suscribase a nuesto noticiero</p>
-                    <a href="#" class="tm-color-white tm-btn-white-bordered">suscribirse</a>
+
                 </div>                
             </div>
         </div>        
@@ -237,27 +237,31 @@
         <polygon fill="#ee5057" points="0,0  100,0  50,60"></polygon>                   
         </svg> 
         <div class="container tm-pt-5 tm-pb-4">
+            <article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                           
+                <a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Login/Registrar</a>                                   
+            </article> 
             <div class="row text-center">
                 <article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                            
                     <i class="fa tm-fa-6x fa-legal tm-color-primary tm-margin-b-20"></i>
-                    <h3 class="tm-color-primary tm-article-title-1">Pellentesque accumsan arcu nec dolor tempus</h3>
-                    <p>Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida. Donec at felis libero. Mauris odio tortor.</p>
-                    <a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>
+                    <h3 class="tm-color-primary tm-article-title-1">justicia para todos</h3>
+                    <p>Sabemos que a veces los precios pueden ser excesivos por eso velamos que los precios de nuestros servisios sean justos para todas las personas.</p>
                 </article>
                 <article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                            
                     <i class="fa tm-fa-6x fa-plane tm-color-primary tm-margin-b-20"></i>
-                    <h3 class="tm-color-primary tm-article-title-1">Duis scelerisque metus vel felis porttitor</h3>
-                    <p>Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida. Donec at felis libero. Mauris odio tortor.</p>
-                    <a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>                            
+                    <h3 class="tm-color-primary tm-article-title-1">Vuelos modernos y de la mejor calidad</h3>
+                    <p>Contamos con una flotilla de aviones de los mas modernos por eso la comodidad es algo que siempre va a estar presente en cada vuelo.</p>
                 </article>
                 <article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">                           
                     <i class="fa tm-fa-6x fa-life-saver tm-color-primary tm-margin-b-20"></i>
-                    <h3 class="tm-color-primary tm-article-title-1">Etiam aliquam arcu at mauris consectetur</h3>
-                    <p>Pellentesque at velit ante. Duis scelerisque metus vel felis porttitor gravida. Donec at felis libero. Mauris odio tortor.</p>
-                    <a href="#" class="text-uppercase tm-color-primary tm-font-semibold">Continue reading...</a>                           
-                </article>
-            </div>        
+                    <h3 class="tm-color-primary tm-article-title-1">Viaja de forma segura con nosotros</h3>
+                    <p>En Traveling Earth nos preocupamos por el bienestar de nuestros clientes, por eso contamos con lo nesesario para cualquier emergencia.</p>                                         
+                </article>    
+            </div>
+            <article class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-article">
+                <a href="Reserva.php"><h1 class="tm-color-primary tm-article-title-1">Reservar un vuelo</h1></a> 
+            </article>
         </div>
+
     </div>
 
     <div class="tm-section tm-section-pad tm-bg-gray" id="tm-section-4">
@@ -348,29 +352,7 @@
 
 
     <div class="container">
-        <div class="row">
 
-
-            <div class="row">
-                <div class="col sm 12">
-                    <div id="avion-container" class="asientos table-responsive-sm ">
-                        <a>ESCOGER ASIENTOS</a>
-
-
-
-                        <script>
-                            function cambiarBack(elemento) {
-                                if (elemento.getAttribute("class") == "escoger asiento") {
-                                    elemento.setAttribute("class", "desocupado asiento");
-                                } else {
-                                    elemento.setAttribute("class", "escoger asiento");
-                                }
-                            }
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="tm-section tm-section-pad tm-bg-img" id="tm-section-5">                                                        
             <div class="container ie-h-align-center-fix">
                 <div class="row tm-flex-align-center">
@@ -462,136 +444,136 @@
 <script src="slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
 <script>
 
-                            /* Google map
-                             ------------------------------------------------*/
-                            var map = '';
-                            var center;
+                                        /* Google map
+                                         ------------------------------------------------*/
+                                        var map = '';
+                                        var center;
 
-                            function initialize() {
-                                var mapOptions = {
-                                    zoom: 16,
-                                    center: new google.maps.LatLng(13.7567928, 100.5653741),
-                                    scrollwheel: false
-                                };
+                                        function initialize() {
+                                            var mapOptions = {
+                                                zoom: 16,
+                                                center: new google.maps.LatLng(13.7567928, 100.5653741),
+                                                scrollwheel: false
+                                            };
 
-                                map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+                                            map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
-                                google.maps.event.addDomListener(map, 'idle', function () {
-                                    calculateCenter();
-                                });
+                                            google.maps.event.addDomListener(map, 'idle', function () {
+                                                calculateCenter();
+                                            });
 
-                                google.maps.event.addDomListener(window, 'resize', function () {
-                                    map.setCenter(center);
-                                });
-                            }
+                                            google.maps.event.addDomListener(window, 'resize', function () {
+                                                map.setCenter(center);
+                                            });
+                                        }
 
-                            function calculateCenter() {
-                                center = map.getCenter();
-                            }
+                                        function calculateCenter() {
+                                            center = map.getCenter();
+                                        }
 
-                            function loadGoogleMap() {
-                                var script = document.createElement('script');
-                                script.type = 'text/javascript';
-                                script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&' + 'callback=initialize';
-                                document.body.appendChild(script);
-                            }
+                                        function loadGoogleMap() {
+                                            var script = document.createElement('script');
+                                            script.type = 'text/javascript';
+                                            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&' + 'callback=initialize';
+                                            document.body.appendChild(script);
+                                        }
 
-                            function setCarousel() {
+                                        function setCarousel() {
 
-                                if ($('.tm-article-carousel').hasClass('slick-initialized')) {
-                                    $('.tm-article-carousel').slick('destroy');
-                                }
+                                            if ($('.tm-article-carousel').hasClass('slick-initialized')) {
+                                                $('.tm-article-carousel').slick('destroy');
+                                            }
 
-                                if ($(window).width() < 438) {
-                                    // Slick carousel
-                                    $('.tm-article-carousel').slick({
-                                        infinite: false,
-                                        dots: true,
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1
-                                    });
-                                } else {
-                                    $('.tm-article-carousel').slick({
-                                        infinite: false,
-                                        dots: true,
-                                        slidesToShow: 2,
-                                        slidesToScroll: 1
-                                    });
-                                }
-                            }
+                                            if ($(window).width() < 438) {
+                                                // Slick carousel
+                                                $('.tm-article-carousel').slick({
+                                                    infinite: false,
+                                                    dots: true,
+                                                    slidesToShow: 1,
+                                                    slidesToScroll: 1
+                                                });
+                                            } else {
+                                                $('.tm-article-carousel').slick({
+                                                    infinite: false,
+                                                    dots: true,
+                                                    slidesToShow: 2,
+                                                    slidesToScroll: 1
+                                                });
+                                            }
+                                        }
 
-                            function setPageNav() {
-                                if ($(window).width() > 991) {
-                                    $('#tm-top-bar').singlePageNav({
-                                        currentClass: 'active',
-                                        offset: 79
-                                    });
-                                } else {
-                                    $('#tm-top-bar').singlePageNav({
-                                        currentClass: 'active',
-                                        offset: 65
-                                    });
-                                }
-                            }
+                                        function setPageNav() {
+                                            if ($(window).width() > 991) {
+                                                $('#tm-top-bar').singlePageNav({
+                                                    currentClass: 'active',
+                                                    offset: 79
+                                                });
+                                            } else {
+                                                $('#tm-top-bar').singlePageNav({
+                                                    currentClass: 'active',
+                                                    offset: 65
+                                                });
+                                            }
+                                        }
 
-                            function togglePlayPause() {
-                                vid = $('.tmVideo').get(0);
+                                        function togglePlayPause() {
+                                            vid = $('.tmVideo').get(0);
 
-                                if (vid.paused) {
-                                    vid.play();
-                                    $('.tm-btn-play').hide();
-                                    $('.tm-btn-pause').show();
-                                } else {
-                                    vid.pause();
-                                    $('.tm-btn-play').show();
-                                    $('.tm-btn-pause').hide();
-                                }
-                            }
+                                            if (vid.paused) {
+                                                vid.play();
+                                                $('.tm-btn-play').hide();
+                                                $('.tm-btn-pause').show();
+                                            } else {
+                                                vid.pause();
+                                                $('.tm-btn-play').show();
+                                                $('.tm-btn-pause').hide();
+                                            }
+                                        }
 
-                            $(document).ready(function () {
+                                        $(document).ready(function () {
 
-                                $(window).on("scroll", function () {
-                                    if ($(window).scrollTop() > 100) {
-                                        $(".tm-top-bar").addClass("active");
-                                    } else {
-                                        //remove the background property so it comes transparent again (defined in your css)
-                                        $(".tm-top-bar").removeClass("active");
-                                    }
-                                });
+                                            $(window).on("scroll", function () {
+                                                if ($(window).scrollTop() > 100) {
+                                                    $(".tm-top-bar").addClass("active");
+                                                } else {
+                                                    //remove the background property so it comes transparent again (defined in your css)
+                                                    $(".tm-top-bar").removeClass("active");
+                                                }
+                                            });
 
-                                // Google Map
-                                loadGoogleMap();
+                                            // Google Map
+                                            loadGoogleMap();
 
-                                // Date Picker
-                                const pickerCheckIn = datepicker('#inputCheckIn');
-                                const pickerCheckOut = datepicker('#inputCheckOut');
+                                            // Date Picker
+                                            const pickerCheckIn = datepicker('#inputCheckIn');
+                                            const pickerCheckOut = datepicker('#inputCheckOut');
 
-                                // Slick carousel
-                                setCarousel();
-                                setPageNav();
+                                            // Slick carousel
+                                            setCarousel();
+                                            setPageNav();
 
-                                $(window).resize(function () {
-                                    setCarousel();
-                                    setPageNav();
-                                });
+                                            $(window).resize(function () {
+                                                setCarousel();
+                                                setPageNav();
+                                            });
 
-                                // Close navbar after clicked
-                                $('.nav-link').click(function () {
-                                    $('#mainNav').removeClass('show');
-                                });
+                                            // Close navbar after clicked
+                                            $('.nav-link').click(function () {
+                                                $('#mainNav').removeClass('show');
+                                            });
 
-                                // Control video
-                                $('.tm-btn-play').click(function () {
-                                    togglePlayPause();
-                                });
+                                            // Control video
+                                            $('.tm-btn-play').click(function () {
+                                                togglePlayPause();
+                                            });
 
-                                $('.tm-btn-pause').click(function () {
-                                    togglePlayPause();
-                                });
+                                            $('.tm-btn-pause').click(function () {
+                                                togglePlayPause();
+                                            });
 
-                                // Update the current year in copyright
-                                $('.tm-current-year').text(new Date().getFullYear());
-                            });
+                                            // Update the current year in copyright
+                                            $('.tm-current-year').text(new Date().getFullYear());
+                                        });
 
 </script> 
 
@@ -603,6 +585,7 @@
 <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
 <script src="js/PersonaFunctions.js" type="text/javascript"></script>
 <script src="js/FuntionLogin.js" type="text/javascript"></script>
+<script src="js/ReservacionFunctions.js" type="text/javascript"></script>
 <script src="js/index.js" type="text/javascript"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

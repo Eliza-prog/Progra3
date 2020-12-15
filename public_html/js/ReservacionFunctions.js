@@ -26,7 +26,7 @@ var dt_lenguaje_espanol = {
 };
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
-    $("#enviar").click(function () {
+    $("#Reservar").click(function () {
         addOrUpdateidReservacion(false);
     });
     //agrega los eventos las capas necesarias
@@ -51,7 +51,7 @@ $(document).ready(function () {
     cargarTablas();
     
 });
-
+//if(document.getElementById(txtNumero_Fila).class==="escoger asiento")
 //*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
@@ -62,7 +62,7 @@ function addOrUpdateidReservacion(ocultarModalBool) {
         $.ajax({
             url: '../backend/Base-Aerolinea/controller/ReservacionController.php',
             data: {
-                action:               $("#typeAction").val(),
+                action:               "add_Reservacion",
                 idReservacion:  $("#txtidReservacion").val(),
                 Numero_Fila:        $("#txtNumero_Fila").val(),
                 Numero_Asiento:              $("#txtNumero_Asiento").val(),

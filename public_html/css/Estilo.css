@@ -29,12 +29,7 @@ body{
 
 .sinBorde{
     border-collapse: collapse;
-    
-}
-
-.asientos{
-    margin-top: 210px;
-    margin-left: 15px;
+ 
 }
 
 
@@ -49,13 +44,23 @@ button{
     margin: 2px;
 }
 
-#tabla2{
-    margin-top: 56px;
+#avion-container{
+   
 }
 
-.tabla3{
+#tabla1{
+    margin-top: 85px;
+    margin-left: 10px;
+}
+
+#tabla2{
+    margin-top: 65px;
+    margin-left: 10px;
+}
+
+#tabla3{
     
-    
+    margin-left: -400px;
 }
 
 .tabla4{
