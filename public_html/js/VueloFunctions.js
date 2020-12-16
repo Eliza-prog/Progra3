@@ -78,8 +78,8 @@ function addOrUpdateVuelo() {
                 var typeOfMessage = messageComplete.substring(0, 2);
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
-                    clearFormVuelo();
-                    showALLVuelo();
+                    clearFormPersona();
+                    $('#dt_vuelo').DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -207,10 +207,10 @@ function deleteVueloByID(id_Vuelo) {
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLVuelo(false);
+                swal("Eliminacion realizada", responseText, "success");
+              $('#dt_vuelo').DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+                swal("Error", responseText, "error");
             }
         },
         type: 'POST'
@@ -232,8 +232,8 @@ function cargarTablas() {
 
 
     var dataTableVuelo_const = function () {
-        if ($("#dt_Vuelo").length) {
-            $("#dt_Vuelo").DataTable({
+        if ($("#dt_vuelo").length) {
+            $("#dt_vuelo").DataTable({
                 dom: "Bfrtip",
                 bFilter: false,
                 ordering: false,
@@ -257,7 +257,7 @@ function cargarTablas() {
                 ],
                 "columnDefs": [
                     {
-                        targets: 11,
+                        targets: 5,
                         className: "dt-center",
                         render: function (data, type, row, meta) {
                             var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showVueloByID(\'' + row[0] + '\');">Cargar</button> ';
@@ -279,7 +279,7 @@ function cargarTablas() {
                     }
                 },
                 drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                    $('#dt_Vuelo').DataTable().columns.adjust().responsive.recalc();
+                    $('#dt_vuelo').DataTable().columns.adjust().responsive.recalc();
                 }
             });
         }
@@ -305,6 +305,6 @@ function cargarTablas() {
 //*******************************************************************************
 
 window.onresize = function () {
-    $('#dt_Vuelo').DataTable().columns.adjust().responsive.recalc();
+    $('#dt_vuelo').DataTable().columns.adjust().responsive.recalc();
 };
 

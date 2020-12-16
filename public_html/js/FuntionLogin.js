@@ -13,7 +13,7 @@ function Login() {
         url: '../backend/Base-Aerolinea/controller/PersonaController.php',
         data: {
             action: "persona_Login",
-            usuario: $("#user_name").val(),
+            cliente: $("#user_name").val(),
             contrasena: $("#password").val()
         },
         error: function () { //si existe un error en la respuesta del ajax
@@ -24,7 +24,6 @@ function Login() {
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 swal("Hecho", responseText, "success");
-                $('#dt_personas').DataTable().ajax.reload();
                 location.reload();
             } else {//existe un error
                 swal("Error", responseText, "error");

@@ -5,23 +5,23 @@
  */
 
 var dt_lenguaje_espanol = {
-    decimal:        "",
-    emptyTable:     "No existe información",
-    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
-    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
-    infoFiltered:   "(filtered from _MAX_ total entries)",
-    infoPostFix:    "",
-    thousands:      ",",
-    lengthMenu:     "Mostrar _MENU_ registros por página",
+    decimal: "",
+    emptyTable: "No existe información",
+    info: "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty: "Mostrando 0 a 0 de 0 registros",
+    infoFiltered: "(filtered from _MAX_ total entries)",
+    infoPostFix: "",
+    thousands: ",",
+    lengthMenu: "Mostrar _MENU_ registros por página",
     loadingRecords: "Cargando, por favor espere...",
-    processing:     "Procesando...",
-    search:         "Buscar ",
-    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    processing: "Procesando...",
+    search: "Buscar ",
+    zeroRecords: "No se encontraron registros que cumplan con el criterio",
     paginate: {
-        first:      "Primero",
-        last:       "Último",
-        next:       "Siguiente",
-        previous:   "Anterior"
+        first: "Primero",
+        last: "Último",
+        next: "Siguiente",
+        previous: "Anterior"
     }
 };
 
@@ -65,11 +65,11 @@ function addOrUpdateRuta() {
         $.ajax({
             url: '../backend/Base-Aerolinea/controller/RutaController.php',
             data: {
-                action:         $("#typeAction").val(),
-                idRuta:         $("#txtidRuta").val(),
-                Recorrido:   $("#txtRecorrido").val(),
-                Tiempo:    $("#txtTiempo").val(),
-                Valor:  $("#txtValor").val()
+                action: $("#typeAction").val(),
+                idRuta: $("#txtidRuta").val(),
+                Recorrido: $("#txtRecorrido").val(),
+                Tiempo: $("#txtTiempo").val(),
+                Valor: $("#txtValor").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -81,14 +81,14 @@ function addOrUpdateRuta() {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormRuta();
-                    showALLRuta();
+
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
             },
             type: 'POST'
         });
-    }else{
+    } else {
         swal("Error de validación", "Los datos del formulario no fueron digitados, por favor verificar", "error");
     }
 }
@@ -98,7 +98,7 @@ function addOrUpdateRuta() {
 function validar() {
     var validacion = true;
 
-    
+
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
     if ($("#txtidRuta").val() === "") {
@@ -115,7 +115,7 @@ function validar() {
 
     if ($("#txtValor").val() === "") {
         validacion = false;
-    
+
     }
 
 
@@ -158,7 +158,7 @@ function showALLRuta(ocultarModalBool) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             $("#divResult").html(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
-            
+
         },
         type: 'POST'
     });
@@ -209,10 +209,10 @@ function deleteRutaByID(idRuta) {
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLRuta(false);
+                swal("Eliminacion realizada", responseText, "success");
+                $('#dt_Ruta').DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+               swal("Error", responseText, "error");
             }
         },
         type: 'POST'

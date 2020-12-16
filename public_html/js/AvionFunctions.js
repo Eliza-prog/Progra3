@@ -80,7 +80,7 @@ function addOrUpdateAvion(ocultarModalBool) {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormAvion();
-                    showALLAvion();
+                    $('#dt_Avion').DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -217,10 +217,10 @@ function deleteAvionByID(idAvion) {
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLAvion(false);
+                swal("Eliminacion realizada", responseText, "success");
+                $('#dt_Avion').DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+                swal("Error", responseText, "error");
             }
         },
         type: 'POST'

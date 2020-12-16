@@ -51,7 +51,7 @@ include_once("template/templateHead.php");
 <br><br>
 <div class="row">
     <div class="col-md-12">
-        <table id="dt_reservacion"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+        <table id="dt_vuelo"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>ID VUELO</th>
